@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text, View } from 'react-native';
-import { NativeRouter, Route, Switch, Link } from 'react-router-native';
+import { NativeRouter, Route, Switch, Link, History } from 'react-router-native';
 import Nav from './components/Nav'
 import DeckSwipe from './components/DeckSwipe'
 // import Footer from './components/Footer'
@@ -45,6 +45,10 @@ class App extends Component {
     this.drawer._root.open()
   };
 
+  openDescription = () => {
+    this.props.history.push('/description')
+  };
+
 
   render() {
     return (
@@ -64,7 +68,7 @@ class App extends Component {
                   <Route exact path="/" component={Home} />
                   <Route path="/login" component={Login} />
                   <Route path="/register" component={Register} />
-                  <Route exact path="/description" component={Description} />
+                  <Route path="/description" component={Description} />
                 </Switch>
               </View>
             }
@@ -75,9 +79,11 @@ class App extends Component {
                         <Icon name='ios-menu' />
                           <Text>Menu</Text>
                       </Button>
-                      <Button vertical>
+                      <Button vertical onPress={()=> this.openDescription}>
+                   
                         <Icon name='ios-information-circle-outline' />
                           <Text>Description</Text>
+                       
                       </Button>
                       <Button vertical>
 
@@ -112,7 +118,7 @@ const styles = {
 
 export default App;
 
-
+// onPress={this.openDescription}
 //       {/* <Container style={styles.body}>
 //         <Nav />
 //         <DeckSwipe />

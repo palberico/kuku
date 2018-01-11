@@ -49,6 +49,9 @@ const DummyData = [
     description: 'True blue ankle skinny jeans. Black washed denim with white fade. Ripped holes in both leg areas.  Cuffed hem. Paired it up with favorite sneakers or high heels. Versatile jeans that could transform from active wear to casual shoes for dinner date.',
     image: require('../images/kancan.png'),
     logo: require('../images/logos/kancanlogo.png'),
+    altimage1: require('../images/kancan1.jpg'),
+    altimage2: require('../images/kancan2.jpg'),
+    altimage3: require('../images/kancan3.jpg'),
   }
 ]
 
