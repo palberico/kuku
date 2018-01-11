@@ -9,7 +9,7 @@ const navs = [
   { name: 'Home', path: '/' },
   { name: 'Login', path: '/login' },
   { name: 'Register', path: '/register' },
-//   { name: 'Description', path: '/scores' }
+  { name: 'Description', path: '/description' }
 ]
 
 const navigate = (close, history, path) => {

@@ -6,7 +6,7 @@ import DeckSwipe from './components/DeckSwipe'
 // import Footer from './components/Footer'
 import Login from './components/Login';
 import Register from './components/Register';
-// import Description from './components/Description';
+import Description from './components/Description';
 import Home from './components/Home';
 import Sidebar from './components/Sidebar';
 import {
@@ -49,7 +49,7 @@ class App extends Component {
   render() {
     return (
       <NativeRouter>
-        <Container>
+        <Container style={styles.body}>
         <Nav />
           <Content >
             <Drawer
@@ -64,7 +64,7 @@ class App extends Component {
                   <Route exact path="/" component={Home} />
                   <Route path="/login" component={Login} />
                   <Route path="/register" component={Register} />
-                  {/* <Route exact path="/description" component={Description} /> */}
+                  <Route exact path="/description" component={Description} />
                 </Switch>
               </View>
             }
@@ -104,6 +104,9 @@ const styles = {
   },
     body:{
       backgroundColor: '#000000',
+  },
+  footer:{
+    backgroundColor: '#ffffff'
   },
 };
 
