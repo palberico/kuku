@@ -103,7 +103,7 @@ const styles = {
     justifyContent: 'center',
   },
     body:{
-      backgroundColor: '#000000',
+      backgroundColor: '#ffffff',
   },
   footer:{
     backgroundColor: '#ffffff'
