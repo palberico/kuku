@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import DummyData from './DummyData'
 import CardComp from './Card'
 import { Text, View, Image, Dimensions } from 'react-native'
+import Nav from './Nav'
 import {
   Body,
   Left,
@@ -21,7 +22,7 @@ const deviceWidth = Dimensions.get('window').width
 const deviceY = Dimensions.get('window').height
 const deviceX = Dimensions.get('window').width
 
-class DeckSwipe extends Component {
+class Shop extends Component {
 
   crossFunc = () => {
     this._deckSwiper._root.swipeLeft()
@@ -33,7 +34,9 @@ class DeckSwipe extends Component {
 
   render(){
     return(
-      <View style={styles.deckSwipe}>
+      
+  
+      <View style={styles.shop}>
 
 
         <DeckSwiper
@@ -51,7 +54,7 @@ class DeckSwipe extends Component {
 }
 
 let styles = {
-  deckSwipe: {
+  shop: {
     flex: 5,
     marginTop: 80,
   
@@ -60,4 +63,4 @@ let styles = {
 }
 
 
-export default DeckSwipe
+export default Shop;

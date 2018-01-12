@@ -51,6 +51,7 @@ class Description extends Component {
   render() {
       return (
         <Content>
+        
           <View style={styles.container}>
               <ImageSlider
                   images={[

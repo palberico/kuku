@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text, View } from 'react-native';
-import { NativeRouter, Route, Switch, Link, History } from 'react-router-native';
+import { NativeRouter, Route, Switch, Link, History, withRouter } from 'react-router-native';
 import Nav from './components/Nav'
-import DeckSwipe from './components/DeckSwipe'
+import Shop from './components/Shop'
 // import Footer from './components/Footer'
 import Login from './components/Login';
 import Register from './components/Register';
@@ -44,10 +44,14 @@ class App extends Component {
   openDrawer = () => {
     this.drawer._root.open()
   };
-
+ 
+ 
   openDescription = () => {
-    this.props.history.push('/description')
-  };
+    this.props.history.push('/description');
+  }
+  // openDescription = () => {
+  //   this.props.history.push('/description')
+  // };
 
 
   render() {
@@ -65,8 +69,8 @@ class App extends Component {
               { this.state.drawerOpen ? null :
               <View>
                 <Switch>
-                  <Route exact path="/" component={Home} />
-                  <Route path="/login" component={Login} />
+                  <Route exact path="/" component={Login} />
+                  <Route path="/shop" component={Shop} />
                   <Route path="/register" component={Register} />
                   <Route path="/description" component={Description} />
                 </Switch>
@@ -79,7 +83,9 @@ class App extends Component {
                         <Icon name='ios-menu' />
                           <Text>Menu</Text>
                       </Button>
-                      <Button vertical onPress={()=> this.openDescription}>
+                      <Button vertical onPress={() => this.openDescription}>
+                      
+                      {/* // onPress={()=> this.openDescription}> */}
                    
                         <Icon name='ios-information-circle-outline' />
                           <Text>Description</Text>
@@ -121,7 +127,7 @@ export default App;
 // onPress={this.openDescription}
 //       {/* <Container style={styles.body}>
 //         <Nav />
-//         <DeckSwipe />
+//         <DeckSwSipe />
 //         <Footer />
 //       </Container>
 //       </NativeRouter>

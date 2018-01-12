@@ -8,7 +8,7 @@ const deviceWidth = Dimensions.get('window').width;
 const navs = [
   { name: 'Home', path: '/' },
   { name: 'Login', path: '/login' },
-  { name: 'Register', path: '/register' },
+  { name: 'Shop', path: '/shop' },
   { name: 'Description', path: '/description' }
 ]
 
