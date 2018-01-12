@@ -4,16 +4,16 @@ import ImageSlider from 'react-native-image-slider';
 import DummyData from './DummyData'
 import { Col, Row, Grid } from 'react-native-easy-grid'
 import {
-  Container, 
-  Header, 
-  Title, 
+  Container,
+  Header,
+  Title,
   Content,
-  Footer, 
-  FooterTab, 
-  Button, 
-  Left, 
-  Right, 
-  Body, 
+  Footer,
+  FooterTab,
+  Button,
+  Left,
+  Right,
+  Body,
   Icon,
   Card,
   CardItem,
@@ -22,16 +22,10 @@ import {
   Thumbnail,
   Drawer
 } from 'native-base';
- 
-class Description extends Component {
-  constructor(props) {
-      super(props);
 
-      this.state = {
-          position: 1,
-          interval: null
-      };
-  }
+class Description extends Component {
+
+  state = { position: 1, interval: null, liked: false  };
 
   componentWillMount() {
       this.setState({interval: setInterval(() => {
@@ -43,7 +37,6 @@ class Description extends Component {
       clearInterval(this.state.interval);
   }
 
-  state = { liked: false }
   changeLike = () => {
     this.setState({liked: !this.state.liked})
   }
@@ -59,7 +52,8 @@ class Description extends Component {
                       `https://cdn.shopify.com/s/files/1/1460/6104/products/KC8336D_7_spo.jpg?v=1514492370`,
                   ]}
                   position={this.state.position}
-                  onPositionChanged={position => this.setState({position})}/>
+                  onPositionChanged={position => this.setState({position})}
+              />
           </View>
           <Card>
             <CardItem header>
@@ -74,7 +68,7 @@ class Description extends Component {
               <Body>
                 <Text style={styles.desc}>
                 True blue ankle skinny jeans. Black washed denim with white fade. Ripped holes in both leg areas.  Cuffed hem. Paired it up with favorite sneakers or high heels. Versatile jeans that could transform from active wear to casual shoes for dinner date.
-        
+
                 ANKLE SKINNY
                 9.5" RISE / 27" INSEAM
                 21% COTTON
@@ -84,7 +78,7 @@ class Description extends Component {
                 MODELED IN SIZE 25
                 MADE IN CHINA
               </Text>
-              
+
               </Body>
             </CardItem>
             <CardItem footer>
@@ -100,24 +94,24 @@ class Description extends Component {
           </Col>
           <Col>
           <Button iconLeft block dark style={styles.btnTwo} onPress={this.changeLike}>
-          <Icon
-                      style={styles.iconBtn}
-                      name={this.state.liked ? 'ios-heart' : 'heart'}
-                    />
-                    <Text style={styles.textBtn2}>Love It</Text>
+          <Icon style={styles.iconBtn}
+                name={this.state.liked ? 'ios-heart' : 'heart'}
+          />
+          <Text style={styles.textBtn2}>Love It</Text>
           </Button>
           </Col>
           </Row>
           </Grid>
 
 
-          </Content>  
+          </Content>
       );
   }
 }
-
 const deviceHeight = Dimensions.get('window').height
-const deviceWidth = Dimensions.get('window').width
+const deviceWidth = Dimensions.get('window').height
+const deviceY = Dimensions.get('window').height
+const deviceX = Dimensions.get('window').width
 
 const styles = {
   container: {
@@ -141,16 +135,14 @@ const styles = {
   },
   web: {
     fontWeight: (Platform.OS === 'ios') ? '500' : '400',
-    fontSize: 15, 
+    fontSize: 15,
   },
   btnOne:{
     flex: 1,
-    marginLeft: 10,
-    width: 200,  
+    width: deviceX/2,
   },
   btnTwo:{
-    marginLeft: 30,
-    width: 150,  
+    width: deviceX/2,
   },
   textBtn1:{
     fontSize: 18,
@@ -170,6 +162,5 @@ const styles = {
     marginTop: 2
   },
 }
- 
-export default Description;
 
+export default Description;

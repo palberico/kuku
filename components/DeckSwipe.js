@@ -15,9 +15,6 @@ import {
   Card,
 } from 'native-base'
 
-const deviceHeight = Dimensions.get('window').height
-const deviceWidth = Dimensions.get('window').width
-
 const deviceY = Dimensions.get('window').height
 const deviceX = Dimensions.get('window').width
 
@@ -54,7 +51,7 @@ let styles = {
   deckSwipe: {
     flex: 5,
     marginTop: 80,
-  
+
   },
 
 }

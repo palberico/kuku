@@ -17,9 +17,6 @@ import {
 import { Col, Row, Grid } from 'react-native-easy-grid'
 import Nav from './Nav'
 
-const deviceHeight = Dimensions.get('window').height
-const deviceWidth = Dimensions.get('window').width
-
 const deviceY = Dimensions.get('window').height
 const deviceX = Dimensions.get('window').width
 
@@ -56,7 +53,7 @@ class CardComp extends Component {
                 <Image
                   style={styles.cardImage}
                   source={this.props.item.image}
-              
+
                  />
               </Body>
               </CardItem>
@@ -98,9 +95,9 @@ class CardComp extends Component {
 
   const styles = {
       cardImage:{
-        width: deviceWidth,
-        height: deviceHeight/ 2,
-        resizeMode: 'contain',    
+        width: deviceX,
+        height: deviceY/ 2,
+        resizeMode: 'contain',
       },
       modal:{
         height: 300,
