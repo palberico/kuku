@@ -22,15 +22,13 @@ export const Nav = () => {
   )
 }
 
-
-
-const deviceHeight = Dimensions.get('window').height
-const deviceWidth = Dimensions.get('window').width
+const deviceY = Dimensions.get('window').height
+const deviceX = Dimensions.get('window').width
 
 const styles = {
   navLogo: {
-    height: deviceHeight / 25,
-    width: deviceWidth / 3,
+    height: deviceY / 25,
+    width: deviceX / 3,
     marginTop: 2
   },
   header: {

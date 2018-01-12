@@ -2,8 +2,6 @@ import React from 'react';
 import { withRouter } from 'react-router-native';
 import { Text, Platform, Dimensions } from 'react-native';
 import { List, ListItem } from 'native-base';
-const deviceHeight = Dimensions.get('window').height;
-const deviceWidth = Dimensions.get('window').width;
 
 const navs = [
   { name: 'Home', path: '/' },
@@ -35,10 +33,13 @@ const Sidebar = ({ close, history }) => (
   </List>
 )
 
+
+const deviceY = Dimensions.get('window').height;
+const deviceX = Dimensions.get('window').width;
 const styles = {
   drawer: {
-    height: deviceHeight / 3.5,
-    width: deviceWidth / 1.4,
+    height: deviceY / 3.5,
+    width: deviceX / 1.4,
     marginBottom: 10,
   },
   text: {
@@ -46,7 +47,7 @@ const styles = {
     fontSize: 16,
   },
   footer:{
-          backgroundColor: '#ffffff'
+    backgroundColor: '#ffffff'
   },
 }
 
