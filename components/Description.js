@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { View, Text, Platform, Image, Dimensions } from 'react-native';
 import ImageSlider from 'react-native-image-slider';
 import DummyData from './DummyData'
+import { Col, Row, Grid } from 'react-native-easy-grid'
 import {
   Container, 
   Header, 
@@ -16,6 +17,8 @@ import {
   Icon,
   Card,
   CardItem,
+  List,
+  ListItem,
   Thumbnail,
   Drawer
 } from 'native-base';
@@ -38,6 +41,11 @@ class Description extends Component {
 
   componentWillUnmount() {
       clearInterval(this.state.interval);
+  }
+
+  state = { liked: false }
+  changeLike = () => {
+    this.setState({liked: !this.state.liked})
   }
 
   render() {
@@ -66,6 +74,7 @@ class Description extends Component {
               <Body>
                 <Text style={styles.desc}>
                 True blue ankle skinny jeans. Black washed denim with white fade. Ripped holes in both leg areas.  Cuffed hem. Paired it up with favorite sneakers or high heels. Versatile jeans that could transform from active wear to casual shoes for dinner date.
+        
                 ANKLE SKINNY
                 9.5" RISE / 27" INSEAM
                 21% COTTON
@@ -74,17 +83,34 @@ class Description extends Component {
                 1% SPANDEX
                 MODELED IN SIZE 25
                 MADE IN CHINA
-                
-                </Text>
+              </Text>
+              
               </Body>
             </CardItem>
             <CardItem footer>
               <Text style={styles.web}> Found on KANCANUSA.COM</Text>
             </CardItem>
          </Card>
-            <Button block dark style={styles.btnSize}>
-            <Text style={styles.textBtn}>Buy from Retailer</Text>
+         <Grid>
+              <Row>
+                <Col>
+            <Button block dark style={styles.btnOne}>
+            <Text style={styles.textBtn1}>Buy from Retailer</Text>
           </Button>
+          </Col>
+          <Col>
+          <Button iconLeft block dark style={styles.btnTwo} onPress={this.changeLike}>
+          <Icon
+                      style={styles.iconBtn}
+                      name={this.state.liked ? 'ios-heart' : 'heart'}
+                    />
+                    <Text style={styles.textBtn2}>Love It</Text>
+          </Button>
+          </Col>
+          </Row>
+          </Grid>
+
+
           </Content>  
       );
   }
@@ -117,14 +143,25 @@ const styles = {
     fontWeight: (Platform.OS === 'ios') ? '500' : '400',
     fontSize: 15, 
   },
-  btnSize:{
+  btnOne:{
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: 250,  
+    marginLeft: 10,
+    width: 200,  
   },
-  textBtn:{
+  btnTwo:{
+    marginLeft: 30,
+    width: 150,  
+  },
+  textBtn1:{
     fontSize: 18,
+    color: 'white'
+  },
+  textBtn2:{
+    fontSize: 18,
+    color: 'white'
+  },
+  iconBtn:{
+    marginRight: 20,
     color: 'white'
   },
   navLogo: {
