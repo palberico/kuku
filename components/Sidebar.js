@@ -2,19 +2,17 @@ import React from 'react';
 import { withRouter } from 'react-router-native';
 import { Text, Platform, Dimensions } from 'react-native';
 import { List, ListItem } from 'native-base';
-
 const navs = [
   { name: 'Home', path: '/' },
   { name: 'Login', path: '/login' },
+  { name: 'Register', path: '/register' },
   { name: 'Shop', path: '/shop' },
   { name: 'Description', path: '/description' }
 ]
-
 const navigate = (close, history, path) => {
   close();
   history.push(path);
 }
-
 const Sidebar = ({ close, history }) => (
   <List style={styles.drawer}>
     { navs.map( (nav, i) => {
@@ -33,8 +31,6 @@ const Sidebar = ({ close, history }) => (
     }
   </List>
 )
-
-
 const deviceY = Dimensions.get('window').height;
 const deviceX = Dimensions.get('window').width;
 const styles = {
@@ -51,5 +47,4 @@ const styles = {
     backgroundColor: '#ffffff'
   },
 }
-
 export default withRouter(Sidebar);

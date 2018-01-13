@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Image, Dimensions } from 'react-native'
+import { Text, View, Image, Dimensions, } from 'react-native'
 import { Col, Row, Grid } from 'react-native-easy-grid'
 import { Container,
     Header,
@@ -9,7 +9,6 @@ import { Container,
     Button,
     Icon,
     Badge } from 'native-base';
-
 export default class Home extends Component {
   render() {
     return (
@@ -18,7 +17,6 @@ export default class Home extends Component {
      
      <View>
      <Image style={styles.logo} source={require('../images/header-logo.png')} />
-
        <Button block style={styles.btn}>
             <Text style={styles.textBtn}>Login With Facebook</Text>
           </Button>
@@ -28,17 +26,16 @@ export default class Home extends Component {
             <Text style={styles.textBtn2}>Join With Email</Text>
           </Button>
         </View>
-            <Text style={styles.text}>Have an account? Sign in</Text>
+            <Text style={styles.text}>Have an account?</Text><Text style={{color: 'blue'}}
+              onPress={() => Link.openURL('http://google.com')}> Sign in</Text>
       </Content>
     );
   }
 }
-
 const deviceHeight = Dimensions.get('window').height
 const deviceWidth = Dimensions.get('window').height
 const deviceY = Dimensions.get('window').height
 const deviceX = Dimensions.get('window').width
-
 const styles = {
   hero: {
     height: deviceHeight/ 2,
@@ -47,7 +44,7 @@ const styles = {
   logo: {
     marginTop: 40,
     height: deviceHeight/ 18,
-    width: deviceWidth/ 3,
+    width: deviceWidth/ 4,
     marginRight: 'auto',
     marginLeft: 'auto'
   },
@@ -72,7 +69,7 @@ const styles = {
   },
   text:{
     textAlign: 'center',
-    marginTop: 50,
+    marginTop: 45,
 },
   background:{
     backgroundColor: '#ffffff'
