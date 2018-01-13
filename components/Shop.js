@@ -3,7 +3,9 @@ import DummyData from './DummyData'
 import CardComp from './Card'
 import { Text, View, Image, Dimensions } from 'react-native'
 import Nav from './Nav'
+import Footer from './Footer'
 import {
+  Container,
   Body,
   Left,
   Right,
@@ -31,7 +33,8 @@ class Shop extends Component {
 
   render(){
     return(
-      
+  
+     <Container>
   
       <View style={styles.shop}>
 
@@ -46,6 +49,7 @@ class Shop extends Component {
           }/>
 
       </View>
+      </Container>
     )
   }
 }

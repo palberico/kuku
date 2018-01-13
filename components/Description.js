@@ -140,10 +140,15 @@ const styles = {
   },
   btnOne:{
     flex: 1,
-    width: deviceX/2,
+    width: deviceX/2.2,
+    marginRight: 'auto',
+    marginLeft: 'auto'
   },
   btnTwo:{
-    width: deviceX/2,
+    flex: 1,
+    width: deviceX/2.2,
+    marginRight: 'auto',
+    marginLeft: 'auto'
   },
   textBtn1:{
     fontSize: 18,
@@ -158,8 +163,8 @@ const styles = {
     color: 'white'
   },
   navLogo: {
-    height: deviceHeight / 25,
-    width: deviceWidth / 3,
+    height: deviceHeight / 15,
+    width: deviceWidth / 5,
     marginTop: 2
   },
 }
