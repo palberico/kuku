@@ -35,7 +35,7 @@ class Shop extends Component {
     return(
   
      <Container>
-  
+
       <View style={styles.shop}>
 
 
@@ -49,6 +49,7 @@ class Shop extends Component {
           }/>
 
       </View>
+  
       </Container>
     )
   }

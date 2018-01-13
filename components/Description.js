@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { View, Text, Platform, Image, Dimensions } from 'react-native';
 import ImageSlider from 'react-native-image-slider';
 import DummyData from './DummyData'
+import Nav from './Nav'
 import { Col, Row, Grid } from 'react-native-easy-grid'
 import {
   Container,
@@ -43,8 +44,15 @@ class Description extends Component {
 
   render() {
       return (
+        <Container>
+
+          <Header>
+            <Body>
+              <Nav />
+            </Body>
+          </Header>
+
         <Content>
-        
           <View style={styles.container}>
               <ImageSlider
                   images={[
@@ -56,6 +64,7 @@ class Description extends Component {
                   onPositionChanged={position => this.setState({position})}
               />
           </View>
+
           <Card>
             <CardItem header>
             <Left>
@@ -103,9 +112,8 @@ class Description extends Component {
           </Col>
           </Row>
           </Grid>
-
-
-          </Content>
+           </Content>
+          </Container>
       );
   }
 }

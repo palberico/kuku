@@ -48,17 +48,14 @@ class App extends Component {
  
   openDescription = () => {
     this.props.history.push('/description');
-  }
-  // openDescription = () => {
-  //   this.props.history.push('/description')
-  // };
+  };
 
 
   render() {
     return (
       <NativeRouter>
         <Container style={styles.body}>
-        <Nav />
+        {/* <Nav /> */}
           <Content >
             <Drawer
                 ref={ ref => { this.drawer = ref }}
@@ -69,8 +66,9 @@ class App extends Component {
               { this.state.drawerOpen ? null :
               <View>
                 <Switch>
-                  <Route exact path="/" component={Login} />
+                  <Route exact path="/" component={Home} />
                   <Route path="/shop" component={Shop} />
+                  <Route path="/login" component={Login} />
                   <Route path="/register" component={Register} />
                   <Route path="/description" component={Description} />
                 </Switch>

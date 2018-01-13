@@ -19,6 +19,7 @@ const Sidebar = ({ close, history }) => (
   <List style={styles.drawer}>
     { navs.map( (nav, i) => {
         return (
+      
           <ListItem key={i}>
             <Text
               onPress={() => navigate(close, history, nav.path) }
