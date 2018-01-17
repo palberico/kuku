@@ -1,81 +1,74 @@
-import React, { Component } from 'react'
-import { StyleSheet, Text, View } from 'react-native';
-import { NativeRouter, Route, Switch, Link, History, withRouter } from 'react-router-native';
-import Nav from './Nav'
-import Shop from './Shop'
-import Login from './Login';
-import Register from './Register';
-import Description from './Description';
-import Home from './Home';
-import Sidebar from './Sidebar';
-import {
-  Container, 
-  Header, 
-  Title, 
-  Content,
-  Button,
-  FooterTab, 
-  Left, 
-  Right, 
-  Body, 
-  Icon,
-  Drawer,
-  Footer
-} from 'native-base';
+// import React, { Component } from 'react'
+// import { StyleSheet, Text, View } from 'react-native';
+// import { NativeRouter, Route, Switch, withRouter, Link } from 'react-router-native';
+// import {
+//   Container, 
+//   Header, 
+//   Title, 
+//   Content,
+//   Button,
+//   FooterTab, 
+//   Left, 
+//   Right, 
+//   Body, 
+//   Icon,
+//   Drawer,
+//   Footer
+// } from 'native-base';
 
-class myFooter extends Component {
+// class myFooter extends Component {
   
-  openDescription = () => {
-    this.props.history.push('/description');
-  };
+//   openDescription = () => {
+//     this.props.history.push('/description');
+//   };
 
-  render() {
-    return (
-        <Container style={styles.body}>
-                  <Footer>
-                    <FooterTab style={styles.footer}>
-                      <Button vertical>
-                        <Icon name='ios-menu' />
-                          <Text>Menu</Text>
-                      </Button>
+//   render() {
+//     return (
+//         <Container style={styles.body}>
+//                   <Footer>
+//                     <FooterTab style={styles.footer}>
+//                       <Button vertical>
+//                         <Icon name='ios-menu' />
+//                           <Text>Menu</Text>
+//                       </Button>
 
-                      <Button vertical onPress={this.openDescription}>
-                        <Icon name='ios-information-circle-outline' />
-                          <Text>Description</Text>
-                      </Button>
+//                       <Button vertical onPress={this.openDescription}>
+//                         <Icon name='ios-information-circle-outline' />
+//                           <Text>Description</Text>
+//                       </Button>
                       
-                      <Button vertical>
+//                       <Button vertical>
 
-                      {/* <Button badge vertical onPress={this.addLike}>
-                        <Badge><Text>{this.state.counter}</Text></Badge> */}
+//                       {/* <Button badge vertical onPress={this.addLike}>
+//                         <Badge><Text>{this.state.counter}</Text></Badge> */}
                         
-                        <Icon name='md-heart-outline' />
-                          <Text>Loved</Text>
-                      </Button>
-                    </FooterTab>
-                  </Footer>
-        </Container>
+//                         <Icon name='md-heart-outline' />
+//                           <Text>Loved</Text>
+//                       </Button>
+//                     </FooterTab>
+//                   </Footer>
+//         </Container>
   
-    );
-  }
-}
+//     );
+//   }
+// }
 
-const styles = {
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-    body:{
-      backgroundColor: '#ffffff',
-  },
-  footer:{
-    backgroundColor: '#ffffff'
-  },
-};
+// const styles = {
+//   container: {
+//     flex: 1,
+//     backgroundColor: '#fff',
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//   },
+//     body:{
+//       backgroundColor: '#ffffff',
+//   },
+//   footer:{
+//     backgroundColor: '#ffffff'
+//   },
+// };
 
-export default myFooter;
+// export default myFooter;
 
 
 

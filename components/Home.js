@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, Image, Dimensions } from 'react-native'
+import { NativeRouter, Route, Switch, withRouter, Link } from 'react-router-native';
 import { Col, Row, Grid } from 'react-native-easy-grid'
 import { Container,
     Header,
@@ -8,7 +9,6 @@ import { Container,
     Icon,
     Footer,
     Badge } from 'native-base';
-import { NativeRouter, Route, Switch, withRouter, Link } from 'react-router-native';
 
 class Home extends Component {
 

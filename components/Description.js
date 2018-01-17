@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, Platform, Image, Dimensions } from 'react-native';
+import { NativeRouter, Route, Switch, withRouter, Link } from 'react-router-native';
 import ImageSlider from 'react-native-image-slider';
 import DummyData from './DummyData'
 import Nav from './Nav'
@@ -25,7 +26,6 @@ import {
 } from 'native-base';
 
 class Description extends Component {
-
   state = { position: 1, interval: null, liked: false  };
 
   componentWillMount() {
@@ -42,16 +42,18 @@ class Description extends Component {
     this.setState({liked: !this.state.liked})
   }
 
+  return = () => {
+    this.props.history.push('/shop')
+    }
+
   render() {
       return (
         <Container>
-
-          <Header>
-            <Body>
+          
+            
               <Nav />
-            </Body>
-          </Header>
-
+           
+        
         <Content>
           <View style={styles.container}>
               <ImageSlider
@@ -113,6 +115,28 @@ class Description extends Component {
           </Row>
           </Grid>
            </Content>
+
+           <Footer>
+        <FooterTab style={styles.footer}>
+          <Button vertical onPress={this.return} >
+         
+            <Icon name='ios-arrow-back' />
+                <Text>Back</Text>
+          </Button>
+
+                      
+          <Button vertical>
+
+                        {/* <Button badge vertical onPress={this.addLike}>
+                        <Badge><Text>{this.state.counter}</Text></Badge> */}
+                        
+            <Icon name='md-heart-outline' />
+                  <Text>Loved</Text>
+          </Button>
+        </FooterTab>
+      </Footer>
+
+
           </Container>
       );
   }
