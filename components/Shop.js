@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { Text, View, Image, Dimensions } from 'react-native'
-import { NativeRouter, Route, Switch, withRouter, Link } from 'react-router-native';
+import { NativeRouter, Route, Switch, withRouter, Link } from 'react-router-native'
 import DummyData from './DummyData'
 import CardComp from './Card'
+import CartComp from './Cart'
 import Nav from './Nav'
 import {
   Container,
@@ -35,6 +36,10 @@ class Shop extends Component {
     this.props.history.push('/settings')
     }
 
+  openCart = () => {
+    this.props.history.push('/cart')
+    }
+
   render(){
     return(
      <Container style={styles.content}>
@@ -61,7 +66,7 @@ class Shop extends Component {
                 <Icon name='ios-information-circle-outline' />
                   <Text>Description</Text>
               </Button>
-              <Button vertical>
+              <Button vertical onPress={this.openCart}>
                 <Icon name='md-heart-outline' />
                   <Text>Loved</Text>
               </Button>

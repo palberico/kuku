@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import Modal from 'react-native-modalbox';
+import { Col, Row, Grid } from 'react-native-easy-grid'
 import { Text, View, Image, TouchableHighlight, Dimensions } from 'react-native'
+import Nav from './Nav'
 import {
   Body,
   Left,
@@ -14,8 +16,6 @@ import {
   Card,
   Container,
 } from 'native-base'
-import { Col, Row, Grid } from 'react-native-easy-grid'
-import Nav from './Nav'
 
 const deviceY = Dimensions.get('window').height
 const deviceX = Dimensions.get('window').width

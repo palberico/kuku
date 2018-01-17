@@ -4,28 +4,30 @@ import { NativeRouter, Switch, Route, } from 'react-router-native';
 import { Container, Header, Footer, Content } from 'native-base';
 import Home from './components/Home';
 import Shop from './components/Shop';
+import Cart from './components/Cart';
 import Login from './components/Login';
+import Settings from './components/Settings';
 import Register from './components/Register';
 import Description from './components/Description';
-import Settings from './components/Settings';
 
 class App extends Component {
   render() {
     return (
       <Container>
-          <Content>
-                <NativeRouter>
-                  <Switch>
-                    <Route exact path="/" component={Home}  />
-                    <Route exact path="/shop" component={Shop} />
-                    <Route exact path="/login" component={Login} />
-                    <Route exact path="/register" component={Register} />
-                    <Route exact path="/description" component={Description} />
-                    <Route exact path="/settings" component={Settings} />
-                  </Switch>
-                </NativeRouter>
-            </Content>
-        </Container>
+        <Content>
+          <NativeRouter>
+            <Switch>
+              <Route exact path="/" component={Home}  />
+              <Route exact path="/shop" component={Shop} />
+              <Route exact path="/cart" component={Cart} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/settings" component={Settings} />
+              <Route exact path="/register" component={Register} />
+              <Route exact path="/description" component={Description} />
+            </Switch>
+          </NativeRouter>
+        </Content>
+      </Container>
     );
   }
 }
