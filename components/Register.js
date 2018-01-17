@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, Image, Dimensions } from 'react-native'
+import { NativeRouter, Route, Switch, withRouter, Link } from 'react-router-native';
 import { 
   Container, 
   Header, 
@@ -9,22 +10,43 @@ import {
   Input, 
   Label, 
   Button,
+  Left,
+  Right,
   Card
 } from 'native-base';
+
 export default class Register extends Component {
+
+  cancelButton = () => {
+    this.props.history.push('/')
+  }
+
+  doneButton = () => {
+    this.props.history.push('/shop')
+  }
+
   render() {
     return (
       <Container>
         <Header>
-          <Text style={styles.head}>Register</Text>
+          <Left>
+            <Button transparent onPress={this.cancelButton}>
+              <Text>Cancel</Text>
+            </Button>
+          </Left>
+            <Text style={styles.head}>Register</Text>
+          <Right>
+            <Button transparent onPress={this.doneButton}>
+              <Text>Done</Text>
+            </Button>
+          </Right>
         </Header>   
- 
-        <Content>
-          <Form>
-            <Item floatingLabel>
-              <Label>First Name</Label>
-              <Input />
-            </Item>
+          <Content>
+            <Form>
+              <Item floatingLabel>
+                <Label>First Name</Label>
+                  <Input />
+              </Item>
             <Item floatingLabel last>
               <Label>Gender</Label>
               <Input />

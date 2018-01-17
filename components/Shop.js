@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
+import { Text, View, Image, Dimensions } from 'react-native'
 import DummyData from './DummyData'
 import CardComp from './Card'
-import { Text, View, Image, Dimensions } from 'react-native'
 import Nav from './Nav'
 import Footer from './Footer'
 import {
   Container,
+  Header,
+  Content,
   Body,
   Left,
   Right,
@@ -22,23 +24,16 @@ const deviceY = Dimensions.get('window').height
 const deviceX = Dimensions.get('window').width
 
 class Shop extends Component {
-
-  crossFunc = () => {
-    this._deckSwiper._root.swipeLeft()
-  }
-
-  heartFunc = () => {
-    this._deckSwiper._root.swipeRight()
-  }
-
   render(){
     return(
-  
      <Container>
+        <Header>
+            <Body>
+              <Nav />
+            </Body>
+          </Header>
 
       <View style={styles.shop}>
-
-
         <DeckSwiper
           ref={(c) => this._deckSwiper = c}
           dataSource={DummyData}
@@ -47,9 +42,8 @@ class Shop extends Component {
           renderItem={item =>
             <CardComp item={item} />
           }/>
-
       </View>
-  
+        <Footer />
       </Container>
     )
   }
@@ -59,6 +53,7 @@ let styles = {
   shop: {
     flex: 5,
     marginTop: 80,
+    backgroundColor: '#000000'
 
   },
 

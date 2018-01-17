@@ -3,11 +3,7 @@ import { Image, Dimensions } from 'react-native'
 import {
   Header,
   Body,
-  Left,
-  Right,
   Title,
-  Button,
-  Icon
 } from 'native-base'
 
 export const Nav = () => {
