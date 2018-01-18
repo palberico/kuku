@@ -42,7 +42,7 @@ export default class Login extends Component {
             </Button>
           </Right>
         </Header>   
-        <Content>
+        <Content scrollEnabled={false}>
           <Form>
             <Item floatingLabel>
               <Label>Email</Label>
@@ -54,11 +54,11 @@ export default class Login extends Component {
             </Item>
           </Form>
           <Text style={styles.text}>-or-</Text>
-          <Footer style={styles.loginFooter}>
+        
           <Button block style={styles.btn}>
             <Text style={styles.textBtn1}>Login With Facebook</Text>
           </Button>
-          </Footer>
+         
         </Content>
       </Container>
     );
@@ -75,6 +75,7 @@ const styles = {
     width: deviceWidth/ 2.5,
     marginRight: 'auto',
     marginLeft: 'auto',
+    marginTop: 25,
   },
   textBtn1:{
     fontSize: 18,

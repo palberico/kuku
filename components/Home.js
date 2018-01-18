@@ -24,7 +24,7 @@ class Home extends Component {
     return (
       <Container>
          <Header />
-        <Content style={styles.background}>
+        <Content style={styles.background} scrollEnabled={false}>
           <Image style={styles.hero} source={require('../images/tshirt.jpg')} />
      <View>
      <Image style={styles.logo} source={require('../images/header-logo.png')} />
@@ -39,12 +39,10 @@ class Home extends Component {
           </Button>
           </Link>
         </View>
-        </Content>
-        <Footer style={styles.homeFooter}>
         <Button full transparent onPress={this.loginButton}>
           <Text style={styles.text}>Have an account? Sign in</Text>
         </Button>
-      </Footer>
+        </Content>
       </Container>
     );
   }
@@ -53,6 +51,7 @@ const deviceHeight = Dimensions.get('window').height
 const deviceWidth = Dimensions.get('window').height
 const deviceY = Dimensions.get('window').height
 const deviceX = Dimensions.get('window').width
+
 const styles = {
   hero: {
     height: deviceHeight/ 2,
@@ -86,13 +85,10 @@ const styles = {
   },
   text:{
     textAlign: 'center',
-    marginTop: 45,
+    marginTop: 100,
 },
   background:{
     backgroundColor: '#ffffff'
-  },
-  homeFooter:{
-    backgroundColor: '#ffffff',
   },
 }
 

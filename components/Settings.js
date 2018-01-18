@@ -34,8 +34,8 @@ export default class ListIconExample extends Component {
                 <Text>Log out</Text>
               </Body>
               <Right>
-                <Button transparent>
-                <Icon name="arrow-forward" onPress={this.logout} />
+                <Button transparent small >
+                <Icon name="arrow-forward" onPress={this.logout}/>
                 </Button>
               </Right>
             </ListItem>

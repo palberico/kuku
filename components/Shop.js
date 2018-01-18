@@ -44,7 +44,7 @@ class Shop extends Component {
     return(
      <Container style={styles.content}>
        <Nav />
-        <Content>
+        <Content scrollEnabled={false}>
           <View style={styles.shop}>
             <DeckSwiper
               ref={(c) => this._deckSwiper = c}
@@ -59,20 +59,21 @@ class Shop extends Component {
           <Footer>
             <FooterTab style={styles.footer}>
               <Button vertical onPress={this.openSettings}>
-                <Icon name='ios-settings-outline' />
-                  <Text>Settings</Text>
-              </Button>
-              <Button vertical onPress={this.openDescription}>
-                <Icon name='ios-information-circle-outline' />
-                  <Text>Description</Text>
-              </Button>
-              <Button vertical onPress={this.openCart}>
-                <Icon name='md-heart-outline' />
-                  <Text>Loved</Text>
-              </Button>
-            </FooterTab>
-          </Footer>
-    </Container>
+                 <Icon name='ios-settings-outline' />
+                   <Text>Settings</Text>
+               </Button>
+               <Button vertical onPress={this.openDescription}>
+                 <Icon name='ios-information-circle-outline' />
+                   <Text>Description</Text>
+               </Button>
+               <Button vertical onPress={this.openCart}>
+                 <Icon name='md-heart-outline' />
+                   <Text>Loved</Text>
+               </Button>
+             </FooterTab>
+           </Footer>
+     </Container>
+    
     )
   }
 }
@@ -80,7 +81,7 @@ class Shop extends Component {
 let styles = {
   shop: {
     flex: 1,
-    marginTop: 80,
+    marginTop: 70,
   },
   content:{
     backgroundColor: '#000000'
@@ -89,6 +90,5 @@ let styles = {
     backgroundColor: '#ffffff'
   },
 }
-
 
 export default Shop;

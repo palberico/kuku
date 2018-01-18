@@ -41,7 +41,7 @@ export default class Register extends Component {
             </Button>
           </Right>
         </Header>   
-          <Content>
+          <Content scrollEnabled={false}>
             <Form>
               <Item floatingLabel>
                 <Label>First Name</Label>
