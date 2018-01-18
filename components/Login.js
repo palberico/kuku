@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { Text, View, Image, Dimensions } from 'react-native'
 import { NativeRouter, Route, Switch, withRouter, Link } from 'react-router-native';
-import { 
-  Container, 
-  Header, 
+import {
+  Container,
+  Header,
   Content,
-  Footer, 
-  Form, 
-  Item, 
-  Input, 
-  Label, 
+  Footer,
+  Form,
+  Item,
+  Input,
+  Label,
   Button,
   Left,
   Right,
@@ -41,7 +41,7 @@ export default class Login extends Component {
               <Text>Done</Text>
             </Button>
           </Right>
-        </Header>   
+        </Header>
         <Content scrollEnabled={false}>
           <Form>
             <Item floatingLabel>
@@ -54,25 +54,23 @@ export default class Login extends Component {
             </Item>
           </Form>
           <Text style={styles.text}>-or-</Text>
-        
+
           <Button block style={styles.btn}>
             <Text style={styles.textBtn1}>Login With Facebook</Text>
           </Button>
-         
+
         </Content>
       </Container>
     );
   }
 }
 
-const deviceHeight = Dimensions.get('window').height
-const deviceWidth = Dimensions.get('window').height
+
 const deviceY = Dimensions.get('window').height
 const deviceX = Dimensions.get('window').width
-
 const styles = {
   btn: {
-    width: deviceWidth/ 2.5,
+    width: deviceX/ 2.5,
     marginRight: 'auto',
     marginLeft: 'auto',
     marginTop: 25,

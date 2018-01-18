@@ -20,7 +20,6 @@ export const Nav = () => {
 
 const deviceY = Dimensions.get('window').height
 const deviceX = Dimensions.get('window').width
-
 const styles = {
   navLogo: {
     height: deviceY / 25,
