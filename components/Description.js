@@ -46,14 +46,14 @@ class Description extends Component {
     this.props.history.push('/shop')
     }
 
+  goToCart = () => {
+    this.props.history.push('/cart')
+    }
+
   render() {
       return (
         <Container>
-          
-            
-              <Nav />
-           
-        
+          <Nav />
         <Content>
           <View style={styles.container}>
               <ImageSlider
@@ -66,7 +66,6 @@ class Description extends Component {
                   onPositionChanged={position => this.setState({position})}
               />
           </View>
-
           <Card>
             <CardItem header>
             <Left>
@@ -125,7 +124,7 @@ class Description extends Component {
           </Button>
 
                       
-          <Button vertical>
+          <Button vertical onPress={this.goToCart}>
 
                         {/* <Button badge vertical onPress={this.addLike}>
                         <Badge><Text>{this.state.counter}</Text></Badge> */}

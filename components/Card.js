@@ -9,6 +9,7 @@ import {
   CardItem,
   Thumbnail,
   Card,
+  Footer,
 } from 'native-base'
 
 class CardComp extends Component {
@@ -41,6 +42,7 @@ class CardComp extends Component {
                   />
                 </Body>
               </CardItem>
+              <Footer style={styles.cardFooter} />
             </Card>
           </TouchableHighlight>
           <DescriptionModal
@@ -59,7 +61,11 @@ const styles = {
     width: deviceX,
     height: deviceY/ 2,
     resizeMode: 'contain',
-  }
+  },
+  cardFooter:{
+    width: 10,
+    backgroundColor: '#ffffff',
+  },
 }
 
 export default CardComp
