@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { Text, View, Image, Dimensions } from 'react-native'
 import { NativeRouter, Route, Switch, withRouter, Link } from 'react-router-native';
-import { 
-  Container, 
-  Header, 
-  Content, 
-  Form, 
-  Item, 
-  Input, 
-  Label, 
+import {
+  Container,
+  Header,
+  Content,
+  Form,
+  Item,
+  Input,
+  Label,
   Button,
   Left,
   Right,
@@ -40,7 +40,7 @@ export default class Register extends Component {
               <Text>Done</Text>
             </Button>
           </Right>
-        </Header>   
+        </Header>
           <Content scrollEnabled={false}>
             <Form>
               <Item floatingLabel>

@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Col, Row, Grid } from 'react-native-easy-grid'
 import { Text, View, Image, TouchableHighlight, Dimensions } from 'react-native'
 import Nav from './Nav'
-import DescriptionModal from './DescriptionModal'
 import {
   Body,
   Left,
@@ -23,7 +22,8 @@ class CardComp extends Component {
   render(){
     return(
         <View>
-          <TouchableHighlight onPress={this.modalToggleFn} >
+          <TouchableHighlight>
+            {/* TODO: history.push description.js */}
             <Card>
               <CardItem>
                 <Left>
@@ -45,10 +45,6 @@ class CardComp extends Component {
               <Footer style={styles.cardFooter} />
             </Card>
           </TouchableHighlight>
-          <DescriptionModal
-            modalState={this.state.modalOpen}
-            item={this.props.item}
-           />
         </View>
       )
     }

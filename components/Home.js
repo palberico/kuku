@@ -15,9 +15,13 @@ class Home extends Component {
   joinEmailButton = () => {
     this.props.history.push('/register')
   }
-  
+
   loginButton = () => {
     this.props.history.push('/login')
+  }
+
+  testButton = () => {
+    this.props.history.push('/test')
   }
 
   render() {
@@ -41,6 +45,9 @@ class Home extends Component {
         </View>
         <Button full transparent onPress={this.loginButton}>
           <Text style={styles.text}>Have an account? Sign in</Text>
+        </Button>
+        <Button onPress={this.testButton}>
+          <Text>Tester</Text>
         </Button>
         </Content>
       </Container>
