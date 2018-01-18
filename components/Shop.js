@@ -1,30 +1,17 @@
 import React, { Component } from 'react'
 import { Text, View, Image, Dimensions } from 'react-native'
-import { NativeRouter, Route, Switch, withRouter, Link } from 'react-router-native'
 import DummyData from './DummyData'
 import CardComp from './Card'
-import CartComp from './Cart'
 import Nav from './Nav'
 import {
   Container,
-  Header,
   Content,
   Footer,
   FooterTab,
-  Body,
-  Left,
-  Right,
-  Title,
   Button,
   Icon,
-  CardItem,
-  Thumbnail,
   DeckSwiper,
-  Card,
 } from 'native-base'
-
-const deviceY = Dimensions.get('window').height
-const deviceX = Dimensions.get('window').width
 
 class Shop extends Component {
 
@@ -53,7 +40,7 @@ class Shop extends Component {
               onSwipeRight={this.rightAlert}
               renderItem={item =>
               <CardComp item={item} />
-            }/>      
+            }/>
           </View>
         </Content>
           <Footer>
@@ -73,7 +60,7 @@ class Shop extends Component {
              </FooterTab>
            </Footer>
      </Container>
-    
+
     )
   }
 }
