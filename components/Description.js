@@ -120,8 +120,8 @@ class Description extends Component {
         <FooterTab style={styles.footer}>
           <Button vertical onPress={this.return} >
          
-            <Icon name='ios-arrow-back' />
-                <Text>Back</Text>
+            <Icon name='ios-pricetags-outline' />
+                <Text>Shop</Text>
           </Button>
 
                       

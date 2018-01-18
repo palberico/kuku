@@ -53,7 +53,7 @@ class Shop extends Component {
               onSwipeRight={this.rightAlert}
               renderItem={item =>
               <CardComp item={item} />
-            }/>
+            }/>      
           </View>
         </Content>
           <Footer>

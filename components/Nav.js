@@ -32,4 +32,4 @@ const styles = {
   }
 }
 
-export default Nav
+export default Nav;

@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { StyleSheet } from 'react-native';
 import { NativeRouter, Switch, Route, } from 'react-router-native';
-import { Container, Header, Footer, Content } from 'native-base';
+import { Container, Header, Footer, Content, Root } from 'native-base';
+import { StackNavigator } from "react-navigation";
 import Home from './components/Home';
 import Shop from './components/Shop';
 import Cart from './components/Cart';
@@ -32,4 +33,15 @@ class App extends Component {
   }
 }
 
-export default App;
+// Search List Pop-up Code
+
+const AppNav = StackNavigator(
+  {
+    Settings: { screen: Settings },
+  }
+);
+
+export default () =>
+  <Root>
+    <App />
+  </Root>;

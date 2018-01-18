@@ -1,8 +1,19 @@
 import React, { Component } from 'react';
-import { Container, Header, Content, Button, List, ListItem, Text, Icon, Left, Body, Right, Switch, Separator } from 'native-base';
+import { Container, Header, Content, Button, List, ListItem, Text, Icon, Left, Body, Right, Switch, Separator, ActionSheet } from 'native-base';
 import { NativeRouter, Route, withRouter, Link } from 'react-router-native';
 
+// Search List Pop-up Code
+var BUTTONS = ["Men's", "Women's", "Accessories"];
+var DESTRUCTIVE_INDEX = 3;
+var CANCEL_INDEX = 4;
+
 export default class ListIconExample extends Component {
+
+  // Search List Pop-up Code
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
 
   return = () => {
     this.props.history.push('/shop')
@@ -31,7 +42,7 @@ export default class ListIconExample extends Component {
             </ListItem>
             <ListItem icon>
               <Body>
-                <Text>Log out</Text>
+                <Text onPress={this.logout}>Log out</Text>
               </Body>
               <Right>
                 <Button transparent small >
@@ -41,12 +52,32 @@ export default class ListIconExample extends Component {
             </ListItem>
             <ListItem icon>
               <Body>
-                <Text>Gender</Text>
+                <Text>Shop</Text>
               </Body>
               <Right>
-                <Text>Male</Text>
-                <Icon name="arrow-forward" />
-              </Right>
+
+             {/* Search List Pop-up Code */}
+              <Button transparent
+                onPress={() =>
+                ActionSheet.show(
+                {
+                options: BUTTONS,
+                cancelButtonIndex: CANCEL_INDEX,
+                destructiveButtonIndex: DESTRUCTIVE_INDEX,
+                title: "I'm looking for:"
+              },
+              buttonIndex => {
+                this.setState({ clicked: BUTTONS[buttonIndex] });
+              }
+            )}
+          >
+          <Text></Text>
+          <Icon name="arrow-forward" />
+          </Button>
+
+          {/* End Search List Pop-up Code */}
+    
+             </Right>
             </ListItem>
             <ListItem itemDivider />
             <ListItem itemDivider>
