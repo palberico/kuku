@@ -5,7 +5,7 @@ export const setProducts = (products) => {
 }
 
 export const fetchProducts = () => dispatch => {
-  return axios.get('https://kuku-dfd4d.firebaseio.com/products.json')
+  return axios.get('https://kukudb-ff7f7.firebaseio.com/products.json')
     .then( res => {
       dispatch({ type: 'FETCH_PRODUCTS', products: res.data })
     })

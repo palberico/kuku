@@ -16,7 +16,7 @@ import {
 } from 'native-base';
 import { connect } from 'react-redux';
 import { fetchProducts } from '../actions/products';
-  
+
 class Shop extends Component {
 
   state = { products: [], loaded: false }
@@ -46,7 +46,7 @@ class Shop extends Component {
           <Content scrollEnabled={false} style={styles.shop}>
           <View>
               <DeckSwiper
-                
+
                 ref={(c) => this._deckSwiper = c}
                 dataSource={this.props.products}
                 onSwipeLeft={this.leftAlert}
@@ -98,7 +98,7 @@ let styles = {
     paddingTop: '8.5%',
     width: deviceX,
     height: deviceY,
-    
+
   },
   content:{
     flexDirection: 'column',
