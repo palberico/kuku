@@ -45,39 +45,34 @@ export default class ListIconExample extends Component {
                 <Text onPress={this.logout}>Log out</Text>
               </Body>
               <Right>
-                <Button transparent small >
                 <Icon name="arrow-forward" onPress={this.logout}/>
-                </Button>
               </Right>
             </ListItem>
             <ListItem icon>
               <Body>
-                <Text>Shop</Text>
-              </Body>
-              <Right>
-
              {/* Search List Pop-up Code */}
-              <Button transparent
+              <Text 
                 onPress={() =>
                 ActionSheet.show(
-                {
-                options: BUTTONS,
-                cancelButtonIndex: CANCEL_INDEX,
-                destructiveButtonIndex: DESTRUCTIVE_INDEX,
-                title: "I'm looking for:"
+                  {
+                    options: BUTTONS,
+                    cancelButtonIndex: CANCEL_INDEX,
+                    destructiveButtonIndex: DESTRUCTIVE_INDEX,
+                    title: "I'm looking for:"
               },
               buttonIndex => {
                 this.setState({ clicked: BUTTONS[buttonIndex] });
               }
             )}
-          >
-          <Text></Text>
-          <Icon name="arrow-forward" />
-          </Button>
+            >Shop</Text>
+            </Body>
+            <Right>
+          <Text>Dan</Text>
+          <Icon name="arrow-forward"  />
+             </Right>
 
           {/* End Search List Pop-up Code */}
     
-             </Right>
             </ListItem>
             <ListItem itemDivider />
             <ListItem itemDivider>
@@ -85,65 +80,55 @@ export default class ListIconExample extends Component {
             </ListItem>
             <ListItem icon>
               <Left>
-                <Icon name="logo-facebook" />
+                <Icon name="logo-facebook" onPress={this.logout} />
               </Left>
               <Body>
-                <Text>FaceBook</Text>
+                <Text onPress={this.logout}>FaceBook</Text>
               </Body>
               <Right>
-                <Button transparent>
-                <Icon name="arrow-forward" onPress={this.logout} />
-                </Button>
+                <Icon name="arrow-forward" onPress={this.logout}/>
               </Right>
             </ListItem>
             <ListItem icon>
               <Left>
-                <Icon name="logo-instagram" />
+                <Icon name="logo-instagram" onPress={this.logout} />
               </Left>
               <Body>
-                <Text>Instagram</Text>
+                <Text onPress={this.logout}>Instagram</Text>
               </Body>
               <Right>
-                <Button transparent>
-                <Icon name="arrow-forward" onPress={this.logout} />
-                </Button>
+                <Icon name="arrow-forward" onPress={this.logout}/>
               </Right>
             </ListItem>
             <ListItem icon>
               <Left>
-                <Icon name="ios-share-outline" />
+                <Icon name="ios-share-outline" onPress={this.logout} />
               </Left>
               <Body>
-                <Text>Share the App</Text>
+                <Text onPress={this.logout}>Share the App</Text>
               </Body>
               <Right>
-                <Button transparent>
-                <Icon name="arrow-forward" onPress={this.logout} />
-                </Button>
+                <Icon name="arrow-forward" onPress={this.logout}/>
               </Right>
             </ListItem>
             <ListItem itemDivider />
             <ListItem itemDivider>
-            <Text>About Us</Text>
+            <Text onPress={this.logout}>About Us</Text>
             </ListItem>
             <ListItem icon>
               <Body>
-                <Text>Privacy Policy</Text>
+                <Text onPress={this.logout}>Privacy Policy</Text>
               </Body>
               <Right>
-                <Button transparent>
-                <Icon name="arrow-forward" onPress={this.logout} />
-                </Button>
+                <Icon name="arrow-forward" onPress={this.logout}/>
               </Right>
             </ListItem>
             <ListItem icon>
             <Body>
-                <Text>Terms and Conditions</Text>
+                <Text onPress={this.logout}>Terms and Conditions</Text>
               </Body>
               <Right>
-                <Button transparent>
-                <Icon name="arrow-forward" onPress={this.logout} />
-                </Button>
+                <Icon name="arrow-forward" onPress={this.logout}/>
               </Right>
             </ListItem>
             <ListItem itemDivider />
@@ -152,12 +137,10 @@ export default class ListIconExample extends Component {
             </ListItem>
             <ListItem icon>
               <Body>
-                <Text>FAQs</Text>
+                <Text onPress={this.logout}>FAQs</Text>
               </Body>
               <Right>
-                <Button transparent>
-                <Icon name="arrow-forward" onPress={this.logout} />
-                </Button>
+                <Icon name="arrow-forward" onPress={this.logout}/>
               </Right>
             </ListItem>
             <ListItem icon>
