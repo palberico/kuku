@@ -8,7 +8,7 @@ const options = { axios };
 
 const enhancers = compose(
   applyMiddleware(thunk, apiMiddleware(options)),
-  window.devToolsExtension ? window.devToolsExtension() : f => f,
+  // window.devToolsExtension ? window.devToolsExtension() : f => f,
 );
 
 const store = createStore(rootReducer, {}, enhancers);

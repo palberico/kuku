@@ -1,9 +1,12 @@
 import axios from 'axios';
 
-const setProducts = (products) => {
+export const setProducts = (products) => {
   return { type: 'SET_PRODUCTS', products: products }
 }
 
-const fetchProducts = () => {
-  
+export const fetchProducts = () => dispatch => {
+  return axios.get('https://kuku-dfd4d.firebaseio.com/products.json')
+    .then( res => {
+      dispatch({ type: 'FETCH_PRODUCTS', products: res.data })
+    })
 }

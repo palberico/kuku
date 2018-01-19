@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
-import { Text, View, Image, Dimensions } from 'react-native'
-import axios from 'axios'
-import DummyData from './DummyData'
-import CardComp from './Card'
-import Nav from './Nav'
+import React, { Component } from 'react';
+import { Text, View, Image, Dimensions } from 'react-native';
+import axios from 'axios';
+import DummyData from './DummyData';
+import CardComp from './Card';
+import Nav from './Nav';
 import {
   Container,
   Content,
@@ -12,18 +12,18 @@ import {
   Button,
   Icon,
   DeckSwiper,
-} from 'native-base'
-
+} from 'native-base';
+import { connect } from 'react-redux';
+import { fetchProducts } from '../actions/products';
+  
 class Shop extends Component {
 
-  state = { data: [], loaded: false }
+  state = { products: [], loaded: false }
 
-  componentWillMount(){
-    axios.get('https://kuku-dfd4d.firebaseio.com/products.json')
-      .then( res => {
-        this.setState({ data: res.data, loaded: true })
-      })
-    }
+  componentDidMount = async () => {
+    await this.props.dispatch(fetchProducts())
+    this.setState({ loaded: true })
+  }
 
   openDescription = () => {
   this.props.history.push('/description')
@@ -46,7 +46,7 @@ class Shop extends Component {
             <View style={styles.shop}>
               <DeckSwiper
                 ref={(c) => this._deckSwiper = c}
-                dataSource={this.state.data}
+                dataSource={this.props.products}
                 onSwipeLeft={this.leftAlert}
                 onSwipeRight={this.rightAlert}
                 renderItem={item =>
@@ -97,4 +97,10 @@ let styles = {
   },
 }
 
-export default Shop;
+const mapStateToProps = (state) => {
+  return {
+    products: state.products.products,
+  }
+}
+
+export default connect(mapStateToProps)(Shop);
