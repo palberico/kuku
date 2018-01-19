@@ -65,12 +65,14 @@ export default class Login extends Component {
   }
 }
 
-
+const deviceHeight = Dimensions.get('window').height
+const deviceWidth = Dimensions.get('window').height
 const deviceY = Dimensions.get('window').height
 const deviceX = Dimensions.get('window').width
+
 const styles = {
   btn: {
-    width: deviceX/ 2.5,
+    width: deviceWidth/ 2.5,
     marginRight: 'auto',
     marginLeft: 'auto',
     marginTop: 25,

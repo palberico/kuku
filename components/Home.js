@@ -10,10 +10,17 @@ import { Container,
     Footer,
     Badge } from 'native-base';
 
-class Home extends Component {
-
-  joinEmailButton = () => {
-    this.props.history.push('/register')
+    var randomImages = [
+      require('../images/home/tshirt.jpg'),
+      require('../images/home/tshirt2.jpg'),
+      require('../images/home/tshirt3.jpg'),
+      require('../images/home/tshirt4.jpg'),
+  ];
+    
+    class Home extends Component {
+      
+      joinEmailButton = () => {
+        this.props.history.push('/register')
   }
 
   loginButton = () => {
@@ -29,7 +36,7 @@ class Home extends Component {
       <Container>
          <Header />
         <Content style={styles.background} scrollEnabled={false}>
-          <Image style={styles.hero} source={require('../images/tshirt.jpg')} />
+          <Image style={styles.hero} source={randomImages[Math.floor(Math.random()*randomImages.length)]}/>
      <View>
      <Image style={styles.logo} source={require('../images/header-logo.png')} />
        <Button block style={styles.btn}>
