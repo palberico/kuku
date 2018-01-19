@@ -90,7 +90,7 @@ let styles = {
     marginTop: 50,
   },
   content:{
-    backgroundColor: 'white'
+    backgroundColor: 'black'
   },
   footer:{
     backgroundColor: '#ffffff'
