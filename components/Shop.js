@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
-import { Text, View, Image, Dimensions } from 'react-native';
-import axios from 'axios';
-import DummyData from './DummyData';
-import CardComp from './Card';
-import Nav from './Nav';
+import React, { Component } from 'react'
+import { Text, View, Image, Dimensions } from 'react-native'
+import axios from 'axios'
+import DummyData from './DummyData'
+import CardComp from './Card'
+import Nav from './Nav'
+import Loader from './Loader'
 import {
   Container,
   Content,
@@ -42,9 +43,10 @@ class Shop extends Component {
       return(
        <Container style={styles.content}>
          <Nav />
-          <Content scrollEnabled={false}>
-            <View style={styles.shop}>
+          <Content scrollEnabled={false} style={styles.shop}>
+          <View>
               <DeckSwiper
+                
                 ref={(c) => this._deckSwiper = c}
                 dataSource={this.props.products}
                 onSwipeLeft={this.leftAlert}
@@ -76,7 +78,7 @@ class Shop extends Component {
     else{
       return(
         <View style={styles.shop}>
-          <Text>Loading</Text>
+          <Loader />
         </View>
       )
     }
@@ -84,12 +86,22 @@ class Shop extends Component {
   }
 }
 
+const deviceY = Dimensions.get('window').height
+const deviceX = Dimensions.get('window').width
+
 let styles = {
+  deckStyle: {
+    flex: 1,
+  },
   shop: {
     flex: 1,
-   
+    paddingTop: '8.5%',
+    width: deviceX,
+    height: deviceY,
+    
   },
   content:{
+    flexDirection: 'column',
     backgroundColor: 'black'
   },
   footer:{

@@ -4,8 +4,6 @@ import { NativeRouter, Route, withRouter, Link } from 'react-router-native';
 
 // Search List Pop-up Code
 var BUTTONS = ["Men's", "Women's", "Accessories"];
-var DESTRUCTIVE_INDEX = 3;
-var CANCEL_INDEX = 4;
 
 export default class ListIconExample extends Component {
 
@@ -56,8 +54,6 @@ export default class ListIconExample extends Component {
                 ActionSheet.show(
                   {
                     options: BUTTONS,
-                    cancelButtonIndex: CANCEL_INDEX,
-                    destructiveButtonIndex: DESTRUCTIVE_INDEX,
                     title: "I'm looking for:"
               },
               buttonIndex => {
@@ -67,7 +63,7 @@ export default class ListIconExample extends Component {
             >Shop</Text>
             </Body>
             <Right>
-          <Text>Dan</Text>
+          <Text>{this.state.clicked}</Text>
           <Icon name="arrow-forward"  />
              </Right>
 

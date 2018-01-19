@@ -134,8 +134,6 @@ class Description extends Component {
           </Button>
         </FooterTab>
       </Footer>
-
-
           </Container>
       );
   }

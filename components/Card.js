@@ -45,6 +45,7 @@ class CardComp extends Component {
 
 const deviceY = Dimensions.get('window').height
 const deviceX = Dimensions.get('window').width
+
 const styles = {
   cardImage:{
     width: deviceX,
