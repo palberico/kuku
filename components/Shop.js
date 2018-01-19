@@ -87,7 +87,7 @@ class Shop extends Component {
 let styles = {
   shop: {
     flex: 1,
-    marginTop: 50,
+   
   },
   content:{
     backgroundColor: 'black'
