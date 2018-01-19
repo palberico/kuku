@@ -46,9 +46,6 @@ class Home extends Component {
         <Button full transparent onPress={this.loginButton}>
           <Text style={styles.text}>Have an account? Sign in</Text>
         </Button>
-        <Button onPress={this.testButton}>
-          <Text>Tester</Text>
-        </Button>
         </Content>
       </Container>
     );

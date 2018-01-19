@@ -12,13 +12,6 @@ import {
 } from 'native-base'
 
 class CardComp extends Component {
-
-  state = { modalOpen: false }
-
-  modalToggleFn = () => {
-    this.setState({ modalOpen: !this.state.modalOpen })
-  }
-
   render(){
     return(
         <View>
@@ -27,10 +20,10 @@ class CardComp extends Component {
             <Card>
               <CardItem>
                 <Left>
-                  <Thumbnail source={this.props.item.logo} />
+                  <Thumbnail source={{uri:this.props.item['Image Src']}} />
                   <Body>
-                    <Text>{this.props.item.text}</Text>
-                    <Text note>{this.props.item.price}</Text>
+                    <Text>{this.props.item['Title']}</Text>
+                    <Text note>{this.props.item['Variant Price']}</Text>
                   </Body>
                 </Left>
               </CardItem>
@@ -38,7 +31,7 @@ class CardComp extends Component {
                 <Body>
                   <Image
                     style={styles.cardImage}
-                    source={this.props.item.image}
+                    source={{uri:this.props.item['Image Src']}}
                   />
                 </Body>
               </CardItem>
