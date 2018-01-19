@@ -6,8 +6,8 @@ export default class SpinnerExample extends Component {
 
   render() {
     return (
-      <Container style={styles.spin}>
-        <Content>
+      <Container>
+        <Content style={styles.spin}>
           <Spinner color='black' />
         </Content>
       </Container>
