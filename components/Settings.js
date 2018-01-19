@@ -54,6 +54,8 @@ export default class ListIconExample extends Component {
                 ActionSheet.show(
                   {
                     options: BUTTONS,
+                    cancelButtonIndex: CANCEL_INDEX,
+                    destructiveButtonIndex: DESTRUCTIVE_INDEX,
                     title: "I'm looking for:"
               },
               buttonIndex => {
