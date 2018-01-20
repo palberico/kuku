@@ -29,6 +29,7 @@ class Shop extends Component {
   openDescription = () => {
     // TODO figure out how to pass 'Handle' up to shop to then send to description
     // this.props.history.push('/description')
+    // note** this is going to suck
   }
 
   openSettings = () => {

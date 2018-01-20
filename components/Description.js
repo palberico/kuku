@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, Platform, Image, Dimensions } from 'react-native';
+import { View, Text, Platform, Dimensions, Image } from 'react-native';
 import { NativeRouter, Route, Switch, withRouter, Link } from 'react-router-native';
 import ImageSlider from 'react-native-image-slider';
 import DummyData from './DummyData'
@@ -57,8 +57,8 @@ class Description extends Component {
           <Nav />
         <Content>
           <View style={styles.container}>
-          <Image source={this.props.product['Image Src']} />
-            {/* TODO make this work */}
+          <Image source={{uri:this.props.product['Image Src']}} style={styles.imageStyle} />
+            {/* TODO make this work by implementing an array from image property */}
               {/* <ImageSlider
                   images={this.props.product['Image Src']}
                   position={this.state.position}
@@ -166,6 +166,11 @@ const deviceY = Dimensions.get('window').height
 const deviceX = Dimensions.get('window').width
 
 const styles = {
+  imageStyle:{
+    width: deviceX,
+    height: deviceY/ 2,
+    resizeMode: 'contain',
+  },
   container: {
     flex: 1,
     backgroundColor: '#fff',
