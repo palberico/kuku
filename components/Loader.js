@@ -6,8 +6,8 @@ export default class SpinnerExample extends Component {
 
   render() {
     return (
-      <Container>
-        <Content style={styles.spin}>
+      <Container style={styles.spin}>
+        <Content>
           <Spinner color='black' />
         </Content>
       </Container>
@@ -17,9 +17,7 @@ export default class SpinnerExample extends Component {
 
 const styles = {
     spin: {
-      flex: 1,
-      flexDirection: 'column',
       alignItems: 'center',
-      justifyContent: 'center',
+      justifyContent: 'flex-end',
     },
 }
