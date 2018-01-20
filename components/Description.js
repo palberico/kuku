@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { View, Text, Platform, Dimensions, Image } from 'react-native';
 import { NativeRouter, Route, Switch, withRouter, Link } from 'react-router-native';
 import ImageSlider from 'react-native-image-slider';
-import DummyData from './DummyData'
-import Nav from './Nav'
-import { Col, Row, Grid } from 'react-native-easy-grid'
+import DummyData from './DummyData';
+import Nav from './Nav';
+import { Col, Row, Grid } from 'react-native-easy-grid';
 import { connect } from 'react-redux';
 import {
   Container,
@@ -52,12 +52,15 @@ class Description extends Component {
     }
 
   render() {
-      return (
-        <Container>
-          <Nav />
+
+    const { product } = this.props;
+
+    return (
+      <Container>
+        <Nav />
         <Content>
           <View style={styles.container}>
-          <Image source={{uri:this.props.product['Image Src']}} style={styles.imageStyle} />
+            <Image source={{uri:product['Image Src']}} style={styles.imageStyle} />
             {/* TODO make this work by implementing an array from image property */}
               {/* <ImageSlider
                   images={this.props.product['Image Src']}
@@ -66,40 +69,42 @@ class Description extends Component {
               /> */}
           </View>
           <Card style={styles.card}>
-         <Grid>
-              <Row>
-                <Col>
-            <Button block dark style={styles.btnOne}>
-            <Text style={styles.textBtn1}>Buy from Retailer</Text>
-          </Button>
-          </Col>
-          <Col>
-          <Button iconLeft block dark style={styles.btnTwo} onPress={this.changeLike}>
-          <Icon style={styles.iconBtn}
-                name={this.state.liked ? 'ios-heart' : 'heart'}
-          />
-          <Text style={styles.textBtn2}>Love It</Text>
-          </Button>
-          </Col>
-          </Row>
+          <Grid>
+            <Row>
+            <Col>
+              <Button block dark style={styles.btnOne}>
+                <Text style={styles.textBtn1}>Buy from Retailer</Text>
+              </Button>
+            </Col>
+            <Col>
+              <Button iconLeft block dark style={styles.btnTwo} onPress={this.changeLike}>
+              <Icon style={styles.iconBtn}
+                    name={this.state.liked ? 'ios-heart' : 'heart'}
+              />
+              <Text style={styles.textBtn2}>Love It</Text>
+              </Button>
+            </Col>
+            </Row>
           </Grid>
             <CardItem header>
             <Left>
               <Body>
-                <Text style={styles.name}>Kerf</Text>
-              {/* <Image style={styles.navLogo} source={require('../images/logos/kerflogo.png')} /> */}
-              <Text note>Lone Peak</Text>
+                <Text style={styles.name}>{product['Vendor']}</Text>
+                  {/* <Image style={styles.navLogo} source={require('../images/logos/kerflogo.png')} /> */}
+                <Text note>{product['Title']}</Text>
               </Body>
-              </Left>
+            </Left>
             </CardItem>
             <CardItem>
               <Body>
-                <Text style={styles.desc}>
+                <Text style={styles.desc}>{product['Body']}</Text>
+                {/* NOTE ** this has to be cleaned up in the CSV or JSON file */}
+                {/* <Text style={styles.desc}>
                 Made from repurposed skateboard decks, the Lone Peak were made for people on the go! With an updated wayfarer design and polarized lenses, these skateboard sunglasses have no shortage of style. 
-              </Text>
-              <View style={{height: 15}} />
-              <Text style={styles.desc}>
-              Lone Peak Elevation: 11,253′
+                </Text>
+                <View style={{height: 15}} />
+                <Text style={styles.desc}>
+                  Lone Peak Elevation: 11,253′
                 </Text>
                 <View style={{height: 15}} />
                 <Text style={styles.desc}>
@@ -128,36 +133,30 @@ class Description extends Component {
                 <View style={{height: 5}} />
                 <Text style={styles.desc}>
                 — Includes a microfiber pouch
-                </Text>
+                </Text> */}
               </Body>
             </CardItem>
             <CardItem footer>
               <Text style={styles.web}> Found on KERFGEAR.COM</Text>
             </CardItem>
-         </Card>
-           </Content>
-
-           <Footer>
+          </Card>
+        </Content>
+        <Footer>
         <FooterTab style={styles.footer}>
           <Button vertical onPress={this.return} >
-         
             <Icon name='ios-pricetags-outline' />
-                <Text>Shop</Text>
-          </Button>
-
-                      
+            <Text>Shop</Text>
+          </Button>   
           <Button vertical onPress={this.goToCart}>
-
-                        {/* <Button badge vertical onPress={this.addLike}>
-                        <Badge><Text>{this.state.counter}</Text></Badge> */}
-                        
+            {/* <Button badge vertical onPress={this.addLike}>
+            <Badge><Text>{this.state.counter}</Text></Badge> */}     
             <Icon name='md-heart-outline' />
-                  <Text>Loved</Text>
+            <Text>Loved</Text>
           </Button>
         </FooterTab>
       </Footer>
-          </Container>
-      );
+      </Container>
+    );
   }
 }
 const deviceHeight = Dimensions.get('window').height
