@@ -9,15 +9,16 @@ export default class SpinnerExample extends Component {
       <Container style={styles.spin}>
         <Content>
           <Spinner color='black' />
+          <Spinner color='white' />
         </Content>
       </Container>
     );
   }
 }
 
+
 const styles = {
     spin: {
-      alignItems: 'center',
-      justifyContent: 'flex-end',
+      marginTop: '65%',
     },
 }
