@@ -24,7 +24,6 @@ import {
   ListItem,
   Thumbnail,
   Drawer,
-  Image,
 } from 'native-base';
 
 class Description extends Component {
