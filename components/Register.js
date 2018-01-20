@@ -47,10 +47,6 @@ export default class Register extends Component {
                 <Label>First Name</Label>
                   <Input />
               </Item>
-            <Item floatingLabel last>
-              <Label>Gender</Label>
-              <Input />
-            </Item>
             <Item floatingLabel>
               <Label>Email</Label>
               <Input />
@@ -60,6 +56,9 @@ export default class Register extends Component {
               <Input />
             </Item>
           </Form>
+
+            {/* Future search for drop down (Men's, Women's, Accessories) */}
+
           <View>
           <Text style={styles.text}>By signing up and using Kuku, you are agreeing to its
           </Text>

@@ -5,7 +5,7 @@ import { NativeRouter, Route, withRouter, Link } from 'react-router-native';
 // Search List Pop-up Code
 var BUTTONS = ["Men's", "Women's", "Accessories"];
 
-export default class ListIconExample extends Component {
+export default class ListIcon extends Component {
 
   // Search List Pop-up Code
   constructor(props) {
@@ -38,29 +38,30 @@ export default class ListIconExample extends Component {
           <ListItem itemDivider>
             <Text>User</Text>
             </ListItem>
-            <ListItem icon>
+            <ListItem icon onPress={this.logout}>
               <Body>
-                <Text onPress={this.logout}>Log out</Text>
+                <Text>Log out</Text>
               </Body>
               <Right>
-                <Icon name="arrow-forward" onPress={this.logout}/>
+                <Icon name="arrow-forward"/>
               </Right>
             </ListItem>
-            <ListItem icon>
-              <Body>
+
              {/* Search List Pop-up Code */}
-              <Text 
-                onPress={() =>
-                ActionSheet.show(
-                  {
-                    options: BUTTONS,
-                    title: "I'm looking for:"
-              },
-              buttonIndex => {
-                this.setState({ clicked: BUTTONS[buttonIndex] });
-              }
-            )}
-            >Shop</Text>
+            <ListItem icon
+            onPress={() =>
+              ActionSheet.show(
+                {
+                  options: BUTTONS,
+                  title: "I'm looking for:"
+            },
+            buttonIndex => {
+              this.setState({ clicked: BUTTONS[buttonIndex] });
+            }
+          )}
+          >
+              <Body>
+              <Text>Shop for</Text>
             </Body>
             <Right>
           <Text>{this.state.clicked}</Text>
@@ -74,69 +75,69 @@ export default class ListIconExample extends Component {
             <ListItem itemDivider>
             <Text>Get Social</Text>
             </ListItem>
-            <ListItem icon>
+            <ListItem icon onPress={this.logout}>
               <Left>
-                <Icon name="logo-facebook" onPress={this.logout} />
+                <Icon name="logo-facebook"/>
               </Left>
               <Body>
-                <Text onPress={this.logout}>FaceBook</Text>
+                <Text>FaceBook</Text>
               </Body>
               <Right>
-                <Icon name="arrow-forward" onPress={this.logout}/>
+                <Icon name="arrow-forward"/>
               </Right>
             </ListItem>
-            <ListItem icon>
+            <ListItem icon onPress={this.logout}>
               <Left>
-                <Icon name="logo-instagram" onPress={this.logout} />
+                <Icon name="logo-instagram"/>
               </Left>
               <Body>
-                <Text onPress={this.logout}>Instagram</Text>
+                <Text>Instagram</Text>
               </Body>
               <Right>
-                <Icon name="arrow-forward" onPress={this.logout}/>
+                <Icon name="arrow-forward"/>
               </Right>
             </ListItem>
-            <ListItem icon>
+            <ListItem icon onPress={this.logout}>
               <Left>
-                <Icon name="ios-share-outline" onPress={this.logout} />
+                <Icon name="ios-share-outline"/>
               </Left>
               <Body>
-                <Text onPress={this.logout}>Share the App</Text>
+                <Text>Share the App</Text>
               </Body>
               <Right>
-                <Icon name="arrow-forward" onPress={this.logout}/>
+                <Icon name="arrow-forward"/>
               </Right>
             </ListItem>
             <ListItem itemDivider />
             <ListItem itemDivider>
-            <Text onPress={this.logout}>About Us</Text>
+            <Text>About Us</Text>
             </ListItem>
-            <ListItem icon>
+            <ListItem icon  onPress={this.logout}>
               <Body>
-                <Text onPress={this.logout}>Privacy Policy</Text>
+                <Text>Privacy Policy</Text>
               </Body>
               <Right>
-                <Icon name="arrow-forward" onPress={this.logout}/>
+                <Icon name="arrow-forward"/>
               </Right>
             </ListItem>
-            <ListItem icon>
+            <ListItem icon  onPress={this.logout}>
             <Body>
-                <Text onPress={this.logout}>Terms and Conditions</Text>
+                <Text>Terms and Conditions</Text>
               </Body>
               <Right>
-                <Icon name="arrow-forward" onPress={this.logout}/>
+                <Icon name="arrow-forward"/>
               </Right>
             </ListItem>
             <ListItem itemDivider />
             <ListItem itemDivider>
             <Text>Support</Text>
             </ListItem>
-            <ListItem icon>
+            <ListItem icon onPress={this.logout}>
               <Body>
-                <Text onPress={this.logout}>FAQs</Text>
+                <Text>FAQs</Text>
               </Body>
               <Right>
-                <Icon name="arrow-forward" onPress={this.logout}/>
+                <Icon name="arrow-forward"/>
               </Right>
             </ListItem>
             <ListItem icon>
