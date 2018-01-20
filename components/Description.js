@@ -97,10 +97,10 @@ class Description extends Component {
             </CardItem>
             <CardItem>
               <Body>
-                <Text style={styles.desc}>{product['Body']}</Text>
+                <Text style={styles.desc}>{product['Body (HTML)']}</Text>
                 {/* NOTE ** this has to be cleaned up in the CSV or JSON file */}
                 {/* <Text style={styles.desc}>
-                Made from repurposed skateboard decks, the Lone Peak were made for people on the go! With an updated wayfarer design and polarized lenses, these skateboard sunglasses have no shortage of style. 
+                Made from repurposed skateboard decks, the Lone Peak were made for people on the go! With an updated wayfarer design and polarized lenses, these skateboard sunglasses have no shortage of style.
                 </Text>
                 <View style={{height: 15}} />
                 <Text style={styles.desc}>
@@ -116,11 +116,11 @@ class Description extends Component {
                 </Text>
                 <View style={{height: 5}} />
                 <Text style={styles.desc}>
-                — CR-39 polarized lenses. 
+                — CR-39 polarized lenses.
                 </Text>
                 <View style={{height: 5}} />
                 <Text style={styles.desc}>
-                — See our Size Guide for measurements 
+                — See our Size Guide for measurements
                 </Text>
                 <View style={{height: 5}} />
                 <Text style={styles.desc}>
@@ -128,7 +128,7 @@ class Description extends Component {
                 </Text>
                 <View style={{height: 5}} />
                 <Text style={styles.desc}>
-                — Not Rx compatible. 
+                — Not Rx compatible.
                 </Text>
                 <View style={{height: 5}} />
                 <Text style={styles.desc}>
@@ -137,7 +137,7 @@ class Description extends Component {
               </Body>
             </CardItem>
             <CardItem footer>
-              <Text style={styles.web}> Found on KERFGEAR.COM</Text>
+              <Text style={styles.web}> Webite Goes Here</Text>
             </CardItem>
           </Card>
         </Content>
@@ -146,10 +146,10 @@ class Description extends Component {
           <Button vertical onPress={this.return} >
             <Icon name='ios-pricetags-outline' />
             <Text>Shop</Text>
-          </Button>   
+          </Button>
           <Button vertical onPress={this.goToCart}>
             {/* <Button badge vertical onPress={this.addLike}>
-            <Badge><Text>{this.state.counter}</Text></Badge> */}     
+            <Badge><Text>{this.state.counter}</Text></Badge> */}
             <Icon name='md-heart-outline' />
             <Text>Loved</Text>
           </Button>
@@ -228,9 +228,9 @@ const styles = {
   },
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, props) => {
   return {
-    product: state.products.products.find( p => p['Handle'] === 'half-dome')
+    product: state.products.products.find( p => p['Handle'] === props.match.params.handle)
   }
 }
 
