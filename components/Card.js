@@ -1,7 +1,8 @@
-import React, { Component } from 'react'
-import { Col, Row, Grid } from 'react-native-easy-grid'
-import { Text, View, Image, TouchableHighlight, Dimensions } from 'react-native'
-import Nav from './Nav'
+import React, { Component } from 'react';
+import { Col, Row, Grid } from 'react-native-easy-grid';
+import { Text, View, Image, TouchableHighlight, Dimensions } from 'react-native';
+import { NativeRouter, Route, Switch, withRouter, Link } from 'react-router-native';
+import Nav from './Nav';
 import {
   Body,
   Left,
@@ -9,13 +10,18 @@ import {
   Thumbnail,
   Card,
   Footer,
-} from 'native-base'
+} from 'native-base';
 
 class CardComp extends Component {
+
+  showDescription = (handle) => {
+    this.props.history.push(`/description/${handle}`)
+  }
+
   render(){
     return(
         <View>
-          <TouchableHighlight>
+          <TouchableHighlight onPress={() => this.showDescription(this.props.item['Handle'])}>
             {/* TODO: history.push description.js */}
             <Card>
               <CardItem>
@@ -58,4 +64,4 @@ const styles = {
   },
 }
 
-export default CardComp
+export default CardComp;

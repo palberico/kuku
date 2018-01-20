@@ -5,6 +5,7 @@ import ImageSlider from 'react-native-image-slider';
 import DummyData from './DummyData'
 import Nav from './Nav'
 import { Col, Row, Grid } from 'react-native-easy-grid'
+import { connect } from 'react-redux';
 import {
   Container,
   Header,
@@ -22,7 +23,8 @@ import {
   List,
   ListItem,
   Thumbnail,
-  Drawer
+  Drawer,
+  Image,
 } from 'native-base';
 
 class Description extends Component {
@@ -56,15 +58,13 @@ class Description extends Component {
           <Nav />
         <Content>
           <View style={styles.container}>
-              <ImageSlider
-                  images={[
-                      `https://cdn.shopify.com/s/files/1/2198/3767/products/Lone_Peak_Brwn_L_28ae83c0-971c-4dfd-90e5-cf139057f54c_1024x1024@2x.png?v=1506829578`,
-                      `https://cdn.shopify.com/s/files/1/2198/3767/products/Lone_Peak_Brwn_F_0eb834d8-53c0-40e8-99ad-0ff6f1bef64c_1024x1024@2x.png?v=1506829578`,
-                      `https://cdn.shopify.com/s/files/1/2198/3767/products/Lone_Peak_Brown_R_42e01e34-6142-4d87-9059-2b2a05da5935_1024x1024@2x.png?v=1506829578`,
-                  ]}
+          <Image source={this.props.product['Image Src']} />
+            {/* TODO make this work */}
+              {/* <ImageSlider
+                  images={this.props.product['Image Src']}
                   position={this.state.position}
                   onPositionChanged={position => this.setState({position})}
-              />
+              /> */}
           </View>
           <Card style={styles.card}>
          <Grid>
@@ -225,4 +225,10 @@ const styles = {
   },
 }
 
-export default Description;
+const mapStateToProps = (state) => {
+  return {
+    product: state.products.products.find( p => p['Handle'] === 'half-dome')
+  }
+}
+
+export default connect(mapStateToProps)(Description);

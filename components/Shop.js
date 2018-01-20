@@ -27,16 +27,17 @@ class Shop extends Component {
   }
 
   openDescription = () => {
-  this.props.history.push('/description')
+    // TODO figure out how to pass 'Handle' up to shop to then send to description
+    // this.props.history.push('/description')
   }
 
   openSettings = () => {
     this.props.history.push('/settings')
-    }
+  }
 
   openCart = () => {
     this.props.history.push('/cart')
-    }
+  }
 
   render(){
     if(this.state.loaded){
@@ -52,7 +53,7 @@ class Shop extends Component {
                 onSwipeLeft={this.leftAlert}
                 onSwipeRight={this.rightAlert}
                 renderItem={item =>
-                <CardComp item={item} />
+                <CardComp item={item} history={this.props.history} />
               }/>
             </View>
           </Content>
