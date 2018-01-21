@@ -232,7 +232,7 @@ const styles = {
 
 const mapStateToProps = (state, props) => {
   return {
-    product: state.products.products.find( p => p['Handle'] === props.match.params.handle)
+    product: state.products.products.find( p => p['Title'] === props.match.params.title)
   }
 }
 

@@ -23,7 +23,7 @@ class Shop extends Component {
 
   componentDidMount = async () => {
     await this.props.dispatch(fetchProducts())
-    this.setState({ loaded: true })
+    this.setState({ loaded: true})
   }
 
   openDescription = () => {

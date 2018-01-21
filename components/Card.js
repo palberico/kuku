@@ -14,14 +14,14 @@ import {
 
 class CardComp extends Component {
 
-  showDescription = (handle) => {
-    this.props.history.push(`/description/${handle}`)
+  showDescription = (title) => {
+    this.props.history.push(`/description/${title}`)
   }
 
   render(){
     return(
         <View>
-          <TouchableHighlight onPress={() => this.showDescription(this.props.item['Handle'])}>
+          <TouchableHighlight onPress={() => this.showDescription(this.props.item['Title'])}>
             {/* TODO: history.push description.js */}
             <Card>
               <CardItem>

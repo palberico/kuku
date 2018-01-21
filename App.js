@@ -29,7 +29,7 @@ class App extends Component {
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/settings" component={Settings} />
                 <Route exact path="/register" component={Register} />
-                <Route exact path="/description/:handle" component={Description} />
+                <Route exact path="/description/:title" component={Description} />
               </Switch>
             </NativeRouter>
 
