@@ -3,6 +3,7 @@ import { Col, Row, Grid } from 'react-native-easy-grid'
 import { Text, Dimensions } from 'react-native'
 import DummyData from './DummyData'
 import Nav from './Nav'
+import CartCards from './CartCards'
 import {
   Container,
   Content,
@@ -22,22 +23,7 @@ class Cart extends Component {
       <Container style={styles.content}>
         <Nav />
         <Content>
-          <Grid>
-            <Col>
-              <Row>
-                <Card>
-                  <Text>1</Text>
-                </Card>
-              </Row>
-            </Col>
-            <Col>
-              <Row>
-                <Card>
-                  <Text>2</Text>
-                </Card>
-              </Row>
-            </Col>
-          </Grid>
+          <CartCards />
         </Content>
         <Footer>
           <FooterTab style={styles.footer}>

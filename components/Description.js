@@ -97,7 +97,7 @@ class Description extends Component {
             </CardItem>
             <CardItem>
               <Body>
-                <Text style={styles.desc}>{product['Body (HTML)']}</Text>
+                <Text style={styles.desc}>{product['Body']}</Text>
                 {/* NOTE ** this has to be cleaned up in the CSV or JSON file */}
                 {/* <Text style={styles.desc}>
                 Made from repurposed skateboard decks, the Lone Peak were made for people on the go! With an updated wayfarer design and polarized lenses, these skateboard sunglasses have no shortage of style.
@@ -198,13 +198,15 @@ const styles = {
     flex: 1,
     width: deviceX/2.2,
     marginRight: 'auto',
-    marginLeft: 'auto'
+    marginLeft: 'auto',
+    marginTop: 20
   },
   btnTwo:{
     flex: 1,
     width: deviceX/2.2,
     marginRight: 'auto',
-    marginLeft: 'auto'
+    marginLeft: 'auto',
+    marginTop: 20
   },
   textBtn1:{
     fontSize: 18,
@@ -224,7 +226,7 @@ const styles = {
   //   marginTop: 2
   // },
   card: {
-    marginTop: 25,
+    marginTop: 5,
   },
 }
 

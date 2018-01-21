@@ -26,7 +26,7 @@ class CardComp extends Component {
             <Card>
               <CardItem>
                 <Left>
-                  <Thumbnail source={{uri:this.props.item['Image Src']}} />
+                  <Thumbnail source={{uri:this.props.item['logo']}} />
                   <Body>
                     <Text>{this.props.item['Title']}</Text>
                     <Text note>{this.props.item['Variant Price']}</Text>

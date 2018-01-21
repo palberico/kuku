@@ -3,7 +3,7 @@ import { Container, Header, Content, Button, List, ListItem, Text, Icon, Left, B
 import { NativeRouter, Route, withRouter, Link } from 'react-router-native';
 
 // Search List Pop-up Code
-var BUTTONS = ["Men's", "Women's", "Accessories"];
+var BUTTONS = ["Men's", "Women's", "Baby", "Accessories"];
 
 export default class ListIcon extends Component {
 
