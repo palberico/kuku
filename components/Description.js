@@ -19,7 +19,12 @@ import {
 } from 'native-base';
 
 class Description extends Component {
+  // constructor(props) {
+  //   super(props);
+
   state = { position: 1, interval: null, liked: false  };
+
+
 
   componentWillMount() {
     this.setState({interval: setInterval(() => {
@@ -51,13 +56,13 @@ class Description extends Component {
         <Nav />
         <Content>
           <View style={styles.container}>
-            <Image source={{uri:product['Image Src']}} style={styles.imageStyle} />
+            
             {/* TODO make this work by implementing an array from image property */}
-              {/* <ImageSlider
-                  images={this.props.product['Image Src']}
+              <ImageSlider 
+                  images={[this.props.product['Image Src'], this.props.product['Alt1'], this.props.product['Alt2']]}
                   position={this.state.position}
                   onPositionChanged={position => this.setState({position})}
-              /> */}
+              />
           </View>
           <Card style={styles.card}>
             <Grid>
@@ -81,7 +86,6 @@ class Description extends Component {
               <Left>
                 <Body>
                   <Text style={styles.name}>{product['Vendor']}</Text>
-                    {/* <Image style={styles.navLogo} source={require('../images/logos/kerflogo.png')} /> */}
                   <Text note>{product['Title']}</Text>
                 </Body>
               </Left>
