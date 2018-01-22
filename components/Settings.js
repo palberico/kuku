@@ -1,11 +1,22 @@
 import React, { Component } from 'react';
-import { Container, Header, Content, Button, List, ListItem, Text, Icon, Left, Body, Right, Switch, Separator, ActionSheet } from 'native-base';
-import { NativeRouter, Route, withRouter, Link } from 'react-router-native';
+import { 
+  Container, 
+  Header, 
+  Content, 
+  List, 
+  ListItem, 
+  Text, 
+  Icon, 
+  Left, 
+  Body, 
+  Right, 
+  ActionSheet, 
+} from 'native-base';
 
 // Search List Pop-up Code
 var BUTTONS = ["Men's", "Women's", "Baby", "Accessories"];
 
-export default class ListIcon extends Component {
+class ListIcon extends Component {
 
   // Search List Pop-up Code
   constructor(props) {
@@ -23,11 +34,11 @@ export default class ListIcon extends Component {
 
   privacy = () => {
     this.props.history.push('/privacy')
-    }
+  }
 
   terms = () => {
     this.props.history.push('/terms')
-    }
+  }
   
   render() {
     return (
@@ -36,15 +47,15 @@ export default class ListIcon extends Component {
           <Left>
             <Icon name='ios-arrow-back' onPress={this.return} />
           </Left>
-        <Text style={styles.head}>Settings</Text>
-        <Right />
+          <Text style={styles.head}>Settings</Text>
+          <Right />
         </Header>
     
         <Content>
           <List>
             <ListItem itemDivider />
-          <ListItem itemDivider>
-            <Text>User</Text>
+            <ListItem itemDivider>
+              <Text>User</Text>
             </ListItem>
             <ListItem icon onPress={this.logout}>
               <Body>
@@ -56,32 +67,30 @@ export default class ListIcon extends Component {
             </ListItem>
 
              {/* Search List Pop-up Code */}
-            <ListItem icon
-            onPress={() =>
-              ActionSheet.show(
-                {
+            <ListItem 
+              icon
+              onPress={() =>
+                ActionSheet.show({
                   options: BUTTONS,
                   title: "I'm looking for:"
-            },
-            buttonIndex => {
-              this.setState({ clicked: BUTTONS[buttonIndex] });
-            }
-          )}
-          >
+                },
+                buttonIndex => {
+                this.setState({ clicked: BUTTONS[buttonIndex] });
+                }
+              )}
+            >
               <Body>
-              <Text>Shop for</Text>
-            </Body>
-            <Right>
-          <Text>{this.state.clicked}</Text>
-          <Icon name="arrow-forward"  />
-             </Right>
-
-          {/* End Search List Pop-up Code */}
-    
+                <Text>Shop for</Text>
+              </Body>
+              <Right>
+                <Text>{this.state.clicked}</Text>
+                <Icon name="arrow-forward"  />
+              </Right>
+              {/* End Search List Pop-up Code */}
             </ListItem>
             <ListItem itemDivider />
             <ListItem itemDivider>
-            <Text>Get Social</Text>
+              <Text>Get Social</Text>
             </ListItem>
             <ListItem icon onPress={this.logout}>
               <Left>
@@ -118,7 +127,7 @@ export default class ListIcon extends Component {
             </ListItem> */}
             <ListItem itemDivider />
             <ListItem itemDivider>
-            <Text>About Us</Text>
+              <Text>About Us</Text>
             </ListItem>
             <ListItem icon  onPress={this.privacy}>
               <Body>
@@ -129,7 +138,7 @@ export default class ListIcon extends Component {
               </Right>
             </ListItem>
             <ListItem icon  onPress={this.terms}>
-            <Body>
+              <Body>
                 <Text>Terms and Conditions</Text>
               </Body>
               <Right>
@@ -138,7 +147,7 @@ export default class ListIcon extends Component {
             </ListItem>
             <ListItem itemDivider />
             <ListItem itemDivider>
-            <Text>Support</Text>
+              <Text>Support</Text>
             </ListItem>
             <ListItem icon onPress={this.logout}>
               <Body>
@@ -149,14 +158,13 @@ export default class ListIcon extends Component {
               </Right>
             </ListItem>
             <ListItem icon>
-            <Body>
+              <Body>
                 <Text>Email</Text>
               </Body>
               <Right>
                 <Text>support@kukukart.com</Text>
               </Right>
             </ListItem>
-
           </List>
         </Content>
       </Container>
@@ -170,3 +178,5 @@ const styles = {
       fontSize: 24,
   },
 }
+
+export default ListIcon;

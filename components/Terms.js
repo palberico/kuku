@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import { View, Text, Platform } from 'react-native'
-import { Container, Content, Footer, FooterTab, Button, Icon } from 'native-base'
+import React, { Component } from 'react';
+import { View, Text, Platform } from 'react-native';
+import { Container, Content, Footer, FooterTab, Button, Icon } from 'native-base';
 import { NativeRouter, Switch, Route } from 'react-router-native';
-import Nav from './Nav'
+import Nav from './Nav';
 
 class Terms extends Component {
 
