@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Col, Row, Grid } from 'react-native-easy-grid'
 import { Text, Dimensions } from 'react-native'
-import DummyData from './DummyData'
 import Nav from './Nav'
 import CartCards from './CartCards'
 import {

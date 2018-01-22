@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Text, View, Image, Dimensions } from 'react-native'
 import axios from 'axios'
-import DummyData from './DummyData'
 import CardComp from './Card'
 import Nav from './Nav'
 import Loader from './Loader'

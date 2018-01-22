@@ -26,7 +26,9 @@ class CardComp extends Component {
             <Card>
               <CardItem>
                 <Left>
-                  <Thumbnail source={{uri:this.props.item['logo']}} />
+                  <Thumbnail 
+                  style={styles.thumb}
+                  source={{uri:this.props.item['logo']}} />
                   <Body>
                     <Text>{this.props.item['Title']}</Text>
                     <Text note>{this.props.item['Variant Price']}</Text>
@@ -61,6 +63,9 @@ const styles = {
   cardFooter:{
     width: 10,
     backgroundColor: '#ffffff',
+  },
+  thumb:{
+    resizeMode: 'contain',
   },
 }
 

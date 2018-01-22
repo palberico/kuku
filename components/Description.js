@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { View, Text, Platform, Dimensions, Image } from 'react-native';
 import { NativeRouter, Route, Switch, withRouter, Link } from 'react-router-native';
 import ImageSlider from 'react-native-image-slider';
-import DummyData from './DummyData';
 import Nav from './Nav';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import { connect } from 'react-redux';
@@ -137,7 +136,7 @@ class Description extends Component {
               </Body>
             </CardItem>
             <CardItem footer>
-              <Text style={styles.web}> Webite Goes Here</Text>
+              <Text style={styles.web}>{product['address']}</Text>
             </CardItem>
           </Card>
         </Content>
@@ -193,6 +192,7 @@ const styles = {
   web: {
     fontWeight: (Platform.OS === 'ios') ? '500' : '400',
     fontSize: 15,
+    marginLeft: '2%'
   },
   btnOne:{
     flex: 1,
@@ -220,11 +220,6 @@ const styles = {
     marginRight: 20,
     color: 'white'
   },
-  // navLogo: {
-  //   height: deviceHeight / 15,
-  //   width: deviceWidth / 5,
-  //   marginTop: 2
-  // },
   card: {
     marginTop: 5,
   },

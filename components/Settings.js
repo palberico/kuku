@@ -20,6 +20,10 @@ export default class ListIcon extends Component {
   logout = () => {
     this.props.history.push('/')
   }
+
+  privacy = () => {
+    this.props.history.push('/privacy')
+    }
   
   render() {
     return (
@@ -112,7 +116,7 @@ export default class ListIcon extends Component {
             <ListItem itemDivider>
             <Text>About Us</Text>
             </ListItem>
-            <ListItem icon  onPress={this.logout}>
+            <ListItem icon  onPress={this.privacy}>
               <Body>
                 <Text>Privacy Policy</Text>
               </Body>
