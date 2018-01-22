@@ -10,8 +10,14 @@ import {
   Card,
   Footer,
 } from 'native-base';
+import { connect } from 'react-redux';
+import { setSelected } from '../actions/products';
 
 class CardComp extends Component {
+
+  // componentDidMount(){
+  //   this.props.dispatch(setSelected(this.props.item))
+  // }
 
   showDescription = (title) => {
     this.props.history.push(`/description/${title}`)
@@ -25,7 +31,7 @@ class CardComp extends Component {
             <Card>
               <CardItem>
                 <Left>
-                  <Thumbnail 
+                  <Thumbnail
                   style={styles.thumb}
                   source={{uri:this.props.item['logo']}} />
                   <Body>
@@ -69,4 +75,4 @@ const styles = {
   },
 }
 
-export default CardComp;
+export default connect()(CardComp);

@@ -18,11 +18,11 @@ import { fetchProducts } from '../actions/products';
 
 class Shop extends Component {
 
-  state = { products: [], loaded: false }
+  state = { selected: {}, loaded: false }
 
   componentDidMount = async () => {
     await this.props.dispatch(fetchProducts())
-    this.setState({ loaded: true})
+    this.setState({ loaded: true })
   }
 
   openDescription = () => {
@@ -39,6 +39,14 @@ class Shop extends Component {
     this.props.history.push('/cart')
   }
 
+  leftAlert = (cardObject) => {
+    this.setState({selected: cardObject})
+  }
+
+  sendToCart = (cardObject) => {
+    this.setState({selected: cardObject})
+  }
+
   render(){
     if(this.state.loaded){
       return(
@@ -47,10 +55,10 @@ class Shop extends Component {
           <Content scrollEnabled={false} style={styles.shop}>
             <View>
               <DeckSwiper
-                ref={(c) => this._deckSwiper = c}
+                ref={(swiper) => this.swiper = swiper}
                 dataSource={this.props.products}
                 onSwipeLeft={this.leftAlert}
-                onSwipeRight={this.rightAlert}
+                onSwipeRight={this.sendToCart}
                 renderItem={item =>
                 <CardComp item={item} history={this.props.history} />
               }/>
@@ -112,6 +120,7 @@ let styles = {
 const mapStateToProps = (state) => {
   return {
     products: state.products.products,
+    selected: state.products.selected
   }
 }
 
