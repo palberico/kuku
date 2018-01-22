@@ -9,6 +9,7 @@ import Home from './components/Home';
 import Shop from './components/Shop';
 import Cart from './components/Cart';
 import Login from './components/Login';
+import Terms from './components/Terms';
 import CardComp from './components/Card';
 import Privacy from './components/Privacy';
 import Settings from './components/Settings';
@@ -20,14 +21,14 @@ class App extends Component {
     return (
       <Provider store={store}>
         <Container>
-
             <NativeRouter>
               <Switch>
                 <Route exact path="/" component={Home}  />
-                <Route exact path="/card" component={CardComp}  />
                 <Route exact path="/shop" component={Shop} />
                 <Route exact path="/cart" component={Cart} />
                 <Route exact path="/login" component={Login} />
+                <Route exact path="/terms" component={Terms} />
+                <Route exact path="/card" component={CardComp}  />
                 <Route exact path="/privacy" component={Privacy} />
                 <Route exact path="/settings" component={Settings} />
                 <Route exact path="/register" component={Register} />

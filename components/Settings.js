@@ -24,6 +24,10 @@ export default class ListIcon extends Component {
   privacy = () => {
     this.props.history.push('/privacy')
     }
+
+  terms = () => {
+    this.props.history.push('/terms')
+    }
   
   render() {
     return (
@@ -101,7 +105,7 @@ export default class ListIcon extends Component {
                 <Icon name="arrow-forward"/>
               </Right>
             </ListItem>
-            <ListItem icon onPress={this.logout}>
+            {/* <ListItem icon onPress={this.logout}>
               <Left>
                 <Icon name="ios-share-outline"/>
               </Left>
@@ -111,7 +115,7 @@ export default class ListIcon extends Component {
               <Right>
                 <Icon name="arrow-forward"/>
               </Right>
-            </ListItem>
+            </ListItem> */}
             <ListItem itemDivider />
             <ListItem itemDivider>
             <Text>About Us</Text>
@@ -124,7 +128,7 @@ export default class ListIcon extends Component {
                 <Icon name="arrow-forward"/>
               </Right>
             </ListItem>
-            <ListItem icon  onPress={this.logout}>
+            <ListItem icon  onPress={this.terms}>
             <Body>
                 <Text>Terms and Conditions</Text>
               </Body>
