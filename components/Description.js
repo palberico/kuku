@@ -48,6 +48,9 @@ class Description extends Component {
     this.props.history.push('/cart')
   }
 
+// TODO: CART WORKS ==> 1
+// TODO: CATEGORIES ==> 2
+// TODO: RANDOMIZE CARDS ==> 3
   render() {
     const { product } = this.props;
 
@@ -56,12 +59,19 @@ class Description extends Component {
         <Nav />
         <Content>
           <View style={styles.container}>
-            
+
             {/* TODO make this work by implementing an array from image property */}
-              <ImageSlider 
-                  images={[this.props.product['Image Src'], this.props.product['Alt1'], this.props.product['Alt2']]}
+            if alt1 && alt2 === ""
+            i
+              <ImageSlider
+                  images={[
+                    this.props.product['Image Src'],
+                    this.props.product['Alt1'],
+                    this.props.product['Alt2']]}
+                  height={deviceY/ 1.8}
                   position={this.state.position}
-                  onPositionChanged={position => this.setState({position})}
+                  onPositionChanged={position => this.setState({position})
+                }
               />
           </View>
           <Card style={styles.card}>
@@ -162,7 +172,7 @@ const deviceX = Dimensions.get('window').width
 const styles = {
   imageStyle:{
     width: deviceX,
-    height: deviceY/ 2,
+
     resizeMode: 'contain',
   },
   container: {
