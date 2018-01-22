@@ -1,10 +1,10 @@
-import React from 'react'
-import { Image, Dimensions } from 'react-native'
+import React from 'react';
+import { Image, Dimensions } from 'react-native';
 import {
   Header,
   Body,
   Title,
-} from 'native-base'
+} from 'native-base';
 
 export const Nav = () => {
   return(

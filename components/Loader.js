@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { Container, Header, Content } from 'native-base';
-import { ActivityIndicator, StyleSheet, View } from 'react-native'
+import { ActivityIndicator, StyleSheet, View } from 'react-native';
 
-
-export default class Spinner extends Component {
+class Spinner extends Component {
 
   render() {
     return (
@@ -20,3 +18,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
 })
+
+export default Spinner;

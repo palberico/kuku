@@ -22,13 +22,13 @@ class Description extends Component {
   state = { position: 1, interval: null, liked: false  };
 
   componentWillMount() {
-      this.setState({interval: setInterval(() => {
-          this.setState({position: this.state.position === 2 ? 0 : this.state.position + 1});
-      }, 2000)});
+    this.setState({interval: setInterval(() => {
+    this.setState({position: this.state.position === 2 ? 0 : this.state.position + 1});
+    }, 2000)});
   }
 
   componentWillUnmount() {
-      clearInterval(this.state.interval);
+    clearInterval(this.state.interval);
   }
 
   changeLike = () => {
@@ -44,7 +44,6 @@ class Description extends Component {
   }
 
   render() {
-
     const { product } = this.props;
 
     return (

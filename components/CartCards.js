@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
-import { Col, Row, Grid } from 'react-native-easy-grid'
-import { Text, Dimensions } from 'react-native'
+import React, { Component } from 'react';
+import { Col, Row, Grid } from 'react-native-easy-grid';
+import { Text, Dimensions } from 'react-native';
 import {
   Container,
   Content,
@@ -9,7 +9,7 @@ import {
   CardItem,
   Body,
   View,
-} from 'native-base'
+} from 'native-base';
 
 class CartCards extends Component {
   render(){

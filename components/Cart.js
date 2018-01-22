@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import { Col, Row, Grid } from 'react-native-easy-grid'
-import { Text, Dimensions } from 'react-native'
-import Nav from './Nav'
-import CartCards from './CartCards'
+import React, { Component } from 'react';
+import { Col, Row, Grid } from 'react-native-easy-grid';
+import { Text, Dimensions } from 'react-native';
+import Nav from './Nav';
+import CartCards from './CartCards';
 import {
   Container,
   Content,
@@ -11,7 +11,7 @@ import {
   Button,
   Icon,
   Card,
-} from 'native-base'
+} from 'native-base';
 
 class Cart extends Component {
 

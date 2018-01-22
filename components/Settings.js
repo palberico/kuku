@@ -50,7 +50,6 @@ class ListIcon extends Component {
           <Text style={styles.head}>Settings</Text>
           <Right />
         </Header>
-    
         <Content>
           <List>
             <ListItem itemDivider />
