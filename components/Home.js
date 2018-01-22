@@ -8,6 +8,7 @@ import { Container,
     Button,
     Icon,
     Footer,
+    Right,
     Badge } from 'native-base';
 
     var randomImages = [
@@ -31,10 +32,21 @@ import { Container,
     this.props.history.push('/test')
   }
 
+  guest = () => {
+    this.props.history.push('/shop')
+  }
+
   render() {
     return (
       <Container>
-         <Header />
+         <Header>
+           <Right>
+           <Button iconRight transparent onPress={this.guest}>
+             <Text style={styles.guest}>GUEST </Text>
+             <Icon name='ios-arrow-forward' />
+          </Button>
+          </Right>
+         </Header>
         <Content style={styles.background} scrollEnabled={false}>
           <Image style={styles.hero} source={randomImages[Math.floor(Math.random()*randomImages.length)]}/>
      <View>
@@ -100,6 +112,9 @@ const styles = {
 },
   background:{
     backgroundColor: '#ffffff'
+  },
+  guest: {
+    fontWeight: 'bold'
   },
 }
 
