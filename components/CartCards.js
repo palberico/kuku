@@ -51,4 +51,3 @@ let styles = {
 
 
 export default CartCards;
-

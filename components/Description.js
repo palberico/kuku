@@ -51,6 +51,7 @@ class Description extends Component {
 // TODO: CART WORKS ==> 1
 // TODO: CATEGORIES ==> 2
 // TODO: RANDOMIZE CARDS ==> 3
+// TODO: USER AUTH ==
   render() {
     const { product } = this.props;
 
@@ -61,8 +62,6 @@ class Description extends Component {
           <View style={styles.container}>
 
             {/* TODO make this work by implementing an array from image property */}
-            if alt1 && alt2 === ""
-            i
               <ImageSlider
                   images={[
                     this.props.product['Image Src'],

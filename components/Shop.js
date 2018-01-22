@@ -14,7 +14,7 @@ import {
   DeckSwiper,
 } from 'native-base';
 import { connect } from 'react-redux';
-import { fetchProducts } from '../actions/products';
+import { fetchProducts, addToCart } from '../actions/products';
 
 class Shop extends Component {
 
@@ -43,8 +43,9 @@ class Shop extends Component {
     this.setState({selected: cardObject})
   }
 
-  sendToCart = (cardObject) => {
-    this.setState({selected: cardObject})
+  sendToCart = async (cardObject) => {
+    await this.props.dispatch(addToCart(cardObject))
+
   }
 
   render(){
@@ -120,7 +121,6 @@ let styles = {
 const mapStateToProps = (state) => {
   return {
     products: state.products.products,
-    selected: state.products.selected
   }
 }
 

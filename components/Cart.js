@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Col, Row, Grid } from 'react-native-easy-grid';
-import { Text, Dimensions } from 'react-native';
+import { Text, Dimensions, View } from 'react-native';
 import Nav from './Nav';
 import CartCards from './CartCards';
+import { connect } from 'react-redux'
 import {
   Container,
   Content,
@@ -15,36 +16,74 @@ import {
 
 class Cart extends Component {
 
+  state = { loaded: false}
+
   openShop = () => this.props.history.push('/shop')
 
+  displayItems = () => {
+    return this.props.items.cart.map(item => {
+      return(
+        <Card>
+          {item.title}
+        </Card>
+      )
+    })
+  }
+
   render(){
-    return(
-      <Container style={styles.content}>
-        <Nav />
-        <Content>
-          <CartCards />
-        </Content>
-        <Footer>
-          <FooterTab style={styles.footer}>
-            <Button vertical onPress={this.openShop}>
-              <Icon name='ios-pricetags-outline' />
-                <Text>Shop</Text>
-            </Button>
-            <Button vertical>
-              <Icon name='md-heart-outline' />
-                <Text>Loved</Text>
-            </Button>
-          </FooterTab>
-        </Footer>
-      </Container>
-    )
+    if(this.state.loaded){
+      return(
+        <Container style={styles.content}>
+          <Nav />
+          <Content>
+            <Grid>
+              <Col>
+                <Row>
+                  <View>
+
+                      {this.displayItems()}
+
+                  </View>
+                </Row>
+              </Col>
+            </Grid>
+          </Content>
+          <Footer>
+            <FooterTab style={styles.footer}>
+              <Button vertical onPress={this.openShop}>
+                <Icon name='ios-pricetags-outline' />
+                  <Text>Shop</Text>
+              </Button>
+              <Button vertical>
+                <Icon name='md-heart-outline' />
+                  <Text>Loved</Text>
+              </Button>
+            </FooterTab>
+          </Footer>
+        </Container>
+      )
+    }
+    else{
+      return(
+        <Card>
+          <Text>Loading...</Text>
+        </Card>
+      )
+
+    }
   }
 }
 
 let styles = {
   content:{
-    backgroundColor: '#000000'
+    backgroundColor: 'white'
   },
 }
 
-export default Cart;
+const mapStateToProps = (state) => {
+  return {
+    items: state.cart
+  }
+}
+
+export default connect(mapStateToProps)(Cart);

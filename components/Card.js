@@ -15,10 +15,6 @@ import { setSelected } from '../actions/products';
 
 class CardComp extends Component {
 
-  // componentDidMount(){
-  //   this.props.dispatch(setSelected(this.props.item))
-  // }
-
   showDescription = (title) => {
     this.props.history.push(`/description/${title}`)
   }

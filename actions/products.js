@@ -6,3 +6,7 @@ export const fetchProducts = () => dispatch => {
       dispatch({ type: 'FETCH_PRODUCTS', products: res.data })
     })
 }
+
+export const addToCart = (item) => dispatch => {
+  return dispatch({ type: 'ADD_TO_CART', cartItem: item})
+}
