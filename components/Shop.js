@@ -64,23 +64,23 @@ class Shop extends Component {
               }/>
             </View>
           </Content>
-          <Footer>
-            <FooterTab style={styles.footer}>
-              <Button vertical onPress={this.openSettings}>
-                <Icon name='ios-settings-outline' />
-                <Text>Settings</Text>
-              </Button>
-              <Button vertical onPress={this.openDescription}>
-                <Icon name='ios-information-circle-outline' />
-                <Text>Description</Text>
-              </Button>
-              <Button vertical onPress={this.openCart}>
-                <Icon name='md-heart-outline' />
-                <Text>Loved</Text>
-              </Button>
-            </FooterTab>
-          </Footer>
-        </Container>
+            <Footer>
+              <FooterTab style={styles.footer}>
+                <Button vertical onPress={this.openSettings}>
+                   <Icon name='ios-settings-outline' />
+                     <Text>Settings</Text>
+                 </Button>
+                 <Button vertical onPress={this.openDescription}>
+                   <Icon name='ios-search-outline' />
+                     <Text>Search</Text>
+                 </Button>
+                 <Button vertical onPress={this.openCart}>
+                   <Icon name='md-heart-outline' />
+                     <Text>Loved</Text>
+                 </Button>
+               </FooterTab>
+             </Footer>
+       </Container>
       )
     }
     else{
