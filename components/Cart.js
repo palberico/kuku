@@ -16,16 +16,18 @@ import {
 
 class Cart extends Component {
 
-  state = { loaded: false}
+  state = { loaded: false, items: [] }
+
+  componentDidMount(){
+    this.setState({ items: this.props.items.cart, loaded: true })
+  }
 
   openShop = () => this.props.history.push('/shop')
 
   displayItems = () => {
-    return this.props.items.cart.map(item => {
-      return(
-        <Card>
-          {item.title}
-        </Card>
+    return this.state.items.map( item => {
+      return (
+        <Text>{item['Title']}</Text>
       )
     })
   }
@@ -41,7 +43,7 @@ class Cart extends Component {
                 <Row>
                   <View>
 
-                      {this.displayItems()}
+                    {this.displayItems()}
 
                   </View>
                 </Row>
