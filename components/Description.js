@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import { View, Text, Platform, Dimensions, Image } from 'react-native';
-import { NativeRouter, Route, Switch, withRouter, Link } from 'react-router-native';
 import ImageSlider from 'react-native-image-slider';
 import Nav from './Nav';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import { connect } from 'react-redux';
 import {
   Container,
-  Header,
-  Title,
   Content,
   Footer,
   FooterTab,
@@ -19,10 +16,6 @@ import {
   Icon,
   Card,
   CardItem,
-  List,
-  ListItem,
-  Thumbnail,
-  Drawer,
 } from 'native-base';
 
 class Description extends Component {
@@ -44,11 +37,11 @@ class Description extends Component {
 
   return = () => {
     this.props.history.push('/shop')
-    }
+  }
 
   goToCart = () => {
     this.props.history.push('/cart')
-    }
+  }
 
   render() {
 
@@ -68,31 +61,31 @@ class Description extends Component {
               /> */}
           </View>
           <Card style={styles.card}>
-          <Grid>
-            <Row>
-            <Col>
-              <Button block dark style={styles.btnOne}>
-                <Text style={styles.textBtn1}>Buy from Retailer</Text>
-              </Button>
-            </Col>
-            <Col>
-              <Button iconLeft block dark style={styles.btnTwo} onPress={this.changeLike}>
-              <Icon style={styles.iconBtn}
-                    name={this.state.liked ? 'ios-heart' : 'heart'}
-              />
-              <Text style={styles.textBtn2}>Love It</Text>
-              </Button>
-            </Col>
-            </Row>
-          </Grid>
+            <Grid>
+              <Row>
+              <Col>
+                <Button block dark style={styles.btnOne}>
+                  <Text style={styles.textBtn1}>Buy from Retailer</Text>
+                </Button>
+              </Col>
+              <Col>
+                <Button iconLeft block dark style={styles.btnTwo} onPress={this.changeLike}>
+                <Icon style={styles.iconBtn}
+                      name={this.state.liked ? 'ios-heart' : 'heart'}
+                />
+                <Text style={styles.textBtn2}>Love It</Text>
+                </Button>
+              </Col>
+              </Row>
+            </Grid>
             <CardItem header>
-            <Left>
-              <Body>
-                <Text style={styles.name}>{product['Vendor']}</Text>
-                  {/* <Image style={styles.navLogo} source={require('../images/logos/kerflogo.png')} /> */}
-                <Text note>{product['Title']}</Text>
-              </Body>
-            </Left>
+              <Left>
+                <Body>
+                  <Text style={styles.name}>{product['Vendor']}</Text>
+                    {/* <Image style={styles.navLogo} source={require('../images/logos/kerflogo.png')} /> */}
+                  <Text note>{product['Title']}</Text>
+                </Body>
+              </Left>
             </CardItem>
             <CardItem>
               <Body>
@@ -141,19 +134,19 @@ class Description extends Component {
           </Card>
         </Content>
         <Footer>
-        <FooterTab style={styles.footer}>
-          <Button vertical onPress={this.return} >
-            <Icon name='ios-pricetags-outline' />
-            <Text>Shop</Text>
-          </Button>
-          <Button vertical onPress={this.goToCart}>
-            {/* <Button badge vertical onPress={this.addLike}>
-            <Badge><Text>{this.state.counter}</Text></Badge> */}
-            <Icon name='md-heart-outline' />
-            <Text>Loved</Text>
-          </Button>
-        </FooterTab>
-      </Footer>
+          <FooterTab style={styles.footer}>
+            <Button vertical onPress={this.return} >
+              <Icon name='ios-pricetags-outline' />
+              <Text>Shop</Text>
+            </Button>
+            <Button vertical onPress={this.goToCart}>
+              {/* <Button badge vertical onPress={this.addLike}>
+              <Badge><Text>{this.state.counter}</Text></Badge> */}
+              <Icon name='md-heart-outline' />
+              <Text>Loved</Text>
+            </Button>
+          </FooterTab>
+        </Footer>
       </Container>
     );
   }

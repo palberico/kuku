@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
-import { Text, View, Image, Dimensions } from 'react-native'
-import axios from 'axios'
-import CardComp from './Card'
-import Nav from './Nav'
-import Loader from './Loader'
+import React, { Component } from 'react';
+import { Text, View, Image, Dimensions } from 'react-native';
+import axios from 'axios';
+import CardComp from './Card';
+import Nav from './Nav';
+import Loader from './Loader';
 import {
   Container,
   Content,
@@ -45,9 +45,8 @@ class Shop extends Component {
        <Container style={styles.content}>
          <Nav />
           <Content scrollEnabled={false} style={styles.shop}>
-          <View>
+            <View>
               <DeckSwiper
-
                 ref={(c) => this._deckSwiper = c}
                 dataSource={this.props.products}
                 onSwipeLeft={this.leftAlert}
@@ -57,23 +56,23 @@ class Shop extends Component {
               }/>
             </View>
           </Content>
-            <Footer>
-              <FooterTab style={styles.footer}>
-                <Button vertical onPress={this.openSettings}>
-                   <Icon name='ios-settings-outline' />
-                     <Text>Settings</Text>
-                 </Button>
-                 <Button vertical onPress={this.openDescription}>
-                   <Icon name='ios-information-circle-outline' />
-                     <Text>Description</Text>
-                 </Button>
-                 <Button vertical onPress={this.openCart}>
-                   <Icon name='md-heart-outline' />
-                     <Text>Loved</Text>
-                 </Button>
-               </FooterTab>
-             </Footer>
-       </Container>
+          <Footer>
+            <FooterTab style={styles.footer}>
+              <Button vertical onPress={this.openSettings}>
+                <Icon name='ios-settings-outline' />
+                <Text>Settings</Text>
+              </Button>
+              <Button vertical onPress={this.openDescription}>
+                <Icon name='ios-information-circle-outline' />
+                <Text>Description</Text>
+              </Button>
+              <Button vertical onPress={this.openCart}>
+                <Icon name='md-heart-outline' />
+                <Text>Loved</Text>
+              </Button>
+            </FooterTab>
+          </Footer>
+        </Container>
       )
     }
     else{

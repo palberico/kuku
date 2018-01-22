@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import { Text, View, Image, TouchableHighlight, Dimensions } from 'react-native';
-import { NativeRouter, Route, Switch, withRouter, Link } from 'react-router-native';
 import Nav from './Nav';
 import {
   Body,
