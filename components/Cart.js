@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Text, Dimensions, View, Image } from 'react-native';
+import { Text, View, Image, TouchableHighlight, Dimensions } from 'react-native';
 import Nav from './Nav';
 import CartCards from './CartCards';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import { setSelected } from '../actions/products';
 import {
   Container,
   Content,
@@ -22,6 +23,10 @@ class Cart extends Component {
 
   state = { loaded: false, items: [] }
 
+  showDescription = (title) => {
+    this.props.history.push(`/description/${title}`)
+  }
+
   componentDidMount(){
     this.setState({ items: this.props.items.cart, loaded: true })
   }
@@ -31,8 +36,10 @@ class Cart extends Component {
   displayItems = () => {
     return this.state.items.map( item => {
       return (
+
+        <TouchableHighlight onPress={() => this.showDescription(this.props.item['Title'])}>
         <Card>
-          <CardItem>
+          {/* <CardItem>
             <Left>
               <Thumbnail source={{uri:item['logo']}} />
               <Body>
@@ -40,28 +47,34 @@ class Cart extends Component {
                 <Text note>{item['Vendor']}</Text>
               </Body>
             </Left>
-          </CardItem>
+          </CardItem> */}
           <CardItem cardBody>
-            <Image source={{uri:item['Image Src']}} style={{height: 200, width: null, flex: 1}}/>
+            <Image source={{uri:item['Image Src']}} style={styles.cardImage} />
           </CardItem>
-          <CardItem>
+          {/* <CardItem>
             <Body>
               <Text>{item['Body']}</Text>
             </Body>
-          </CardItem>
+          </CardItem> */}
           <CardItem>
+          
             <Left>
               <Button transparent>
-                <Icon active name="ios-cart" />
+                <Text note style={styles.textBtn1}>{item['Vendor']}</Text>
+                <Text style={styles.textBtn1}> - </Text>
+                <Text style={styles.textBtn1}>{item['Type']}</Text>
               </Button>
             </Left>
             <Right>
               <Button transparent>
-                <Icon active name="ios-trash" />
+                <Text style={styles.textBtn1}>Unlove</Text>
               </Button>
             </Right>
+           
           </CardItem>
         </Card>
+        </TouchableHighlight>
+        
       )
     })
   }
@@ -100,9 +113,23 @@ class Cart extends Component {
   }
 }
 
-let styles = {
+const deviceHeight = Dimensions.get('window').height
+const deviceWidth = Dimensions.get('window').height
+const deviceY = Dimensions.get('window').height
+const deviceX = Dimensions.get('window').width
+
+
+const styles = {
   content:{
-    backgroundColor: 'white'
+    backgroundColor: 'black'
+  },
+  cardImage:{
+    width: deviceX,
+    height: deviceY/ 2,
+    resizeMode: 'contain',
+  },
+  textBtn1:{
+    fontSize: 20,
   },
 }
 

@@ -153,7 +153,6 @@ const deviceX = Dimensions.get('window').width
 const styles = {
   imageStyle:{
     width: deviceX,
-
     resizeMode: 'contain',
   },
   container: {
