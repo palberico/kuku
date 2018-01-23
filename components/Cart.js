@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Col, Row, Grid } from 'react-native-easy-grid';
-import { Text, Dimensions, View } from 'react-native';
+import { Text, Dimensions, View, Image } from 'react-native';
 import Nav from './Nav';
 import CartCards from './CartCards';
 import { connect } from 'react-redux'
@@ -12,6 +11,11 @@ import {
   Button,
   Icon,
   Card,
+  CardItem,
+  Body,
+  Left,
+  Right,
+  Thumbnail,
 } from 'native-base';
 
 class Cart extends Component {
@@ -27,7 +31,37 @@ class Cart extends Component {
   displayItems = () => {
     return this.state.items.map( item => {
       return (
-        <Text>{item['Title']}</Text>
+        <Card>
+          <CardItem>
+            <Left>
+              <Thumbnail source={{uri:item['logo']}} />
+              <Body>
+                <Text>{item['Title']}</Text>
+                <Text note>{item['Vendor']}</Text>
+              </Body>
+            </Left>
+          </CardItem>
+          <CardItem cardBody>
+            <Image source={{uri:item['Image Src']}} style={{height: 200, width: null, flex: 1}}/>
+          </CardItem>
+          <CardItem>
+            <Body>
+              <Text>{item['Body']}</Text>
+            </Body>
+          </CardItem>
+          <CardItem>
+            <Left>
+              <Button transparent>
+                <Icon active name="ios-cart" />
+              </Button>
+            </Left>
+            <Right>
+              <Button transparent>
+                <Icon active name="ios-trash" />
+              </Button>
+            </Right>
+          </CardItem>
+        </Card>
       )
     })
   }
@@ -38,40 +72,30 @@ class Cart extends Component {
         <Container style={styles.content}>
           <Nav />
           <Content>
-            <Grid>
-              <Col>
-                <Row>
-                  <View>
-
-                    {this.displayItems()}
-
-                  </View>
-                </Row>
-              </Col>
-            </Grid>
+            <View>
+              {this.displayItems()}
+            </View>
           </Content>
           <Footer>
             <FooterTab style={styles.footer}>
               <Button vertical onPress={this.openShop}>
                 <Icon name='ios-pricetags-outline' />
-                  <Text>Shop</Text>
+                <Text>Shop</Text>
               </Button>
               <Button vertical>
-                <Icon name='md-heart-outline' />
-                  <Text>Loved</Text>
+                <Icon name='ios-settings-outline' />
+                <Text>Settings</Text>
               </Button>
             </FooterTab>
           </Footer>
         </Container>
       )
-    }
-    else{
+    }else{
       return(
         <Card>
           <Text>Loading...</Text>
         </Card>
       )
-
     }
   }
 }

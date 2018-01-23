@@ -47,8 +47,8 @@ class Shop extends Component {
   render(){
     if(this.state.loaded){
       return(
-       <Container style={styles.content}>
-         <Nav />
+        <Container style={styles.content}>
+          <Nav />
           <Content scrollEnabled={false} style={styles.shop}>
             <View>
               <DeckSwiper
@@ -61,23 +61,23 @@ class Shop extends Component {
               }/>
             </View>
           </Content>
-            <Footer>
-              <FooterTab style={styles.footer}>
-                <Button vertical onPress={this.openSettings}>
-                   <Icon name='ios-settings-outline' />
-                     <Text>Settings</Text>
-                 </Button>
-                 <Button vertical onPress={this.openDescription}>
-                   <Icon name='ios-search-outline' />
-                     <Text>Search</Text>
-                 </Button>
-                 <Button vertical onPress={this.openCart}>
-                   <Icon name='md-heart-outline' />
-                     <Text>Loved</Text>
-                 </Button>
-               </FooterTab>
-             </Footer>
-       </Container>
+          <Footer>
+            <FooterTab style={styles.footer}>
+              <Button vertical onPress={this.openSettings}>
+                <Icon name='ios-settings-outline' />
+                <Text>Settings</Text>
+              </Button>
+              <Button vertical onPress={this.openDescription}>
+                <Icon name='ios-search-outline' />
+                <Text>Search</Text>
+              </Button>
+              <Button vertical onPress={this.openCart}>
+                <Icon name='md-heart-outline' />
+                <Text>Loved</Text>
+              </Button>
+            </FooterTab>
+          </Footer>
+        </Container>
       )
     }
     else{
