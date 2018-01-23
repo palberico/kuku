@@ -3,6 +3,7 @@ import { Text, View, Image, TouchableHighlight, Dimensions } from 'react-native'
 import Nav from './Nav';
 import CartCards from './CartCards';
 import { connect } from 'react-redux';
+import axios from 'axios'
 import { setSelected } from '../actions/products';
 import {
   Container,
@@ -28,8 +29,15 @@ class Cart extends Component {
   }
 
   componentDidMount(){
-    this.setState({ items: this.props.items.cart, loaded: true })
-  }
+    axios.get('https://kukudb-ff7f7.firebaseio.com/cart.json')
+      .then( res => {
+        let array = []
+        for ( let each in res.data){
+          array.push(res.data[each])
+        }
+        this.setState({ items: array, loaded: true })
+      })
+    }
 
   openShop = () => this.props.history.push('/shop')
 
@@ -38,43 +46,29 @@ class Cart extends Component {
       return (
 
         <TouchableHighlight onPress={() => this.showDescription(this.props.item['Title'])}>
-        <Card>
-          {/* <CardItem>
-            <Left>
-              <Thumbnail source={{uri:item['logo']}} />
-              <Body>
-                <Text>{item['Title']}</Text>
-                <Text note>{item['Vendor']}</Text>
-              </Body>
-            </Left>
-          </CardItem> */}
-          <CardItem cardBody>
-            <Image source={{uri:item['Image Src']}} style={styles.cardImage} />
-          </CardItem>
-          {/* <CardItem>
-            <Body>
-              <Text>{item['Body']}</Text>
-            </Body>
-          </CardItem> */}
-          <CardItem>
-          
-            <Left>
-              <Button transparent>
-                <Text note style={styles.textBtn1}>{item['Vendor']}</Text>
-                <Text style={styles.textBtn1}> - </Text>
-                <Text style={styles.textBtn1}>{item['Type']}</Text>
-              </Button>
-            </Left>
-            <Right>
-              <Button transparent>
-                <Text style={styles.textBtn1}>Unlove</Text>
-              </Button>
-            </Right>
-           
-          </CardItem>
-        </Card>
+          <Card>
+            <CardItem cardBody>
+              <Image source={{uri:item['Image Src']}} style={styles.cardImage} />
+            </CardItem>
+            <CardItem>
+
+              <Left>
+                <Button transparent>
+                  <Text note style={styles.textBtn1}>{item['Vendor']}</Text>
+                  <Text style={styles.textBtn1}> - </Text>
+                  <Text style={styles.textBtn1}>{item['Type']}</Text>
+                </Button>
+              </Left>
+              <Right>
+                <Button transparent>
+                  <Text style={styles.textBtn1}>Unlove</Text>
+                </Button>
+              </Right>
+
+            </CardItem>
+          </Card>
         </TouchableHighlight>
-        
+
       )
     })
   }
@@ -133,10 +127,6 @@ const styles = {
   },
 }
 
-const mapStateToProps = (state) => {
-  return {
-    items: state.cart
-  }
-}
 
-export default connect(mapStateToProps)(Cart);
+
+export default Cart;

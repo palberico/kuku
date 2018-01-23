@@ -13,17 +13,18 @@ import {
   Icon,
   DeckSwiper,
 } from 'native-base';
-import { connect } from 'react-redux';
 import { fetchUnseen } from '../actions/products';
 
 class Shop extends Component {
 
-  state = { loaded: false }
+  state = { loaded: false, unseenItems: [] }
 
   componentDidMount = async () => {
-    await this.props.dispatch(fetchUnseen())
-    this.setState({ loaded: true })
-  }
+    axios.get('https://kukudb-ff7f7.firebaseio.com/unseen_items.json')
+      .then( res => {
+        this.setState({ loaded: true, unseenItems: res.data })
+      })
+    }
 
   openSettings = () => {
     this.props.history.push('/settings')
@@ -33,23 +34,22 @@ class Shop extends Component {
     this.props.history.push('/cart')
   }
 
-  leftAlert = (cardObject) => {
-    console.log(Object.keys(cardObject))
-    // axios.get('https://kukudb-ff7f7.firebaseio.com/dislike.json')
-    //   .then( res => {
-    //     res.data === null ?
-    //     axios.put('https://kukudb-ff7f7.firebaseio.com/dislike.json', cardObject ) :
-    //     axios.post('https://kukudb-ff7f7.firebaseio.com/dislike.json', cardObject )
-      // })
+  leftAlert = async (cardObject) => {
+    await axios.post('https://kukudb-ff7f7.firebaseio.com/dislike.json', cardObject )
   }
 
-  sendToCart = (cardObject) => {
-    axios.get('https://kukudb-ff7f7.firebaseio.com/cart.json')
-      .then( res => {
-        res.data === null ?
-        axios.post('https://kukudb-ff7f7.firebaseio.com/cart.json', cardObject ) :
-        axios.post('https://kukudb-ff7f7.firebaseio.com/cart.json', cardObject )
-      })
+  sendToCart = async (cardObject) => {
+    await axios.post('https://kukudb-ff7f7.firebaseio.com/cart.json', cardObject )
+  }
+
+  emptyShop = () => {
+    return(
+      <View>
+        <Text style={{color: black}}>
+          Deck is Empty!
+        </Text>
+      </View>
+    )
   }
 
   render(){
@@ -61,9 +61,11 @@ class Shop extends Component {
             <View>
               <DeckSwiper
                 ref={(swiper) => this.swiper = swiper}
-                dataSource={this.props.unseen}
+                dataSource={this.state.unseenItems}
                 onSwipeLeft={this.leftAlert}
                 onSwipeRight={this.sendToCart}
+                renderEmpty={this.emptyShop}
+                looping={false}
                 renderItem={item =>
                 <CardComp item={item} history={this.props.history} />
               }/>
@@ -122,10 +124,4 @@ let styles = {
   },
 }
 
-const mapStateToProps = (state) => {
-  return {
-    unseen: state.products.unseen_products
-  }
-}
-
-export default connect(mapStateToProps)(Shop);
+export default Shop;
