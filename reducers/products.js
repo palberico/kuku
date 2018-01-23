@@ -5,9 +5,9 @@ const products = ( state = {}, action) => {
         products: action.products
       }
     };
-    case 'SET_PRODUCTS':{
+    case 'FETCH_UNSEEN':{
       return{
-        products: action.products
+        unseen_products: action.products
       }
     }
     default:

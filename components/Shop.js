@@ -14,14 +14,14 @@ import {
   DeckSwiper,
 } from 'native-base';
 import { connect } from 'react-redux';
-import { fetchProducts, setProducts, addToCart } from '../actions/products';
+import { fetchUnseen } from '../actions/products';
 
 class Shop extends Component {
 
   state = { loaded: false }
 
   componentDidMount = async () => {
-    await this.props.dispatch(fetchProducts())
+    await this.props.dispatch(fetchUnseen())
     this.setState({ loaded: true })
   }
 
@@ -34,20 +34,21 @@ class Shop extends Component {
   }
 
   leftAlert = (cardObject) => {
-    axios.get('https://kukudb-ff7f7.firebaseio.com/dislike.json')
-      .then( res => {
-        res.data === null ?
-        axios.put('https://kukudb-ff7f7.firebaseio.com/dislike.json', cardObject ) :
-        axios.patch('https://kukudb-ff7f7.firebaseio.com/dislike.json', cardObject )
-      })
+    console.log(Object.keys(cardObject))
+    // axios.get('https://kukudb-ff7f7.firebaseio.com/dislike.json')
+    //   .then( res => {
+    //     res.data === null ?
+    //     axios.put('https://kukudb-ff7f7.firebaseio.com/dislike.json', cardObject ) :
+    //     axios.post('https://kukudb-ff7f7.firebaseio.com/dislike.json', cardObject )
+      // })
   }
 
   sendToCart = (cardObject) => {
     axios.get('https://kukudb-ff7f7.firebaseio.com/cart.json')
       .then( res => {
         res.data === null ?
-        axios.put('https://kukudb-ff7f7.firebaseio.com/cart.json', cardObject ) :
-        axios.patch('https://kukudb-ff7f7.firebaseio.com/cart.json', cardObject )
+        axios.post('https://kukudb-ff7f7.firebaseio.com/cart.json', cardObject ) :
+        axios.post('https://kukudb-ff7f7.firebaseio.com/cart.json', cardObject )
       })
   }
 
@@ -60,7 +61,7 @@ class Shop extends Component {
             <View>
               <DeckSwiper
                 ref={(swiper) => this.swiper = swiper}
-                dataSource={this.props.products}
+                dataSource={this.props.unseen}
                 onSwipeLeft={this.leftAlert}
                 onSwipeRight={this.sendToCart}
                 renderItem={item =>
@@ -123,8 +124,7 @@ let styles = {
 
 const mapStateToProps = (state) => {
   return {
-    products: state.products.products,
-    items: state.cart
+    unseen: state.products.unseen_products
   }
 }
 

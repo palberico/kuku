@@ -213,7 +213,7 @@ const styles = {
 
 const mapStateToProps = (state, props) => {
   return {
-    product: state.products.products.find( p => p['Title'] === props.match.params.title)
+    product: state.products.unseen_products.find( p => p['Title'] === props.match.params.title)
   }
 }
 

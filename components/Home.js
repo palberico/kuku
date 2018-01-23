@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Text, View, Image, Dimensions } from 'react-native';
 import { Link } from 'react-router-native';
 import { Col, Row, Grid } from 'react-native-easy-grid';
-import { 
+import { connect } from 'react-redux'
+import {
   Container,
   Header,
   Content,
@@ -10,6 +11,7 @@ import {
   Icon,
   Right,
 } from 'native-base';
+import { fetchProducts, setProducts, addToCart } from '../actions/products';
 
 var randomImages = [
   require('../images/home/tshirt.jpg'),
@@ -17,9 +19,13 @@ var randomImages = [
   require('../images/home/tshirt3.jpg'),
   require('../images/home/tshirt4.jpg'),
 ];
-    
+
 class Home extends Component {
-      
+
+  componentDidMount = async() => {
+    await this.props.dispatch(fetchProducts())
+  }
+
   joinEmailButton = () => {
     this.props.history.push('/register')
   }
@@ -118,4 +124,4 @@ const styles = {
   },
 }
 
-export default Home;
+export default connect()(Home);
