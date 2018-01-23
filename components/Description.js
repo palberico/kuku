@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Platform, Dimensions, Image } from 'react-native';
+import { View, Text, Platform, Dimensions, Image, Linking } from 'react-native';
 import ImageSlider from 'react-native-image-slider';
 import Nav from './Nav';
 import { Col, Row, Grid } from 'react-native-easy-grid';
@@ -33,6 +33,16 @@ class Description extends Component {
     this.props.history.push('/cart')
   }
 
+  websiteLink = () => {
+    Linking.canOpenURL(this.props.product['link']).then(supported => {
+      if (!supported) {
+        console.log('Can\‘t handle url: ' + this.props.product['link']);
+      } else {
+        return Linking.openURL(this.props.product['link']);
+      }
+    }).catch(err => console.error('An error occurred', err));
+  }
+
   render() {
     const { product } = this.props;
 
@@ -55,7 +65,7 @@ class Description extends Component {
             <Grid>
               <Row>
               <Col>
-                <Button block dark style={styles.btnOne}>
+                <Button block dark style={styles.btnOne} onPress={this.websiteLink}>
                   <Text style={styles.textBtn1}>Buy from Retailer</Text>
                 </Button>
               </Col>
