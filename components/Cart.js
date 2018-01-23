@@ -76,7 +76,9 @@ class Cart extends Component {
         <Container style={styles.content}>
           <Nav />
           <Content>
-            <Text style={styles.text}>Your Cart is Empty</Text>
+            { this.state.items.length <= 0 ?
+              <Text style={styles.text}>Your Cart is Empty</Text> :
+              <Text></Text> } 
             <View>
               {this.displayItems()}
             </View>
