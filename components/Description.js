@@ -33,10 +33,6 @@ class Description extends Component {
     this.props.history.push('/cart')
   }
 
-// TODO: CART WORKS ==> 1
-// TODO: CATEGORIES ==> 2
-// TODO: RANDOMIZE CARDS ==> 3
-// TODO: USER AUTH ==
   render() {
     const { product } = this.props;
 
@@ -45,13 +41,13 @@ class Description extends Component {
         <Nav />
         <Content>
           <View style={styles.container}>
-              <ImageSlider
+              <ImageSlider 
                   images={[
                     this.props.product['Image Src'],
-                    this.props.product['Alt1']]}
+                    this.props.product['Alt1']]} 
                   height={deviceY/ 1.5}
                   position={this.state.position}
-                  onPositionChanged={position => this.setState({position})
+                  onPositionChanged={position => this.setState({position}) 
                 }
               />
           </View>

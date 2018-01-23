@@ -10,6 +10,7 @@ import Shop from './components/Shop';
 import Cart from './components/Cart';
 import Login from './components/Login';
 import Terms from './components/Terms';
+import Search from './components/Search';
 import CardComp from './components/Card';
 import Privacy from './components/Privacy';
 import Settings from './components/Settings';
@@ -28,6 +29,7 @@ class App extends Component {
                 <Route exact path="/cart" component={Cart} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/terms" component={Terms} />
+                <Route exact path="/search" component={Search} />
                 <Route exact path="/card" component={CardComp}  />
                 <Route exact path="/privacy" component={Privacy} />
                 <Route exact path="/settings" component={Settings} />

@@ -13,7 +13,7 @@ import {
 } from 'native-base';
 import { fetchProducts, setProducts, addToCart } from '../actions/products';
 
-var randomImages = [
+const randomImages = [
   require('../images/home/tshirt.jpg'),
   require('../images/home/tshirt2.jpg'),
   require('../images/home/tshirt3.jpg'),

@@ -82,9 +82,9 @@ class Shop extends Component {
                 <Icon name='ios-settings-outline' />
                 <Text>Settings</Text>
               </Button>
-              <Button vertical onPress={this.openDescription}>
+              <Button vertical onPress={this.openSearch}>
                 <Icon name='ios-search-outline' />
-                <Text>Search</Text>
+                <Text>Categories</Text>
               </Button>
               <Button vertical onPress={this.openCart}>
                 <Icon name='md-heart-outline' />

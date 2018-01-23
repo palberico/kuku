@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { Text, View, Image, TouchableHighlight, Dimensions } from 'react-native';
 import Nav from './Nav';
-import CartCards from './CartCards';
 import { connect } from 'react-redux';
-import axios from 'axios'
+import axios from 'axios';
 import { setSelected } from '../actions/products';
 import {
   Container,
@@ -50,9 +49,7 @@ class Cart extends Component {
             <CardItem cardBody>
               <Image source={{uri:item['Image Src']}} style={styles.cardImage} />
             </CardItem>
-
             <CardItem>
-
               <Left>
                 <Button transparent>
                   <Text note style={styles.textBtn1}>{item['Vendor']}</Text>
@@ -60,15 +57,12 @@ class Cart extends Component {
                   <Text style={styles.textBtn1}>{item['Type']}</Text>
                 </Button>
               </Left>
-
               <Right>
                 <Button transparent>
                   <Text style={styles.textBtn1}>Unlove</Text>
                 </Button>
               </Right>
-
             </CardItem>
-            
           </Card>
         </TouchableHighlight>
 
@@ -82,6 +76,7 @@ class Cart extends Component {
         <Container style={styles.content}>
           <Nav />
           <Content>
+            <Text style={styles.text}>Your Cart is Empty</Text>
             <View>
               {this.displayItems()}
             </View>
@@ -127,6 +122,10 @@ const styles = {
   },
   textBtn1:{
     fontSize: 20,
+  },
+  text:{
+    fontSize: 20,
+    color: 'white',
   },
 }
 
