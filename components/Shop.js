@@ -17,12 +17,15 @@ import { fetchUnseen } from '../actions/products';
 
 class Shop extends Component {
 
-  state = { loaded: false, unseenItems: [] }
+  state = { loaded: false, products: [] }
 
   componentDidMount = async () => {
     axios.get('https://kukudb-ff7f7.firebaseio.com/unseen_items.json')
       .then( res => {
-        this.setState({ loaded: true, unseenItems: res.data })
+        let filtered = res.data.filter( item => {
+           return item !== null
+        })
+        this.setState({ loaded: true, products: filtered })
       })
     }
 
@@ -35,17 +38,19 @@ class Shop extends Component {
   }
 
   leftAlert = async (cardObject) => {
-    await axios.post('https://kukudb-ff7f7.firebaseio.com/dislike.json', cardObject )
+    await axios.post( 'https://kukudb-ff7f7.firebaseio.com/dislike.json', cardObject )
+    await axios.delete(`https://kukudb-ff7f7.firebaseio.com/unseen_items/${cardObject['Id']}.json`)
   }
 
   sendToCart = async (cardObject) => {
-    await axios.post('https://kukudb-ff7f7.firebaseio.com/cart.json', cardObject )
+    await axios.post( 'https://kukudb-ff7f7.firebaseio.com/cart.json', cardObject )
+    await axios.delete(`https://kukudb-ff7f7.firebaseio.com/unseen_items/${cardObject['Id']}.json`)
   }
 
   emptyShop = () => {
     return(
       <View>
-        <Text style={{color: black}}>
+        <Text style={{color: 'white'}}>
           Deck is Empty!
         </Text>
       </View>
@@ -61,7 +66,7 @@ class Shop extends Component {
             <View>
               <DeckSwiper
                 ref={(swiper) => this.swiper = swiper}
-                dataSource={this.state.unseenItems}
+                dataSource={this.state.products}
                 onSwipeLeft={this.leftAlert}
                 onSwipeRight={this.sendToCart}
                 renderEmpty={this.emptyShop}

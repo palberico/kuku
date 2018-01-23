@@ -35,7 +35,7 @@ class Cart extends Component {
         for ( let each in res.data){
           array.push(res.data[each])
         }
-        this.setState({ items: array, loaded: true })
+        this.setState({ items: array, loaded: true})
       })
     }
 
@@ -45,11 +45,12 @@ class Cart extends Component {
     return this.state.items.map( item => {
       return (
 
-        <TouchableHighlight onPress={() => this.showDescription(this.props.item['Title'])}>
+        <TouchableHighlight onPress={() => this.showDescription(item['Title'])} key={item['Title']}>
           <Card>
             <CardItem cardBody>
               <Image source={{uri:item['Image Src']}} style={styles.cardImage} />
             </CardItem>
+
             <CardItem>
 
               <Left>
@@ -59,6 +60,7 @@ class Cart extends Component {
                   <Text style={styles.textBtn1}>{item['Type']}</Text>
                 </Button>
               </Left>
+
               <Right>
                 <Button transparent>
                   <Text style={styles.textBtn1}>Unlove</Text>
@@ -66,6 +68,7 @@ class Cart extends Component {
               </Right>
 
             </CardItem>
+            
           </Card>
         </TouchableHighlight>
 
