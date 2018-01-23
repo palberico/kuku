@@ -5,6 +5,11 @@ const products = ( state = {}, action) => {
         products: action.products
       }
     };
+    case 'SET_PRODUCTS':{
+      return{
+        products: action.products
+      }
+    }
     default:
       return state;
   }

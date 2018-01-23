@@ -14,21 +14,18 @@ import {
   DeckSwiper,
 } from 'native-base';
 import { connect } from 'react-redux';
-import { fetchProducts, addToCart } from '../actions/products';
+import { fetchProducts, setProducts, addToCart } from '../actions/products';
 
 class Shop extends Component {
 
-  state = { selected: {}, loaded: false }
+  state = { loaded: false, products: []  }
 
   componentDidMount = async () => {
     await this.props.dispatch(fetchProducts())
-    this.setState({ loaded: true })
-  }
-
-  openDescription = () => {
-    // TODO figure out how to pass 'Handle' up to shop to then send to description
-    // this.props.history.push('/description')
-    // note** this is going to suck
+    let filteredArray = this.props.products.filter( product => {
+      return this.props.items.cart.indexOf(product) < 0
+    })
+    this.setState({ products: filteredArray, loaded: true });
   }
 
   openSettings = () => {
@@ -43,9 +40,8 @@ class Shop extends Component {
     this.setState({selected: cardObject})
   }
 
-  sendToCart = async (cardObject) => {
-    await this.props.dispatch(addToCart(cardObject))
-
+  sendToCart = (cardObject) => {
+    this.props.dispatch(addToCart(cardObject))
   }
 
   render(){
@@ -57,7 +53,7 @@ class Shop extends Component {
             <View>
               <DeckSwiper
                 ref={(swiper) => this.swiper = swiper}
-                dataSource={this.props.products}
+                dataSource={this.state.products}
                 onSwipeLeft={this.leftAlert}
                 onSwipeRight={this.sendToCart}
                 renderItem={item =>
@@ -121,6 +117,7 @@ let styles = {
 const mapStateToProps = (state) => {
   return {
     products: state.products.products,
+    items: state.cart
   }
 }
 

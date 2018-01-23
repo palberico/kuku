@@ -7,6 +7,10 @@ export const fetchProducts = () => dispatch => {
     })
 }
 
+export const setProducts = (array) => dispatch => {
+  return dispatch({ type: 'SET_PRODUCTS', products: array })
+}
+
 export const addToCart = (item) => dispatch => {
   return dispatch({ type: 'ADD_TO_CART', cartItem: item})
 }
