@@ -36,6 +36,7 @@ class Description extends Component {
 // TODO: CART WORKS ==> 1
 // TODO: CATEGORIES ==> 2
 // TODO: RANDOMIZE CARDS ==> 3
+// TODO: USER AUTH ==
   render() {
     const { product } = this.props;
 
@@ -64,10 +65,10 @@ class Description extends Component {
               </Col>
               <Col>
                 <Button iconLeft block dark style={styles.btnTwo} onPress={this.changeLike}>
-                <Icon style={styles.iconBtn}
-                      name={this.state.liked ? 'ios-heart' : 'heart'}
-                />
-                <Text style={styles.textBtn2}>Love It</Text>
+                  <Icon style={styles.iconBtn}
+                        name={this.state.liked ? 'ios-heart' : 'heart'}
+                  />
+                  <Text style={styles.textBtn2}>Love It</Text>
                 </Button>
               </Col>
               </Row>
@@ -152,7 +153,6 @@ const deviceX = Dimensions.get('window').width
 const styles = {
   imageStyle:{
     width: deviceX,
-
     resizeMode: 'contain',
   },
   container: {

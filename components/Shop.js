@@ -14,21 +14,18 @@ import {
   DeckSwiper,
 } from 'native-base';
 import { connect } from 'react-redux';
-import { fetchProducts } from '../actions/products';
+import { fetchProducts, setProducts, addToCart } from '../actions/products';
 
 class Shop extends Component {
 
-  state = { selected: {}, loaded: false }
+  state = { loaded: false, products: []  }
 
   componentDidMount = async () => {
     await this.props.dispatch(fetchProducts())
-    this.setState({ loaded: true })
-  }
-
-  openDescription = () => {
-    // TODO figure out how to pass 'Handle' up to shop to then send to description
-    // this.props.history.push('/description')
-    // note** this is going to suck
+    let filteredArray = this.props.products.filter( product => {
+      return this.props.items.cart.indexOf(product) < 0
+    })
+    this.setState({ products: filteredArray, loaded: true });
   }
 
   openSettings = () => {
@@ -44,19 +41,19 @@ class Shop extends Component {
   }
 
   sendToCart = (cardObject) => {
-    this.setState({selected: cardObject})
+    this.props.dispatch(addToCart(cardObject))
   }
 
   render(){
     if(this.state.loaded){
       return(
-       <Container style={styles.content}>
-         <Nav />
+        <Container style={styles.content}>
+          <Nav />
           <Content scrollEnabled={false} style={styles.shop}>
             <View>
               <DeckSwiper
                 ref={(swiper) => this.swiper = swiper}
-                dataSource={this.props.products}
+                dataSource={this.state.products}
                 onSwipeLeft={this.leftAlert}
                 onSwipeRight={this.sendToCart}
                 renderItem={item =>
@@ -64,23 +61,23 @@ class Shop extends Component {
               }/>
             </View>
           </Content>
-            <Footer>
-              <FooterTab style={styles.footer}>
-                <Button vertical onPress={this.openSettings}>
-                   <Icon name='ios-settings-outline' />
-                     <Text>Settings</Text>
-                 </Button>
-                 <Button vertical onPress={this.openDescription}>
-                   <Icon name='ios-search-outline' />
-                     <Text>Search</Text>
-                 </Button>
-                 <Button vertical onPress={this.openCart}>
-                   <Icon name='md-heart-outline' />
-                     <Text>Loved</Text>
-                 </Button>
-               </FooterTab>
-             </Footer>
-       </Container>
+          <Footer>
+            <FooterTab style={styles.footer}>
+              <Button vertical onPress={this.openSettings}>
+                <Icon name='ios-settings-outline' />
+                <Text>Settings</Text>
+              </Button>
+              <Button vertical onPress={this.openDescription}>
+                <Icon name='ios-search-outline' />
+                <Text>Search</Text>
+              </Button>
+              <Button vertical onPress={this.openCart}>
+                <Icon name='md-heart-outline' />
+                <Text>Loved</Text>
+              </Button>
+            </FooterTab>
+          </Footer>
+        </Container>
       )
     }
     else{
@@ -120,7 +117,7 @@ let styles = {
 const mapStateToProps = (state) => {
   return {
     products: state.products.products,
-    selected: state.products.selected
+    items: state.cart
   }
 }
 
