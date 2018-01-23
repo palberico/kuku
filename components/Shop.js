@@ -37,6 +37,10 @@ class Shop extends Component {
     this.props.history.push('/cart')
   }
 
+  openSearch = () => {
+    this.props.history.push('/search')
+  }
+
   leftAlert = async (cardObject) => {
     await axios.post( 'https://kukudb-ff7f7.firebaseio.com/dislike.json', cardObject )
     await axios.delete(`https://kukudb-ff7f7.firebaseio.com/unseen_items/${cardObject['Id']}.json`)
