@@ -19,20 +19,7 @@ import {
 } from 'native-base';
 
 class Description extends Component {
-  // constructor(props) {
-  //   super(props);
-
   state = { position: 1, interval: null, liked: false  };
-
-  componentWillMount() {
-    this.setState({interval: setInterval(() => {
-    this.setState({position: this.state.position === 2 ? 0 : this.state.position + 1});
-    }, 2000)});
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.state.interval);
-  }
 
   changeLike = () => {
     this.setState({liked: !this.state.liked})
@@ -58,17 +45,15 @@ class Description extends Component {
         <Nav />
         <Content>
           <View style={styles.container}>
-            {/* TODO make this work by implementing an array from image property */}
-            <ImageSlider
-                images={[
-                  this.props.product['Image Src'],
-                  this.props.product['Alt1'],
-                  this.props.product['Alt2']]}
-                height={deviceY/ 1.8}
-                position={this.state.position}
-                onPositionChanged={position => this.setState({position})
-              }
-            />
+              <ImageSlider
+                  images={[
+                    this.props.product['Image Src'],
+                    this.props.product['Alt1']]}
+                  height={deviceY/ 1.5}
+                  position={this.state.position}
+                  onPositionChanged={position => this.setState({position})
+                }
+              />
           </View>
           <Card style={styles.card}>
             <Grid>
