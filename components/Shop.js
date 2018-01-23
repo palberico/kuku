@@ -18,14 +18,11 @@ import { fetchProducts, setProducts, addToCart } from '../actions/products';
 
 class Shop extends Component {
 
-  state = { loaded: false, products: []  }
+  state = { loaded: false }
 
   componentDidMount = async () => {
     await this.props.dispatch(fetchProducts())
-    let filteredArray = this.props.products.filter( product => {
-      return this.props.items.cart.indexOf(product) < 0
-    })
-    this.setState({ products: filteredArray, loaded: true });
+    this.setState({ loaded: true })
   }
 
   openSettings = () => {
@@ -37,11 +34,21 @@ class Shop extends Component {
   }
 
   leftAlert = (cardObject) => {
-    this.setState({selected: cardObject})
+    axios.get('https://kukudb-ff7f7.firebaseio.com/dislike.json')
+      .then( res => {
+        res.data === null ?
+        axios.put('https://kukudb-ff7f7.firebaseio.com/dislike.json', cardObject ) :
+        axios.patch('https://kukudb-ff7f7.firebaseio.com/dislike.json', cardObject )
+      })
   }
 
   sendToCart = (cardObject) => {
-    this.props.dispatch(addToCart(cardObject))
+    axios.get('https://kukudb-ff7f7.firebaseio.com/cart.json')
+      .then( res => {
+        res.data === null ?
+        axios.put('https://kukudb-ff7f7.firebaseio.com/cart.json', cardObject ) :
+        axios.patch('https://kukudb-ff7f7.firebaseio.com/cart.json', cardObject )
+      })
   }
 
   render(){
@@ -53,7 +60,7 @@ class Shop extends Component {
             <View>
               <DeckSwiper
                 ref={(swiper) => this.swiper = swiper}
-                dataSource={this.state.products}
+                dataSource={this.props.products}
                 onSwipeLeft={this.leftAlert}
                 onSwipeRight={this.sendToCart}
                 renderItem={item =>
