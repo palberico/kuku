@@ -40,6 +40,10 @@ class ListIcon extends Component {
     this.props.history.push('/terms')
   }
 
+  faq = () => {
+    this.props.history.push('/faq')
+  }
+
   facebookLogIn = async () => {
     const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync('534726780240095', {
         permissions: ['public_profile'],
@@ -163,7 +167,7 @@ class ListIcon extends Component {
             <ListItem itemDivider>
               <Text>Support</Text>
             </ListItem>
-            <ListItem icon onPress={this.logout}>
+            <ListItem icon onPress={this.faq}>
               <Body>
                 <Text>FAQs</Text>
               </Body>

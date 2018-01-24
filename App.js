@@ -5,12 +5,13 @@ import { Container, Header, Footer, Content, Root } from 'native-base';
 import { StackNavigator } from "react-navigation";
 import { Provider } from 'react-redux';
 import store from './store';
+import Faq from './components/Faq';
 import Home from './components/Home';
 import Shop from './components/Shop';
 import Cart from './components/Cart';
-import Custom from './components/Custom';
 import Login from './components/Login';
 import Terms from './components/Terms';
+import Custom from './components/Custom';
 import Search from './components/Search';
 import CardComp from './components/Card';
 import Privacy from './components/Privacy';
@@ -26,6 +27,7 @@ class App extends Component {
             <NativeRouter>
               <Switch>
                 <Route exact path="/" component={Home}  />
+                <Route exact path="/faq" component={Faq} />
                 <Route exact path="/shop" component={Shop} />
                 <Route exact path="/cart" component={Cart} />
                 <Route exact path="/custom/:category" component={Custom} />

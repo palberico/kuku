@@ -64,7 +64,7 @@ class Cart extends Component {
               </Left>
               <Right>
                 <Button transparent>
-                  <Text style={styles.textBtn1}>Unlove</Text>
+                  <Icon name='ios-close-circle-outline' style={styles.deleteIcon} />
                 </Button>
               </Right>
             </CardItem>
@@ -82,7 +82,7 @@ class Cart extends Component {
           <Nav />
           <Content>
             { this.state.items.length <= 0 ?
-              <Text style={styles.text}>Your Cart is Empty</Text> :
+              <Text style={styles.textEmptyCart}>Your Cart is Empty</Text> :
               <Text></Text> } 
             <View>
               {this.displayItems()}
@@ -133,6 +133,17 @@ const styles = {
   text:{
     fontSize: 20,
     color: 'white',
+  },
+  textEmptyCart:{
+    flex: 1,
+    marginTop: '50%',
+    textAlign: 'center',
+    fontSize: 30,
+    color: 'white',
+  },
+  deleteIcon:{
+    fontSize: 35,
+    color: 'black',
   },
 }
 

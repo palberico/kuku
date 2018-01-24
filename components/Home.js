@@ -92,6 +92,7 @@ class Home extends Component {
     );
   }
 }
+
 const deviceHeight = Dimensions.get('window').height
 const deviceWidth = Dimensions.get('window').height
 const deviceY = Dimensions.get('window').height
