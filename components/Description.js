@@ -85,6 +85,7 @@ class Description extends Component {
                 <Body>
                   <Text style={styles.name}>{product['Vendor']}</Text>
                   <Text note>{product['Title']}</Text>
+                  <Text note>{product['Variant Price']}</Text>
                 </Body>
               </Left>
             </CardItem>
