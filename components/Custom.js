@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { View, Text, Image, Dimensions } from 'react-native'
 import Loader from './Loader';
 import axios from 'axios'
+import { connect } from 'react-redux';
+import { addToCart } from '../actions/products';
 import {
   Container,
   Content,
@@ -10,6 +12,7 @@ import {
   Button,
   Icon,
   DeckSwiper,
+  Badge,
 } from 'native-base';
 import Nav from './Nav';
 import CardComp from './Card';
@@ -37,11 +40,22 @@ class Custom extends Component {
     }
 
     openCart = () => {
-      this.props.history.push('/cart')
+      this.props.history.push(`/cart/${this.props.match.params.category}`)
     }
 
     openSearch = () => {
       this.props.history.push('/search')
+    }
+
+    leftAlert = async (cardObject) => {
+      await axios.post( 'https://kukudb-ff7f7.firebaseio.com/dislike.json', cardObject )
+      await axios.delete(`https://kukudb-ff7f7.firebaseio.com/unseen_items/${cardObject['Id']}.json`)
+    }
+
+    sendToCart = async (cardObject) => {
+      await axios.post( 'https://kukudb-ff7f7.firebaseio.com/cart.json', cardObject )
+      await axios.delete(`https://kukudb-ff7f7.firebaseio.com/unseen_items/${cardObject['Id']}.json`)
+      this.props.dispatch(addToCart())
     }
 
     emptyShop = () => {
@@ -69,7 +83,7 @@ class Custom extends Component {
                   renderEmpty={this.emptyShop}
                   looping={false}
                   renderItem={item =>
-                  <CardComp item={item} history={this.props.history} />
+                  <CardComp item={item} history={this.props.history} category={this.props.match.params.category} />
                 }/>
               </View>
             </Content>
@@ -83,7 +97,8 @@ class Custom extends Component {
                   <Icon name='ios-search-outline' />
                   <Text>Categories</Text>
                 </Button>
-                <Button vertical onPress={this.openCart}>
+                <Button badge vertical onPress={this.openCart}>
+                  <Badge><Text style={{color: 'white'}}>{this.props.cart}</Text></Badge>
                   <Icon name='md-heart-outline' />
                   <Text>Loved</Text>
                 </Button>
@@ -126,5 +141,11 @@ let styles = {
     backgroundColor: '#ffffff'
   },
 }
+const mapStateToProps = (state) => {
+  return {
+    cart: state.cart
+  }
+}
 
-export default Custom
+
+export default connect(mapStateToProps)(Custom);

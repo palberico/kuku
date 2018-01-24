@@ -4,6 +4,7 @@ import ImageSlider from 'react-native-image-slider';
 import Nav from './Nav';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import { connect } from 'react-redux';
+import { addToCart } from '../actions/products';
 import { Link } from 'react-router-native';
 import axios from 'axios'
 import {
@@ -18,6 +19,7 @@ import {
   Icon,
   Card,
   CardItem,
+  Badge
 } from 'native-base';
 
 class Description extends Component {
@@ -27,14 +29,20 @@ class Description extends Component {
     await axios.post( 'https://kukudb-ff7f7.firebaseio.com/cart.json', this.props.product )
     await axios.delete(`https://kukudb-ff7f7.firebaseio.com/unseen_items/${this.props.product['Id']}.json`)
     this.setState({liked: !this.state.liked})
+    this.props.dispatch(addToCart())
   }
 
   return = () => {
-    this.props.history.push('/shop')
+    if (this.props.match.params.category === "kuku"){
+      this.props.history.push('/shop')
+    } else {
+      this.props.history.push(`/custom/${this.props.match.params.category}`)
+    }
+
   }
 
   goToCart = () => {
-    this.props.history.push('/cart')
+    this.props.history.push(`/cart/${this.props.product['Handle']}`)
   }
 
   websiteLink = () => {
@@ -144,9 +152,8 @@ class Description extends Component {
               <Icon name='ios-pricetags-outline' />
               <Text>Shop</Text>
             </Button>
-            <Button vertical onPress={this.goToCart}>
-              {/* <Button badge vertical onPress={this.addLike}>
-              <Badge><Text>{this.state.counter}</Text></Badge> */}
+            <Button badge vertical onPress={this.goToCart}>
+              <Badge><Text style={{color: 'white'}}>{this.props.cart}</Text></Badge>
               <Icon name='md-heart-outline' />
               <Text>Loved</Text>
             </Button>
@@ -156,8 +163,13 @@ class Description extends Component {
     );
   }
 }
-const deviceHeight = Dimensions.get('window').height
-const deviceWidth = Dimensions.get('window').height
+
+{/* <Button badge vertical onPress={this.openCart}>
+  <Badge><Text style={{color: 'white'}}>{this.props.cart}</Text></Badge>
+  <Icon name='md-heart-outline' />
+  <Text>Loved</Text>
+</Button> */}
+
 const deviceY = Dimensions.get('window').height
 const deviceX = Dimensions.get('window').width
 
@@ -224,7 +236,8 @@ const styles = {
 
 const mapStateToProps = (state, props) => {
   return {
-    product: state.products.products.find( p => p['Title'] === props.match.params.title)
+    product: state.products.products.find( p => p['Title'] === props.match.params.title),
+    cart: state.cart
   }
 }
 

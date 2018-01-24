@@ -29,7 +29,7 @@ class App extends Component {
                 <Route exact path="/" component={Home}  />
                 <Route exact path="/faq" component={Faq} />
                 <Route exact path="/shop" component={Shop} />
-                <Route exact path="/cart" component={Cart} />
+                <Route exact path="/cart/:category" component={Cart} />
                 <Route exact path="/custom/:category" component={Custom} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/terms" component={Terms} />
@@ -38,7 +38,7 @@ class App extends Component {
                 <Route exact path="/privacy" component={Privacy} />
                 <Route exact path="/settings" component={Settings} />
                 <Route exact path="/register" component={Register} />
-                <Route exact path="/description/:title" component={Description} />
+                <Route exact path="/description/:title/:category" component={Description} />
               </Switch>
             </NativeRouter>
         </Container>

@@ -15,14 +15,18 @@ import { setSelected } from '../actions/products';
 
 class CardComp extends Component {
 
-  showDescription = (title) => {
-    this.props.history.push(`/description/${title}`)
+  showDescription = (title, category) => {
+    if (this.props.category){
+      this.props.history.push(`/description/${title}/${category}`)
+    } else{
+      this.props.history.push(`/description/${title}/kuku`)
+    }
   }
 
   render(){
     return(
         <View>
-          <TouchableHighlight onPress={() => this.showDescription(this.props.item['Title'])}>
+          <TouchableHighlight onPress={() => this.showDescription(this.props.item['Title'], this.props.item['Handle'])}>
             {/* TODO: history.push description.js */}
             <Card>
               <CardItem>

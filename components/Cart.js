@@ -3,7 +3,7 @@ import { Text, View, Image, TouchableHighlight, Dimensions } from 'react-native'
 import Nav from './Nav';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import { setSelected } from '../actions/products';
+import { setSelected, subtractToCart } from '../actions/products';
 import { Link } from 'react-router-native';
 import {
   Container,
@@ -39,7 +39,13 @@ class Cart extends Component {
       })
     }
 
-  openShop = () => this.props.history.push('/shop')
+  openShop = () => {
+    if(this.props.match.params.category !== "shop"){
+      this.props.history.push(`/custom/${this.props.match.params.category}`)
+    } else {
+      this.props.history.push('/shop')
+    }
+  }
 
   openSettings = () => {
     this.props.history.push('/settings')
@@ -55,6 +61,7 @@ class Cart extends Component {
         }
         this.setState({ items: array, loaded: true, obj: res.data})
       })
+    this.props.dispatch(subtractToCart())
   }
 
   displayItems = () => {
@@ -162,4 +169,4 @@ const styles = {
 
 
 
-export default Cart;
+export default connect()(Cart);

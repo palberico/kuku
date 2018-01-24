@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Text, View, Image, Dimensions } from 'react-native';
 import axios from 'axios';
 import CardComp from './Card';
+import { connect } from 'react-redux';
+import { addToCart } from '../actions/products';
 import Nav from './Nav';
 import Loader from './Loader';
 import {
@@ -18,7 +20,7 @@ import {
 
 class Shop extends Component {
 
-  state = { loaded: false, products: [], cartCount: 0 }
+  state = { loaded: false, products: []  }
 
   componentDidMount = async () => {
     axios.get('https://kukudb-ff7f7.firebaseio.com/unseen_items.json')
@@ -28,22 +30,15 @@ class Shop extends Component {
         })
         this.setState({ loaded: true, products: filtered })
       })
-    axios.get('https://kukudb-ff7f7.firebaseio.com/cart.json')
-      .then( res => {
-        let array = []
-        for ( let each in res.data){
-          array.push(res.data[each])
-        }
-        this.setState({ cartCount: array.length })
-      })
     }
+
 
   openSettings = () => {
     this.props.history.push('/settings')
   }
 
   openCart = () => {
-    this.props.history.push('/cart')
+    this.props.history.push('/cart/shop')
   }
 
   openSearch = () => {
@@ -58,7 +53,7 @@ class Shop extends Component {
   sendToCart = async (cardObject) => {
     await axios.post( 'https://kukudb-ff7f7.firebaseio.com/cart.json', cardObject )
     await axios.delete(`https://kukudb-ff7f7.firebaseio.com/unseen_items/${cardObject['Id']}.json`)
-    this.setState({ cartCount: this.state.cartCount += 1})
+    this.props.dispatch(addToCart())
   }
 
   emptyShop = () => {
@@ -101,7 +96,7 @@ class Shop extends Component {
                 <Text>Categories</Text>
               </Button>
               <Button badge vertical onPress={this.openCart}>
-                <Badge><Text style={{color: 'white'}}>{this.state.cartCount}</Text></Badge>
+                <Badge><Text style={{color: 'white'}}>{this.props.cart}</Text></Badge>
                 <Icon name='md-heart-outline' />
                 <Text>Loved</Text>
               </Button>
@@ -146,4 +141,10 @@ let styles = {
   },
 }
 
-export default Shop;
+const mapStateToProps = (state) => {
+  return{
+    cart: state.cart
+  }
+}
+
+export default connect(mapStateToProps)(Shop);

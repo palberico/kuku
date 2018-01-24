@@ -19,6 +19,7 @@ export const fetchUnseen = () => dispatch => {
     })
 }
 
+
 export const addToCart = () => dispatch => {
   dispatch({ type: 'ADD_COUNT', count: 1 })
 }
