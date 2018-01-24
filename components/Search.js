@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
 import { Image, Dimensions } from 'react-native';
 import Nav from './Nav';
-import { 
-  Container, 
-  Header, 
-  Content, 
-  Card, 
-  CardItem, 
-  Thumbnail, 
-  Text, 
-  Button, 
-  Icon, 
+import {
+  Container,
+  Header,
+  Content,
+  Card,
+  CardItem,
+  Thumbnail,
+  Text,
+  Button,
+  Icon,
   Left,
   View,
-  Body, 
-  Right, 
-  Footer, 
+  Body,
+  Right,
+  Footer,
   FooterTab,
 } from 'native-base';
 
@@ -23,6 +23,10 @@ class Search extends Component {
 
   openShop = () => {
     this.props.history.push('/shop')
+  }
+
+  openCustom = (category) => {
+    this.props.history.push(`/custom/${category}`)
   }
 
   openSettings = () => {
@@ -44,7 +48,7 @@ class Search extends Component {
         <View>
           <Card>
           <CardItem cardBody>
-              <Image source={require('../images/header-logo.png')} 
+              <Image source={require('../images/header-logo.png')}
                 style={styles.cardImage}
                 />
             </CardItem>
@@ -64,7 +68,7 @@ class Search extends Component {
             </CardItem>
             <CardItem>
               <Body>
-                <Button transparent onPress={this.openShop} >
+                <Button transparent onPress={() => this.openCustom('Mens')} >
                   <Text style={styles.textBtn1}>Men's Kart</Text>
                 </Button>
               </Body>
@@ -77,7 +81,7 @@ class Search extends Component {
             </CardItem>
             <CardItem>
             <Body>
-                <Button transparent onPress={this.openShop} >
+                <Button transparent onPress={ () => this.openCustom('Womens')} >
                   <Text style={styles.textBtn1}>Women's Kart</Text>
                 </Button>
           </Body>
@@ -90,7 +94,7 @@ class Search extends Component {
             </CardItem>
             <CardItem>
               <Body>
-                <Button transparent onPress={this.openShop} >
+                <Button transparent onPress={ () => this.openCustom('Baby')} >
                   <Text style={styles.textBtn1}>Baby Kart</Text>
                 </Button>
             </Body>
@@ -103,7 +107,7 @@ class Search extends Component {
             </CardItem>
             <CardItem>
                 <Body>
-                <Button transparent onPress={this.openShop} >
+                <Button transparent onPress={ () => this.openCustom('Accessories')} >
                   <Text style={styles.textBtn1}>Accessory Kart</Text>
                 </Button>
               </Body>

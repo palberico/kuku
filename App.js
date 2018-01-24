@@ -8,6 +8,7 @@ import store from './store';
 import Home from './components/Home';
 import Shop from './components/Shop';
 import Cart from './components/Cart';
+import Custom from './components/Custom';
 import Login from './components/Login';
 import Terms from './components/Terms';
 import Search from './components/Search';
@@ -27,6 +28,7 @@ class App extends Component {
                 <Route exact path="/" component={Home}  />
                 <Route exact path="/shop" component={Shop} />
                 <Route exact path="/cart" component={Cart} />
+                <Route exact path="/custom/:category" component={Custom} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/terms" component={Terms} />
                 <Route exact path="/search" component={Search} />
