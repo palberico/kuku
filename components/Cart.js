@@ -22,7 +22,7 @@ import {
 
 class Cart extends Component {
 
-  state = { loaded: false, items: [] }
+  state = { loaded: false, items: [], obj: {} }
 
   showDescription = (title) => {
     this.props.history.push(`/description/${title}`)
@@ -33,9 +33,9 @@ class Cart extends Component {
       .then( res => {
         let array = []
         for ( let each in res.data){
-          array.push(res.data[each])
+          array.push([res.data[each], each])
         }
-        this.setState({ items: array, loaded: true})
+        this.setState({ items: array, loaded: true, obj: res.data})
       })
     }
 
@@ -45,26 +45,39 @@ class Cart extends Component {
     this.props.history.push('/settings')
   }
 
+  removeFromCart = async (item) => {
+    await axios.delete(`https://kukudb-ff7f7.firebaseio.com/cart/${item}.json`)
+    axios.get('https://kukudb-ff7f7.firebaseio.com/cart.json')
+      .then( res => {
+        let array = []
+        for ( let each in res.data){
+          array.push([res.data[each], each])
+        }
+        this.setState({ items: array, loaded: true, obj: res.data})
+      })
+  }
+
   displayItems = () => {
     return this.state.items.map( item => {
       return (
 
-        <TouchableHighlight onPress={() => this.showDescription(item['Title'])} key={item['Title']}>
+        <TouchableHighlight onPress={() => this.showDescription(item[0]['Title'])} key={item[0]['Title']}>
           <Card>
             <CardItem cardBody>
-              <Image source={{uri:item['Image Src']}} style={styles.cardImage} />
+              <Image source={{uri:item[0]['Image Src']}} style={styles.cardImage} />
             </CardItem>
             <CardItem>
               <Left>
                 <Button transparent>
-                  <Text note style={styles.textBtn1}>{item['Vendor']}</Text>
+                  <Text note style={styles.textBtn1}>{item[0]['Vendor']}</Text>
                   <Text style={styles.textBtn1}> - </Text>
-                  <Text style={styles.textBtn1}>{item['Type']}</Text>
+                  <Text style={styles.textBtn1}>{item[0]['Type']}</Text>
                 </Button>
               </Left>
               <Right>
                 <Button transparent>
-                  <Icon name='ios-close-circle-outline' style={styles.deleteIcon} />
+                  <Icon name='ios-close-circle-outline' style={styles.deleteIcon}
+                    onPress={() => this.removeFromCart(item[1])} />
                 </Button>
               </Right>
             </CardItem>
@@ -83,7 +96,7 @@ class Cart extends Component {
           <Content>
             { this.state.items.length <= 0 ?
               <Text style={styles.textEmptyCart}>Your Cart is Empty</Text> :
-              <Text></Text> } 
+              <Text></Text> }
             <View>
               {this.displayItems()}
             </View>

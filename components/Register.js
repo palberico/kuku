@@ -51,7 +51,7 @@ class Register extends Component {
               </Item>
               <Item floatingLabel>
               <Label>Password</Label>
-              <Input />
+              <Input secureTextEntry={true} />
               </Item>
             </Form>
 

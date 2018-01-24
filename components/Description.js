@@ -5,6 +5,7 @@ import Nav from './Nav';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-native';
+import axios from 'axios'
 import {
   Container,
   Content,
@@ -22,7 +23,9 @@ import {
 class Description extends Component {
   state = { position: 1, interval: null, liked: false  };
 
-  changeLike = () => {
+  changeLike = async () => {
+    await axios.post( 'https://kukudb-ff7f7.firebaseio.com/cart.json', this.props.product )
+    await axios.delete(`https://kukudb-ff7f7.firebaseio.com/unseen_items/${this.props.product['Id']}.json`)
     this.setState({liked: !this.state.liked})
   }
 
@@ -52,13 +55,13 @@ class Description extends Component {
         <Nav />
         <Content>
           <View style={styles.container}>
-              <ImageSlider 
+              <ImageSlider
                   images={[
                     this.props.product['Image Src'],
-                    this.props.product['Alt1']]} 
+                    this.props.product['Alt1']]}
                   height={deviceY/ 1.5}
                   position={this.state.position}
-                  onPositionChanged={position => this.setState({position}) 
+                  onPositionChanged={position => this.setState({position})
                 }
               />
           </View>
