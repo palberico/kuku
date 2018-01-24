@@ -14,7 +14,7 @@ import {
 } from 'native-base';
 
 // Search List Pop-up Code
-var BUTTONS = ["Mens", "Womens", "Baby", "Accessories"];
+var BUTTONS = ["Womens", "Baby", "Mens", "Accessories"];
 
 class ListIcon extends Component {
 

@@ -32,8 +32,7 @@ class CardComp extends Component {
                   source={{uri:this.props.item['logo']}} />
                   <Body>
                     <Text>{this.props.item['Title']}</Text>
-{/* Changed note to type instead of price */}
-                    <Text note>{this.props.item['Type']}</Text>
+                    <Text note>{this.props.item['Variant Price']}</Text>
                   </Body>
                 </Left>
               </CardItem>
