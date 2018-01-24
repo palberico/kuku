@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
-import { 
-  Container, 
-  Header, 
-  Content, 
-  List, 
-  ListItem, 
-  Text, 
-  Icon, 
-  Left, 
-  Body, 
-  Right, 
-  ActionSheet, 
+import {
+  Container,
+  Header,
+  Content,
+  List,
+  ListItem,
+  Text,
+  Icon,
+  Left,
+  Body,
+  Right,
+  ActionSheet,
 } from 'native-base';
 
 // Search List Pop-up Code
-var BUTTONS = ["Men's", "Women's", "Baby", "Accessories"];
+var BUTTONS = ["Mens", "Womens", "Baby", "Accessories"];
 
 class ListIcon extends Component {
 
@@ -54,7 +54,7 @@ class ListIcon extends Component {
       );
     }
   }
-  
+
   render() {
     return (
       <Container>
@@ -81,7 +81,7 @@ class ListIcon extends Component {
             </ListItem>
 
              {/* Search List Pop-up Code */}
-            <ListItem 
+            <ListItem
               icon
               onPress={() =>
                 ActionSheet.show({
@@ -89,7 +89,7 @@ class ListIcon extends Component {
                   title: "I'm looking for:"
                 },
                 buttonIndex => {
-                this.setState({ clicked: BUTTONS[buttonIndex] });
+                this.props.history.push(`/custom/${BUTTONS[buttonIndex]}`);
                 }
               )}
             >
