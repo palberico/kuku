@@ -1,5 +1,8 @@
 {
   "expo": {
     "sdkVersion": "23.0.0"
-  }
+  },
+  "facebookScheme": "fb534726780240095",
+  "facebookAppId": "534726780240095",
+  "facebookDisplayName": "kuku"
 }

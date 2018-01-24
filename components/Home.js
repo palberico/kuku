@@ -42,6 +42,22 @@ class Home extends Component {
     this.props.history.push('/shop')
   }
 
+  facebookLogIn = async () => {
+    const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync('534726780240095', {
+        permissions: ['public_profile'],
+      });
+    if (type === 'success') {
+      // Get the user's name using Facebook's Graph API
+      const response = await fetch(
+        `https://graph.facebook.com/me?access_token=${token}`);
+      this.props.history.push('/shop')
+      Alert.alert(
+        'Logged in!',
+        `Hi ${(await response.json()).name}!`,
+      );
+    }
+  }
+
   render() {
     return (
       <Container>
@@ -57,7 +73,7 @@ class Home extends Component {
           <Image style={styles.hero} source={randomImages[Math.floor(Math.random()*randomImages.length)]}/>
           <View>
             <Image style={styles.logo} source={require('../images/header-logo.png')} />
-            <Button block style={styles.btn}>
+            <Button block style={styles.btn} onPress={this.facebookLogIn}>
               <Text style={styles.textBtn}>Login With Facebook</Text>
             </Button>
           </View>
