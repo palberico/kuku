@@ -11,7 +11,8 @@ import {
   Text, 
   Button, 
   Icon, 
-  Left, 
+  Left,
+  View,
   Body, 
   Right, 
   Footer, 
@@ -31,63 +32,85 @@ class Search extends Component {
   render() {
     return (
       <Container>
-        <Nav />
-        <Content style={styles.content}>
+        <Header style={styles.content}>
+          {/* <Left>
+              <Button vertical transparent onPress={this.openSettings}>
+                <Icon name='ios-settings-outline' style={styles.icon} />
+              </Button>
+            </Left> */}
+        </Header>
+      <Content>
+
+        <View>
           <Card>
+          <CardItem cardBody>
+              <Image source={require('../images/header-logo.png')} 
+                style={styles.cardImage}
+                />
+            </CardItem>
+            <CardItem >
+              <Body>
+                <Button transparent onPress={this.openShop} >
+                  <Text style={styles.textBtn1}>Kuku Kart</Text>
+                </Button>
+                </Body>
+            </CardItem>
+            </Card>
+          </View>
+            <Card>
+            <View style={{height: 15}} />
             <CardItem cardBody>
               <Image source={require('../images/search/mens.jpg')} style={{height: 200, width: null, flex: 1}}/>
             </CardItem>
             <CardItem>
-              <Left>
-                <Button transparent>
-                  <Text>Men's Kart</Text>
+              <Body>
+                <Button transparent onPress={this.openShop} >
+                  <Text style={styles.textBtn1}>Men's Kart</Text>
                 </Button>
-              </Left>
+              </Body>
             </CardItem>
+            </Card>
+            <Card>
+            <View style={{height: 15}} />
             <CardItem cardBody>
               <Image source={require('../images/search/womens.jpg')} style={{height: 200, width: null, flex: 1}}/>
             </CardItem>
             <CardItem>
-              <Left>
-                <Button transparent>
-                  <Text>Women's Kart</Text>
+            <Body>
+                <Button transparent onPress={this.openShop} >
+                  <Text style={styles.textBtn1}>Women's Kart</Text>
                 </Button>
-              </Left>
+          </Body>
             </CardItem>
+            </Card>
+            <Card>
+            <View style={{height: 15}} />
             <CardItem cardBody>
               <Image source={require('../images/search/baby.jpg')} style={{height: 200, width: null, flex: 1}}/>
             </CardItem>
             <CardItem>
-              <Left>
-                <Button transparent>
-                  <Text>Baby Kart</Text>
+              <Body>
+                <Button transparent onPress={this.openShop} >
+                  <Text style={styles.textBtn1}>Baby Kart</Text>
                 </Button>
-              </Left>
+            </Body>
             </CardItem>
+            </Card>
+            <Card>
+            <View style={{height: 15}} />
             <CardItem cardBody>
               <Image source={require('../images/search/accessories.jpg')} style={{height: 200, width: null, flex: 1}}/>
             </CardItem>
             <CardItem>
-              <Left>
-                <Button transparent>
-                  <Text>Accessory Kart</Text>
+                <Body>
+                <Button transparent onPress={this.openShop} >
+                  <Text style={styles.textBtn1}>Accessory Kart</Text>
                 </Button>
-              </Left>
+              </Body>
             </CardItem>
           </Card>
         </Content>
-        <Footer>
-          <FooterTab style={styles.footer}>
-            <Button vertical onPress={this.openShop}>
-              <Icon name='ios-pricetags-outline' />
-              <Text>Shop</Text>
-            </Button>
-            <Button vertical onPress={this.openSettings}>
-              <Icon name='ios-settings-outline' />
-              <Text>Settings</Text>
-            </Button>
-          </FooterTab>
-        </Footer>
+        <Footer style={styles.content} />
       </Container>
     );
   }
@@ -104,15 +127,15 @@ const styles = {
     backgroundColor: 'black'
   },
   cardImage:{
-    width: null,
-    height: 200,
     resizeMode: 'contain',
   },
   textBtn1:{
     fontSize: 20,
+    marginRight: 'auto',
+    marginLeft: 'auto',
+    color: 'black',
   },
-  text:{
-    fontSize: 20,
+  icon:{
     color: 'white',
   },
 }

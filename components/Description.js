@@ -4,6 +4,7 @@ import ImageSlider from 'react-native-image-slider';
 import Nav from './Nav';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-native';
 import {
   Container,
   Content,

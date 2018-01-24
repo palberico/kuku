@@ -39,7 +39,7 @@ class Home extends Component {
   }
 
   guest = () => {
-    this.props.history.push('/shop')
+    this.props.history.push('/search')
   }
 
   facebookLogIn = async () => {

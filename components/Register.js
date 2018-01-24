@@ -20,7 +20,7 @@ class Register extends Component {
   }
 
   doneButton = () => {
-    this.props.history.push('/shop')
+    this.props.history.push('/search')
   }
 
   render() {

@@ -4,6 +4,7 @@ import Nav from './Nav';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import { setSelected } from '../actions/products';
+import { Link } from 'react-router-native';
 import {
   Container,
   Content,
