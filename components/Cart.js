@@ -40,6 +40,10 @@ class Cart extends Component {
 
   openShop = () => this.props.history.push('/shop')
 
+  openSettings = () => {
+    this.props.history.push('/settings')
+  }
+
   displayItems = () => {
     return this.state.items.map( item => {
       return (
@@ -89,7 +93,7 @@ class Cart extends Component {
                 <Icon name='ios-pricetags-outline' />
                 <Text>Shop</Text>
               </Button>
-              <Button vertical>
+              <Button vertical onPress={this.openSettings}>
                 <Icon name='ios-settings-outline' />
                 <Text>Settings</Text>
               </Button>
