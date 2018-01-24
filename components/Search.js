@@ -1,15 +1,30 @@
 import React, { Component } from 'react';
 import { Image, Dimensions } from 'react-native';
 import Nav from './Nav';
-import { Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right, Footer, FooterTab } from 'native-base';
+import { 
+  Container, 
+  Header, 
+  Content, 
+  Card, 
+  CardItem, 
+  Thumbnail, 
+  Text, 
+  Button, 
+  Icon, 
+  Left, 
+  Body, 
+  Right, 
+  Footer, 
+  FooterTab,
+} from 'native-base';
 
-export default class Search extends Component {
+class Search extends Component {
 
-openShop = () => {
+  openShop = () => {
     this.props.history.push('/shop')
   }
 
-openSettings = () => {
+  openSettings = () => {
     this.props.history.push('/settings')
   }
 
@@ -62,17 +77,17 @@ openSettings = () => {
           </Card>
         </Content>
         <Footer>
-            <FooterTab style={styles.footer}>
-              <Button vertical onPress={this.openShop}>
-                <Icon name='ios-pricetags-outline' />
-                <Text>Shop</Text>
-              </Button>
-              <Button vertical onPress={this.openSetttings}>
-                <Icon name='ios-settings-outline' />
-                <Text>Settings</Text>
-              </Button>
-            </FooterTab>
-          </Footer>
+          <FooterTab style={styles.footer}>
+            <Button vertical onPress={this.openShop}>
+              <Icon name='ios-pricetags-outline' />
+              <Text>Shop</Text>
+            </Button>
+            <Button vertical onPress={this.openSettings}>
+              <Icon name='ios-settings-outline' />
+              <Text>Settings</Text>
+            </Button>
+          </FooterTab>
+        </Footer>
       </Container>
     );
   }
@@ -101,3 +116,5 @@ const styles = {
     color: 'white',
   },
 }
+
+export default Search;
