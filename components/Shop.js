@@ -12,12 +12,13 @@ import {
   Button,
   Icon,
   DeckSwiper,
+  Badge
 } from 'native-base';
-import { fetchUnseen } from '../actions/products';
+
 
 class Shop extends Component {
 
-  state = { loaded: false, products: [] }
+  state = { loaded: false, products: [], cartCount: 0 }
 
   componentDidMount = async () => {
     axios.get('https://kukudb-ff7f7.firebaseio.com/unseen_items.json')
@@ -26,6 +27,14 @@ class Shop extends Component {
            return item !== null
         })
         this.setState({ loaded: true, products: filtered })
+      })
+    axios.get('https://kukudb-ff7f7.firebaseio.com/cart.json')
+      .then( res => {
+        let array = []
+        for ( let each in res.data){
+          array.push(res.data[each])
+        }
+        this.setState({ cartCount: array.length })
       })
     }
 
@@ -49,6 +58,7 @@ class Shop extends Component {
   sendToCart = async (cardObject) => {
     await axios.post( 'https://kukudb-ff7f7.firebaseio.com/cart.json', cardObject )
     await axios.delete(`https://kukudb-ff7f7.firebaseio.com/unseen_items/${cardObject['Id']}.json`)
+    this.setState({ cartCount: this.state.cartCount += 1})
   }
 
   emptyShop = () => {
@@ -90,7 +100,8 @@ class Shop extends Component {
                 <Icon name='ios-search-outline' />
                 <Text>Categories</Text>
               </Button>
-              <Button vertical onPress={this.openCart}>
+              <Button badge vertical onPress={this.openCart}>
+                <Badge><Text style={{color: 'white'}}>{this.state.cartCount}</Text></Badge>
                 <Icon name='md-heart-outline' />
                 <Text>Loved</Text>
               </Button>
@@ -109,6 +120,8 @@ class Shop extends Component {
 
   }
 }
+
+
 
 const deviceY = Dimensions.get('window').height
 const deviceX = Dimensions.get('window').width

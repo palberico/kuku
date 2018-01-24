@@ -18,3 +18,11 @@ export const fetchUnseen = () => dispatch => {
       dispatch({ type: 'FETCH_UNSEEN', unseen: res.data })
     })
 }
+
+export const addToCart = () => dispatch => {
+  dispatch({ type: 'ADD_COUNT', count: 1 })
+}
+
+export const subtractToCart = () => dispatch => {
+  dispatch({ type: 'SUB_COUNT', count: 1 })
+}
