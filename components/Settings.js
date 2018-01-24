@@ -39,6 +39,21 @@ class ListIcon extends Component {
   terms = () => {
     this.props.history.push('/terms')
   }
+
+  facebookLogIn = async () => {
+    const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync('534726780240095', {
+        permissions: ['public_profile'],
+      });
+    if (type === 'success') {
+      // Get the user's name using Facebook's Graph API
+      const response = await fetch(
+        `https://graph.facebook.com/me?access_token=${token}`);
+      Alert.alert(
+        'Logged in!',
+        `Hi ${(await response.json()).name}!`,
+      );
+    }
+  }
   
   render() {
     return (
@@ -91,7 +106,7 @@ class ListIcon extends Component {
             <ListItem itemDivider>
               <Text>Get Social</Text>
             </ListItem>
-            <ListItem icon onPress={this.logout}>
+            <ListItem icon onPress={this.facebookLogIn}>
               <Left>
                 <Icon name="logo-facebook"/>
               </Left>
