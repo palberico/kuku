@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
 import { View, Text, Platform } from 'react-native';
-import { Container, Content, Footer, FooterTab, Button, Icon } from 'native-base';
-import Nav from './Nav'
+import { 
+  Container, 
+  Content, 
+  Footer, 
+  FooterTab, 
+  Button, 
+  Icon,
+} from 'native-base';
+import Nav from './Nav';
 
 class Faq extends Component {
 

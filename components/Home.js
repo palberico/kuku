@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, Image, Dimensions } from 'react-native';
 import { Link } from 'react-router-native';
-import { Col, Row, Grid } from 'react-native-easy-grid';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import {
   Container,
   Header,
@@ -11,7 +10,7 @@ import {
   Icon,
   Right,
 } from 'native-base';
-import { fetchProducts, setProducts, addToCart } from '../actions/products';
+import { fetchProducts } from '../actions/products';
 
 const randomImages = [
   require('../images/home/tshirt.jpg'),
@@ -45,16 +44,16 @@ class Home extends Component {
   facebookLogIn = async () => {
     const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync('534726780240095', {
         permissions: ['public_profile'],
-      });
+      })
     if (type === 'success') {
-      // Get the user's name using Facebook's Graph API
+      // Gets the user's name using Facebook's Graph API
       const response = await fetch(
         `https://graph.facebook.com/me?access_token=${token}`);
       this.props.history.push('/search')
       Alert.alert(
         'Logged in!',
         `Hi ${(await response.json()).name}!`,
-      );
+      )
     }
   }
 
@@ -84,19 +83,19 @@ class Home extends Component {
               </Button>
             </Link>
           </View>
-        <Button full transparent onPress={this.loginButton}>
-          <Text style={styles.text}>Have an account? Sign in</Text>
-        </Button>
+          <Button full transparent onPress={this.loginButton}>
+            <Text style={styles.text}>Have an account? Sign in</Text>
+          </Button>
         </Content>
       </Container>
-    );
+    )
   }
-}
+};
 
-const deviceHeight = Dimensions.get('window').height
-const deviceWidth = Dimensions.get('window').height
-const deviceY = Dimensions.get('window').height
-const deviceX = Dimensions.get('window').width
+const deviceHeight = Dimensions.get('window').height;
+const deviceWidth = Dimensions.get('window').height;
+const deviceY = Dimensions.get('window').height;
+const deviceX = Dimensions.get('window').width;
 
 const styles = {
   hero: {
@@ -139,6 +138,6 @@ const styles = {
   guest: {
     fontWeight: 'bold'
   },
-}
+};
 
 export default connect()(Home);

@@ -116,7 +116,6 @@ class Custom extends Component {
   }
 };
 
-
 const deviceY = Dimensions.get('window').height;
 const deviceX = Dimensions.get('window').width;
 
@@ -152,6 +151,5 @@ const mapStateToProps = (state) => {
     cart: state.cart
   }
 };
-
 
 export default connect(mapStateToProps)(Custom);

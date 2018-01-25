@@ -18,7 +18,7 @@ import {
   Icon,
   Card,
   CardItem,
-  Badge
+  Badge,
 } from 'native-base';
 
 class Description extends Component {
