@@ -1,6 +1,9 @@
+// React
 import React, { Component } from 'react';
+
+// Styles
 import { View, Text, Platform } from 'react-native';
-import { 
+import {
   Container,
   Content,
   Footer,
@@ -8,6 +11,8 @@ import {
   Button,
   Icon,
 } from 'native-base';
+
+// Components
 import Nav from './Nav';
 
 class Privacy extends Component {

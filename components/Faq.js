@@ -1,13 +1,18 @@
+// React
 import React, { Component } from 'react';
+
+// Styles
 import { View, Text, Platform } from 'react-native';
-import { 
-  Container, 
-  Content, 
-  Footer, 
-  FooterTab, 
-  Button, 
+import {
+  Container,
+  Content,
+  Footer,
+  FooterTab,
+  Button,
   Icon,
 } from 'native-base';
+
+// Components
 import Nav from './Nav';
 
 class Faq extends Component {

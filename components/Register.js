@@ -1,4 +1,7 @@
+// React
 import React, { Component } from 'react';
+
+// Styles
 import { Text, View, Dimensions } from 'react-native';
 import {
   Container,
@@ -64,11 +67,6 @@ class Register extends Component {
     )
   }
 };
-
-const deviceHeight = Dimensions.get('window').height;
-const deviceWidth = Dimensions.get('window').height;
-const deviceY = Dimensions.get('window').height;
-const deviceX = Dimensions.get('window').width;
 
 const styles = {
   text:{

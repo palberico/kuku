@@ -1,10 +1,18 @@
+// React
 import React, { Component } from 'react'
-import { StyleSheet } from 'react-native';
+
+// Routing
 import { NativeRouter, Switch, Route, } from 'react-router-native';
-import { Container, Header, Footer, Content, Root } from 'native-base';
 import { StackNavigator } from "react-navigation";
+
+// Redux
 import { Provider } from 'react-redux';
 import store from './store';
+
+// Styling Parent
+import { Root } from 'native-base';
+
+// Components
 import Faq from './components/Faq';
 import Home from './components/Home';
 import Shop from './components/Shop';
@@ -23,7 +31,7 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <Container>
+
             <NativeRouter>
               <Switch>
                 <Route exact path="/" component={Home}  />
@@ -41,13 +49,11 @@ class App extends Component {
                 <Route exact path="/description/:title/:category" component={Description} />
               </Switch>
             </NativeRouter>
-        </Container>
+
       </Provider>
     );
   }
 }
-
-// Search List Pop-up Code
 
 const AppNav = StackNavigator(
   {

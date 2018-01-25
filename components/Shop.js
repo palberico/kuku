@@ -1,12 +1,8 @@
+// React
 import React, { Component } from 'react';
+
+// Styles
 import { Text, View, Image, Dimensions } from 'react-native';
-import { Link } from 'react-router-native';
-import axios from 'axios';
-import CardComp from './Card';
-import { connect } from 'react-redux';
-import { addToCart } from '../actions/products';
-import Nav from './Nav';
-import Loader from './Loader';
 import {
   Container,
   Content,
@@ -18,6 +14,20 @@ import {
   Badge,
 } from 'native-base';
 
+// React Router
+import { Link } from 'react-router-native';
+
+// Redux
+import { connect } from 'react-redux';
+import { addToCart } from '../actions/products';
+
+// API Calls
+import axios from 'axios';
+import CardComp from './Card';
+
+// Components
+import Nav from './Nav';
+import Loader from './Loader';
 
 class Shop extends Component {
   state = { loaded: false, products: []  }

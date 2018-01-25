@@ -25,3 +25,7 @@ export const addToCart = () => dispatch => {
 export const subtractToCart = () => dispatch => {
   dispatch({ type: 'SUB_COUNT', count: 1 })
 };
+
+export const resetCart = () => dispatch => {
+  dispatch({ type: 'RESET_COUNT', count : 0 })
+}

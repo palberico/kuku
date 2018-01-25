@@ -1,7 +1,8 @@
+// React
 import React, { Component } from 'react';
+
+// Styles
 import { Image, Dimensions } from 'react-native';
-import { Link } from 'react-router-native';
-import Nav from './Nav';
 import {
   Container,
   Header,
@@ -16,6 +17,12 @@ import {
   Icon,
   Footer,
 } from 'native-base';
+
+// Router
+import { Link } from 'react-router-native';
+
+// Components
+import Nav from './Nav';
 
 class Search extends Component {
 
@@ -57,7 +64,7 @@ class Search extends Component {
             <Link to="/custom/Womens">
               <Card>
                 <CardItem cardBody>
-                  <Image source={require('../images/search/womens.jpg')} 
+                  <Image source={require('../images/search/womens.jpg')}
                     style={{height: 200, width: null, flex: 1}}/>
                   <Text style={styles.kuku}>  Women's Kart               </Text>
                 </CardItem>
@@ -66,7 +73,7 @@ class Search extends Component {
             <Link to="/custom/Baby">
               <Card>
                 <CardItem cardBody>
-                  <Image source={require('../images/search/baby.jpg')} 
+                  <Image source={require('../images/search/baby.jpg')}
                     style={{height: 200, width: null, flex: 1}}/>
                   <Text style={styles.kuku}>  Baby Kart                </Text>
                 </CardItem>
@@ -75,7 +82,7 @@ class Search extends Component {
             <Link to="custom/Mens">
               <Card>
                 <CardItem cardBody>
-                  <Image source={require('../images/search/mens.jpg')} 
+                  <Image source={require('../images/search/mens.jpg')}
                     style={{height: 200, width: null, flex: 1}}/>
                   <Text style={styles.kuku}>  Men's Kart               </Text>
                 </CardItem>
@@ -84,7 +91,7 @@ class Search extends Component {
             <Link to="/custom/Accessories">
               <Card>
                 <CardItem cardBody>
-                  <Image source={require('../images/search/accessories.jpg')} 
+                  <Image source={require('../images/search/accessories.jpg')}
                     style={{height: 200, width: null, flex: 1}}/>
                     <Text style={styles.kuku}>  Accessory Kart               </Text>
                 </CardItem>
@@ -97,9 +104,6 @@ class Search extends Component {
     )
   }
 };
-
-const deviceY = Dimensions.get('window').height;
-const deviceX = Dimensions.get('window').width;
 
 const styles = {
   content:{

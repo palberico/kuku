@@ -1,5 +1,14 @@
+// React
 import React, { Component } from 'react';
-import { Text, View, Image, TouchableHighlight, Dimensions } from 'react-native';
+
+// Styles
+import {
+  Text,
+  View,
+  Image,
+  TouchableHighlight,
+  Dimensions
+} from 'react-native';
 import {
   Body,
   Left,
@@ -8,10 +17,13 @@ import {
   Card,
   Footer,
 } from 'native-base';
+
+// Redux
 import { connect } from 'react-redux';
 
 class CardComp extends Component {
 
+  // Open Description Component onPress of Card
   showDescription = (title, category) => {
     if (this.props.category){
       this.props.history.push(`/description/${title}/${category}`)
@@ -23,13 +35,14 @@ class CardComp extends Component {
   render() {
     return (
       <View>
-        <TouchableHighlight onPress={() => this.showDescription(this.props.item['Title'], this.props.item['Handle'])}>
+        <TouchableHighlight
+          onPress={() => this.showDescription(this.props.item['Title'], this.props.item['Handle'])}>
           <Card>
             <CardItem>
               <Left>
                 <Thumbnail
-                style={styles.thumb}
-                source={{uri:this.props.item['logo']}} />
+                  style={styles.thumb}
+                  source={{uri:this.props.item['logo']}} />
                 <Body>
                   <Text>{this.props.item['Title']}</Text>
                   <Text note>{this.props.item['Variant Price']}</Text>

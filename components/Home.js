@@ -1,7 +1,8 @@
+// React
 import React, { Component } from 'react';
+
+// Styles
 import { Text, View, Image, Dimensions } from 'react-native';
-import { Link } from 'react-router-native';
-import { connect } from 'react-redux';
 import {
   Container,
   Header,
@@ -10,8 +11,15 @@ import {
   Icon,
   Right,
 } from 'native-base';
-import { fetchProducts } from '../actions/products';
 
+// Router
+import { Link } from 'react-router-native';
+
+// Redux
+import { connect } from 'react-redux';
+import { fetchProducts, resetCart } from '../actions/products';
+
+// Images for Home Screen
 const randomImages = [
   require('../images/home/tshirt.jpg'),
   require('../images/home/tshirt2.jpg'),
@@ -23,6 +31,8 @@ class Home extends Component {
 
   componentDidMount = async() => {
     await this.props.dispatch(fetchProducts())
+    // Reset cart counter on refresh
+    this.props.dispatch(resetCart())
   }
 
   joinEmailButton = () => {
@@ -69,9 +79,15 @@ class Home extends Component {
           </Right>
         </Header>
         <Content style={styles.background} scrollEnabled={false}>
-          <Image style={styles.hero} source={randomImages[Math.floor(Math.random()*randomImages.length)]}/>
+          <Image
+            style={styles.hero}
+            source={randomImages[Math.floor(Math.random()*randomImages.length)]}
+          />
           <View>
-            <Image style={styles.logo} source={require('../images/header-logo.png')} />
+            <Image
+              style={styles.logo}
+              source={require('../images/header-logo.png')}
+            />
             <Button block style={styles.btn} onPress={this.facebookLogIn}>
               <Text style={styles.textBtn}>Login With Facebook</Text>
             </Button>
@@ -92,32 +108,28 @@ class Home extends Component {
   }
 };
 
-const deviceHeight = Dimensions.get('window').height;
-const deviceWidth = Dimensions.get('window').height;
 const deviceY = Dimensions.get('window').height;
-const deviceX = Dimensions.get('window').width;
-
 const styles = {
   hero: {
-    height: deviceHeight/ 2,
-    width: deviceWidth/ 1.5,
+    height: deviceY/ 2,
+    width: deviceY/ 1.5,
   },
   logo: {
     marginTop: 20,
-    height: deviceHeight/ 18,
-    width: deviceWidth/ 4,
+    height: deviceY/ 18,
+    width: deviceY/ 4,
     marginRight: 'auto',
     marginLeft: 'auto'
   },
   btn: {
     marginTop: 20,
-    width: deviceWidth/ 2.5,
+    width: deviceY/ 2.5,
     marginRight: 'auto',
     marginLeft: 'auto'
   },
   btn2: {
     marginTop: 15,
-    width: deviceWidth/ 2.5,
+    width: deviceY/ 2.5,
     marginRight: 'auto',
     marginLeft: 'auto'
   },

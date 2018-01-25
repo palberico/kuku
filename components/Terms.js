@@ -1,6 +1,9 @@
+// React
 import React, { Component } from 'react';
+
+// Styles
 import { View, Text, Platform } from 'react-native';
-import { 
+import {
   Container,
   Content,
   Footer,
@@ -8,7 +11,11 @@ import {
   Button,
   Icon,
 } from 'native-base';
+
+// Router
 import { NativeRouter, Switch, Route } from 'react-router-native';
+
+// Components
 import Nav from './Nav';
 
 class Terms extends Component {

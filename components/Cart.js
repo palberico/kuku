@@ -1,9 +1,14 @@
+// React
 import React, { Component } from 'react';
-import { Text, View, Image, TouchableHighlight, Dimensions } from 'react-native';
-import Nav from './Nav';
-import { connect } from 'react-redux';
-import axios from 'axios';
-import { subtractToCart } from '../actions/products';
+
+// Styles
+import {
+  Text,
+  View,
+  Image,
+  TouchableHighlight,
+  Dimensions
+} from 'react-native';
 import {
   Container,
   Content,
@@ -18,28 +23,42 @@ import {
   Right,
 } from 'native-base';
 
+// Components
+import Nav from './Nav';
+
+// Redux
+import { connect } from 'react-redux';
+import { subtractToCart } from '../actions/products';
+
+// API calls
+import axios from 'axios';
+
 class Cart extends Component {
-  state = { loaded: false, items: [], obj: {} }
-  
+  state = { loaded: false, items: [] }
+
   componentDidMount(){
     axios.get('https://kukudb-ff7f7.firebaseio.com/cart.json')
       .then( res => {
+        // Convert returned cart object into an array
         let array = []
         for ( let each in res.data){
+          // each item = [item, unique ID]
           array.push([res.data[each], each])
         }
-      this.setState({ items: array, loaded: true, obj: res.data})
+      this.setState({ items: array, loaded: true })
     })
   }
 
-  showDescription = (title) => {
-    this.props.history.push(`/description/${title}`)
+  showDescription = (title, handle) => {
+    this.props.history.push(`/description/${title}/${handle}`)
   }
 
   openShop = () => {
     if(this.props.match.params.category !== "shop"){
+      // Return to custom category if you navigate to cart from there
       this.props.history.push(`/custom/${this.props.match.params.category}`)
     } else {
+      // Return to kuku category if you navigate to cart from there
       this.props.history.push('/shop')
     }
   }
@@ -52,20 +71,25 @@ class Cart extends Component {
     await axios.delete(`https://kukudb-ff7f7.firebaseio.com/cart/${item}.json`)
     axios.get('https://kukudb-ff7f7.firebaseio.com/cart.json')
       .then( res => {
+        // Convert returned cart object into an array
         let array = []
         for ( let each in res.data){
+          // each item = [item, unique ID]
           array.push([res.data[each], each])
         }
-        this.setState({ items: array, loaded: true, obj: res.data})
+        this.setState({ items: array, loaded: true })
       })
     this.props.dispatch(subtractToCart())
   }
 
   displayItems = () => {
+    counter = 0;
     return this.state.items.map( item => {
       return (
-        // TODO need to fix this, doesn't work
-        <TouchableHighlight onPress={() => this.showDescription(item['Title'], item['Handle'])}>
+        <TouchableHighlight
+          onPress={() => this.showDescription(item[0]['Title'], item[0]['Handle'])}
+          key={item[0]['Title']}
+          >
           <Card>
             <CardItem cardBody>
               <Image source={{uri:item[0]['Image Src']}} style={styles.cardImage} />
@@ -98,8 +122,9 @@ class Cart extends Component {
           <Nav />
           <Content>
             { this.state.items.length <= 0 ?
-              <Text style={styles.textEmptyCart}>There's no love like your first.{"\n"}
-              Find something to love!</Text> :
+              <Text style={styles.textEmptyCart}>
+                There's no love like your first.{"\n"}Find something to love!
+              </Text> :
               <Text></Text> }
             <View>
               { this.displayItems() }
@@ -129,8 +154,7 @@ class Cart extends Component {
   }
 };
 
-const deviceHeight = Dimensions.get('window').height;
-const deviceWidth = Dimensions.get('window').height;
+
 const deviceY = Dimensions.get('window').height;
 const deviceX = Dimensions.get('window').width;
 

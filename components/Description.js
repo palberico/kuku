@@ -1,11 +1,17 @@
+// React
 import React, { Component } from 'react';
-import { View, Text, Platform, Dimensions, Image, Linking } from 'react-native';
+
+// Styles
+import {
+  View,
+  Text,
+  Platform,
+  Dimensions,
+  Image,
+  Linking
+} from 'react-native';
 import ImageSlider from 'react-native-image-slider';
-import Nav from './Nav';
 import { Col, Row, Grid } from 'react-native-easy-grid';
-import { connect } from 'react-redux';
-import { addToCart } from '../actions/products';
-import axios from 'axios';
 import {
   Container,
   Content,
@@ -21,20 +27,43 @@ import {
   Badge,
 } from 'native-base';
 
+// Redux
+import { connect } from 'react-redux';
+import { addToCart } from '../actions/products';
+
+// Components
+import Nav from './Nav';
+
+// API calls
+import axios from 'axios';
+
+
 class Description extends Component {
-  state = { position: 1, interval: null, liked: false  };
+  state = { position: 1, interval: null, liked: false, allowLike: true };
 
   changeLike = async () => {
-    await axios.post( 'https://kukudb-ff7f7.firebaseio.com/cart.json', this.props.product )
-    await axios.delete(`https://kukudb-ff7f7.firebaseio.com/unseen_items/${this.props.product['Id']}.json`)
-    this.setState({liked: !this.state.liked})
-    this.props.dispatch(addToCart())
+    // Only allows item to be added once
+    if(this.state.allowLike){
+      // Add to cart,
+      await axios.post( 'https://kukudb-ff7f7.firebaseio.com/cart.json', this.props.product )
+      // remove from unseen items,
+      await axios.delete(`https://kukudb-ff7f7.firebaseio.com/unseen_items/${this.props.product['Id']}.json`)
+      // change button text,
+      this.setState({liked: !this.state.liked})
+      // increase cart by 1,
+      this.props.dispatch(addToCart())
+      // disallow second click
+      this.setState({ allowLike: false })
+    }
+
   }
 
   return = () => {
+    // Return to Kuku Shop if navigating to description from there
     if (this.props.match.params.category === "kuku"){
       this.props.history.push('/shop')
     } else {
+      // Return to Custom Shop if navigating to description from there
       this.props.history.push(`/custom/${this.props.match.params.category}`)
     }
   }

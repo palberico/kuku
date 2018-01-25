@@ -1,10 +1,8 @@
+// React
 import React, { Component } from 'react'
+
+// Styles
 import { View, Text, Image, Dimensions } from 'react-native'
-import { Link } from 'react-router-native';
-import Loader from './Loader';
-import axios from 'axios'
-import { connect } from 'react-redux';
-import { addToCart } from '../actions/products';
 import {
   Container,
   Content,
@@ -15,8 +13,24 @@ import {
   DeckSwiper,
   Badge,
 } from 'native-base';
+
+// Router
+import { Link } from 'react-router-native';
+
+// Redux
+import { connect } from 'react-redux';
+import { addToCart } from '../actions/products';
+
+// Components
+import Loader from './Loader';
 import Nav from './Nav';
 import CardComp from './Card';
+
+// API calls
+import axios from 'axios'
+
+
+
 
 class Custom extends Component {
   state = { loaded: false, products: [] }
@@ -24,9 +38,11 @@ class Custom extends Component {
   componentDidMount = async () => {
     axios.get('https://kukudb-ff7f7.firebaseio.com/unseen_items.json')
       .then( res => {
+        // return all items that have not been swiped through (!==null)
         let filtered = res.data.filter( item => {
            return item !== null
         })
+        // return all filtered items that match category params
         let categoryArray = filtered.filter( item => {
           return item['Handle'] === this.props.match.params.category
         })
@@ -55,6 +71,7 @@ class Custom extends Component {
   sendToCart = async (cardObject) => {
     await axios.post( 'https://kukudb-ff7f7.firebaseio.com/cart.json', cardObject )
     await axios.delete(`https://kukudb-ff7f7.firebaseio.com/unseen_items/${cardObject['Id']}.json`)
+    // increase cart count by 1 in Redux
     this.props.dispatch(addToCart())
   }
 
@@ -85,7 +102,11 @@ class Custom extends Component {
                 renderEmpty={this.emptyShop}
                 looping={false}
                 renderItem={item =>
-                  <CardComp item={item} history={this.props.history} category={this.props.match.params.category} />
+                  <CardComp
+                    item={item}
+                    history={this.props.history}
+                    category={this.props.match.params.category}
+                  />
                 }
               />
             </View>
