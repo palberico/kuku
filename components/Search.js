@@ -1,8 +1,7 @@
-// React
 import React, { Component } from 'react';
-
-// Styles
 import { Image, Dimensions } from 'react-native';
+import { Link } from 'react-router-native';
+import Nav from './Nav';
 import {
   Container,
   Header,
@@ -17,12 +16,6 @@ import {
   Icon,
   Footer,
 } from 'native-base';
-
-// Router
-import { Link } from 'react-router-native';
-
-// Components
-import Nav from './Nav';
 
 class Search extends Component {
 
@@ -57,43 +50,53 @@ class Search extends Component {
               <CardItem cardBody>
                 <Image source={require('../images/home/tshirt3.jpg')}
                   style={{height: 200, width: null, flex: 1}}/>
-                <Text style={styles.kuku}>  Go Kuku                </Text>
+                <View style={styles.kukuWrap}>
+                  <Text style={styles.kukuText}>Go Kuku</Text>
+                </View>
               </CardItem>
               </Card>
             </Link>
             <Link to="/custom/Womens">
               <Card>
                 <CardItem cardBody>
-                  <Image source={require('../images/search/womens.jpg')}
+                  <Image source={require('../images/search/womens.jpg')} 
                     style={{height: 200, width: null, flex: 1}}/>
-                  <Text style={styles.kuku}>  Women's Kart               </Text>
+                  <View style={styles.kukuWrap}>
+                    <Text style={styles.kukuText}>Women's Kart</Text>
+                  </View>
                 </CardItem>
               </Card>
             </Link>
             <Link to="/custom/Baby">
               <Card>
                 <CardItem cardBody>
-                  <Image source={require('../images/search/baby.jpg')}
+                  <Image source={require('../images/search/baby.jpg')} 
                     style={{height: 200, width: null, flex: 1}}/>
-                  <Text style={styles.kuku}>  Baby Kart                </Text>
+                  <View style={styles.kukuWrap}>
+                    <Text style={styles.kukuText}>Baby Kart</Text>
+                  </View>
                 </CardItem>
               </Card>
             </Link>
             <Link to="custom/Mens">
               <Card>
                 <CardItem cardBody>
-                  <Image source={require('../images/search/mens.jpg')}
+                  <Image source={require('../images/search/mens.jpg')} 
                     style={{height: 200, width: null, flex: 1}}/>
-                  <Text style={styles.kuku}>  Men's Kart               </Text>
+                  <View style={styles.kukuWrap}>
+                    <Text style={styles.kukuText}>Men's Kart</Text>
+                  </View>
                 </CardItem>
               </Card>
             </Link>
             <Link to="/custom/Accessories">
               <Card>
                 <CardItem cardBody>
-                  <Image source={require('../images/search/accessories.jpg')}
+                  <Image source={require('../images/search/accessories.jpg')} 
                     style={{height: 200, width: null, flex: 1}}/>
-                    <Text style={styles.kuku}>  Accessory Kart               </Text>
+                  <View style={styles.kukuWrap}>
+                    <Text style={styles.kukuText}>Accessory Kart</Text>
+                  </View>
                 </CardItem>
             </Card>
           </Link>
@@ -104,6 +107,9 @@ class Search extends Component {
     )
   }
 };
+
+const deviceY = Dimensions.get('window').height;
+const deviceX = Dimensions.get('window').width;
 
 const styles = {
   content:{
@@ -119,13 +125,18 @@ const styles = {
     color: 'white',
   },
   icon:{
+    paddingLeft: 5,
     color: 'white',
   },
-  kuku: {
+  kukuWrap: {
     position: 'absolute',
-    fontSize: 25,
     backgroundColor: 'rgba(52, 52, 52, 0.8)',
-    color: 'white'
+    width: '65%'
+  },
+  kukuText: {
+    paddingLeft: 10,
+    fontSize: 25,
+    color: 'white',
   },
 }
 

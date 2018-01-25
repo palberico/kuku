@@ -13,6 +13,7 @@ import {
   Left,
   Body,
   Right,
+  Button,
   ActionSheet,
 } from 'native-base';
 
@@ -60,9 +61,11 @@ class ListIcon extends Component {
     return (
       <Container>
         <Header>
-          <Left>
-            <Icon name='ios-arrow-back' onPress={this.return} />
-          </Left>
+            <Left>
+              <Button transparent onPress={this.return}>
+                <Icon style={styles.icon} name='ios-arrow-back' onPress={this.return} />
+              </Button> 
+            </Left>
           <Text style={styles.head}>Settings</Text>
           <Right />
         </Header>
@@ -177,6 +180,10 @@ const styles = {
   head:{
     marginTop: 10,
     fontSize: 24,
+  },
+  icon:{
+    paddingLeft: 5,
+    color: 'black',
   },
 };
 

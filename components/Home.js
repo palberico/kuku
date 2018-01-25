@@ -73,8 +73,8 @@ class Home extends Component {
         <Header>
           <Right>
             <Button iconRight transparent onPress={this.guest}>
-              <Text style={styles.guest}>GUEST </Text>
-              <Icon name='ios-arrow-forward' />
+              <Text style={styles.guest}>GUEST</Text>
+              <Icon style={styles.icon} name='ios-arrow-forward' />
             </Button>
           </Right>
         </Header>
@@ -119,23 +119,23 @@ const styles = {
     height: deviceY/ 18,
     width: deviceY/ 4,
     marginRight: 'auto',
-    marginLeft: 'auto'
+    marginLeft: 'auto',
   },
   btn: {
     marginTop: 20,
     width: deviceY/ 2.5,
     marginRight: 'auto',
-    marginLeft: 'auto'
+    marginLeft: 'auto',
   },
   btn2: {
     marginTop: 15,
     width: deviceY/ 2.5,
     marginRight: 'auto',
-    marginLeft: 'auto'
+    marginLeft: 'auto',
   },
   textBtn:{
     fontSize: 18,
-    color: 'white'
+    color: 'white',
   },
   textBtn2:{
     fontSize: 18,
@@ -145,10 +145,14 @@ const styles = {
     marginTop: 100,
   },
   background:{
-    backgroundColor: '#ffffff'
+    backgroundColor: '#ffffff',
   },
   guest: {
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+  },
+  icon:{
+    paddingLeft: 2,
+    color: 'black',
   },
 };
 
