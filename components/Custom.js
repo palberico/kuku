@@ -138,7 +138,6 @@ let styles = {
   footer:{
     backgroundColor: '#ffffff'
   },
-<<<<<<< HEAD
   textEmptyDeck:{
     flex: 1,
     marginTop: '50%',
@@ -146,11 +145,8 @@ let styles = {
     fontSize: 30,
     color: 'white',
   },
-}
-=======
 };
 
->>>>>>> spring cleaning
 const mapStateToProps = (state) => {
   return {
     cart: state.cart
