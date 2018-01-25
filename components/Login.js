@@ -12,7 +12,6 @@ import {
   Button,
   Left,
   Right,
-  Card,
 } from 'native-base';
 
 class Login extends Component {
@@ -58,14 +57,14 @@ class Login extends Component {
           </Button>
         </Content>
       </Container>
-    );
+    )
   }
-}
+};
 
-const deviceHeight = Dimensions.get('window').height
-const deviceWidth = Dimensions.get('window').height
-const deviceY = Dimensions.get('window').height
-const deviceX = Dimensions.get('window').width
+const deviceHeight = Dimensions.get('window').height;
+const deviceWidth = Dimensions.get('window').height;
+const deviceY = Dimensions.get('window').height;
+const deviceX = Dimensions.get('window').width;
 
 const styles = {
   btn: {
@@ -83,9 +82,6 @@ const styles = {
     marginTop: 25,
     fontSize: 15
   },
-  card:{
-    marginTop: 40,
-  },
   head:{
     marginTop: 10,
     fontSize: 24,
@@ -94,6 +90,6 @@ const styles = {
     marginTop: 25,
     backgroundColor: '#ffffff',
   },
-}
+};
 
 export default Login;

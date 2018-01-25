@@ -1,5 +1,5 @@
 const cart = ( state = 0, action ) => {
-  switch(action.type){
+  switch(action.type) {
     case 'ADD_COUNT':
       return state + action.count;
     case 'SUB_COUNT':
@@ -8,4 +8,5 @@ const cart = ( state = 0, action ) => {
       return state;
   }
 }
+
 export default cart;

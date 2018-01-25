@@ -7,22 +7,20 @@ import {
 } from 'native-base';
 import { Link } from 'react-router-native';
 
-export const Nav = () => {
-  return(
-    <Header style={styles.header}>
-      <Body>
-        <Link to="/search">
-          <Title>
-            <Image style={styles.navLogo} source={require('../images/header-logo.png')} />
-          </Title>
-        </Link>
-      </Body>
-    </Header>
-  )
-};
+const Nav = () => (
+  <Header style={styles.header}>
+    <Body>
+      <Link to="/search">
+        <Title>
+          <Image style={styles.navLogo} source={require('../images/header-logo.png')} />
+        </Title>
+      </Link>
+    </Body>
+  </Header>
+);
 
-const deviceY = Dimensions.get('window').height
-const deviceX = Dimensions.get('window').width
+const deviceY = Dimensions.get('window').height;
+const deviceX = Dimensions.get('window').width;
 const styles = {
   navLogo: {
     height: deviceY / 25,

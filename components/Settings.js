@@ -13,16 +13,10 @@ import {
   ActionSheet,
 } from 'native-base';
 
-// Search List Pop-up Code
 var BUTTONS = ["Womens", "Baby", "Mens", "Accessories"];
 
 class ListIcon extends Component {
-
-  // Search List Pop-up Code
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+  state = {}
 
   return = () => {
     this.props.history.push('/shop')
@@ -47,7 +41,7 @@ class ListIcon extends Component {
   facebookLogIn = async () => {
     const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync('534726780240095', {
         permissions: ['public_profile'],
-      });
+      })
     if (type === 'success') {
       // Get the user's name using Facebook's Graph API
       const response = await fetch(
@@ -55,7 +49,7 @@ class ListIcon extends Component {
       Alert.alert(
         'Logged in!',
         `Hi ${(await response.json()).name}!`,
-      );
+      )
     }
   }
 
@@ -83,8 +77,6 @@ class ListIcon extends Component {
                 <Icon name="arrow-forward"/>
               </Right>
             </ListItem>
-
-             {/* Search List Pop-up Code */}
             <ListItem
               icon
               onPress={() =>
@@ -104,7 +96,6 @@ class ListIcon extends Component {
                 <Text>{this.state.clicked}</Text>
                 <Icon name="arrow-forward"  />
               </Right>
-              {/* End Search List Pop-up Code */}
             </ListItem>
             <ListItem itemDivider />
             <ListItem itemDivider>
@@ -132,17 +123,6 @@ class ListIcon extends Component {
                 <Icon name="arrow-forward"/>
               </Right>
             </ListItem>
-            {/* <ListItem icon onPress={this.logout}>
-              <Left>
-                <Icon name="ios-share-outline"/>
-              </Left>
-              <Body>
-                <Text>Share the App</Text>
-              </Body>
-              <Right>
-                <Icon name="arrow-forward"/>
-              </Right>
-            </ListItem> */}
             <ListItem itemDivider />
             <ListItem itemDivider>
               <Text>About Us</Text>
@@ -186,15 +166,15 @@ class ListIcon extends Component {
           </List>
         </Content>
       </Container>
-    );
+    )
   }
-}
+};
 
 const styles = {
-    head:{
-      marginTop: 10,
-      fontSize: 24,
+  head:{
+    marginTop: 10,
+    fontSize: 24,
   },
-}
+};
 
 export default ListIcon;

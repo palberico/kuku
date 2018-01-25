@@ -32,7 +32,7 @@ class Register extends Component {
               <Text>Cancel</Text>
             </Button>
           </Left>
-            <Text style={styles.head}>Register</Text>
+          <Text style={styles.head}>Register</Text>
           <Right>
             <Button transparent onPress={this.doneButton}>
               <Text>Done</Text>
@@ -50,26 +50,26 @@ class Register extends Component {
                 <Input />
               </Item>
               <Item floatingLabel>
-              <Label>Password</Label>
-              <Input secureTextEntry={true} />
+                <Label>Password</Label>
+                <Input secureTextEntry={true} />
               </Item>
             </Form>
-
-            {/* Future search for drop down (Men's, Women's, Accessories) */}
-
+            {/* ---Future--- preferences/categproes drop down (Men's, Women's, Accessories) on login landing shop */}
           <View>
             <Text style={styles.text}>By signing up and using Kuku, you are agreeing to its</Text>
             <Text style={styles.text}>Terms and Conditions and Privacy Policy.</Text>
           </View>
         </Content>
       </Container>
-    );
+    )
   }
-}
-const deviceHeight = Dimensions.get('window').height
-const deviceWidth = Dimensions.get('window').height
-const deviceY = Dimensions.get('window').height
-const deviceX = Dimensions.get('window').width
+};
+
+const deviceHeight = Dimensions.get('window').height;
+const deviceWidth = Dimensions.get('window').height;
+const deviceY = Dimensions.get('window').height;
+const deviceX = Dimensions.get('window').width;
+
 const styles = {
   text:{
     textAlign: 'center',
@@ -80,6 +80,6 @@ const styles = {
     marginTop: 10,
     fontSize: 24,
   },
-}
+};
 
 export default Register;

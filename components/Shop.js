@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Image, Dimensions } from 'react-native';
+import { Text, View, Dimensions } from 'react-native';
 import axios from 'axios';
 import CardComp from './Card';
 import { connect } from 'react-redux';
@@ -14,12 +14,11 @@ import {
   Button,
   Icon,
   DeckSwiper,
-  Badge
+  Badge,
 } from 'native-base';
 
 
 class Shop extends Component {
-
   state = { loaded: false, products: []  }
 
   componentDidMount = async () => {
@@ -29,8 +28,9 @@ class Shop extends Component {
            return item !== null
         })
         this.setState({ loaded: true, products: filtered })
-      })
-    }
+      }
+    )
+  }
 
 
   openSettings = () => {
@@ -66,9 +66,9 @@ class Shop extends Component {
     )
   }
 
-  render(){
-    if(this.state.loaded){
-      return(
+  render() {
+    if (this.state.loaded) {
+      return (
         <Container style={styles.content}>
           <Nav />
           <Content scrollEnabled={false} style={styles.shop}>
@@ -81,8 +81,9 @@ class Shop extends Component {
                 renderEmpty={this.emptyShop}
                 looping={false}
                 renderItem={item =>
-                <CardComp item={item} history={this.props.history} />
-              }/>
+                  <CardComp item={item} history={this.props.history} />
+                }
+              />
             </View>
           </Content>
           <Footer>
@@ -104,22 +105,18 @@ class Shop extends Component {
           </Footer>
         </Container>
       )
-    }
-    else{
-      return(
+    } else {
+      return (
         <View style={styles.shop}>
           <Loader />
         </View>
       )
     }
-
   }
-}
+};
 
-
-
-const deviceY = Dimensions.get('window').height
-const deviceX = Dimensions.get('window').width
+const deviceY = Dimensions.get('window').height;
+const deviceX = Dimensions.get('window').width;
 
 let styles = {
   deckStyle: {
@@ -130,7 +127,6 @@ let styles = {
     paddingTop: '8.5%',
     width: deviceX,
     height: deviceY,
-
   },
   content:{
     flexDirection: 'column',
@@ -146,12 +142,12 @@ let styles = {
     fontSize: 30,
     color: 'white',
   },
-}
+};
 
 const mapStateToProps = (state) => {
-  return{
+  return {
     cart: state.cart
   }
-}
+};
 
 export default connect(mapStateToProps)(Shop);
