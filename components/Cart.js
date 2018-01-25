@@ -99,7 +99,7 @@ class Cart extends Component {
           <Content>
             { this.state.items.length <= 0 ?
               <Text style={styles.textEmptyCart}>There's no love like your first.{"\n"}
-              Go find something to love!</Text> :
+              Find something to love!</Text> :
               <Text></Text> }
             <View>
               { this.displayItems() }

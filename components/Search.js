@@ -12,6 +12,8 @@ import {
   Button,
   View,
   Body,
+  Left,
+  Icon,
   Footer,
 } from 'native-base';
 
@@ -29,10 +31,18 @@ class Search extends Component {
     this.props.history.push('/settings')
   }
 
+  logOut = () => {
+    this.props.history.push('/')
+  }
+
   render() {
     return (
       <Container>
-        <Header style={styles.content} />
+        <Header style={styles.content}>
+          <Left>
+            <Icon name='ios-arrow-back' style={styles.icon} onPress={this.logOut} />
+          </Left>
+        </Header>
       <Content style={styles.content}>
         <View>
           <Link to="/shop">
