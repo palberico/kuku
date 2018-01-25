@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Text, View, Dimensions } from 'react-native';
+import { Text, View, Image, Dimensions } from 'react-native';
+import { Link } from 'react-router-native';
 import axios from 'axios';
 import CardComp from './Card';
 import { connect } from 'react-redux';
@@ -59,9 +60,11 @@ class Shop extends Component {
   emptyShop = () => {
     return(
       <View>
-        <Text style={styles.textEmptyDeck}>
-          "I'm all out of love, I'm so lost without you."
-        </Text>
+        <Link to="/search">
+            <Text style={styles.textEmptyDeck}>
+              "I'm all out of love, I'm so lost without you."
+            </Text>
+          </Link>
       </View>
     )
   }

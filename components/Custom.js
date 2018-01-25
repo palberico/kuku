@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, Image, Dimensions } from 'react-native'
+import { Link } from 'react-router-native';
 import Loader from './Loader';
 import axios from 'axios'
 import { connect } from 'react-redux';
@@ -57,15 +58,17 @@ class Custom extends Component {
     this.props.dispatch(addToCart())
   }
 
-  emptyShop = () => {
-    return(
-      <View>
-        <Text style={styles.textEmptyDeck}>
-        "I'm all out of love, I'm so lost without you."
-        </Text>
-      </View>
-    )
-  }
+    emptyShop = () => {
+      return(
+        <View>
+          <Link to="/search">
+            <Text style={styles.textEmptyDeck}>
+              "I'm all out of love, I'm so lost without you."
+            </Text>
+          </Link>
+        </View>
+      )
+    }
 
   render() {
     if (this.state.loaded) {
