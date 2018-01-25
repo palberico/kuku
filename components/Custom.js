@@ -61,8 +61,8 @@ class Custom extends Component {
     emptyShop = () => {
       return(
         <View>
-          <Text style={{color: 'white'}}>
-            Deck is Empty!
+          <Text style={styles.textEmptyDeck}>
+          "I'm all out of love, I'm so lost without you."
           </Text>
         </View>
       )
@@ -139,6 +139,13 @@ let styles = {
   },
   footer:{
     backgroundColor: '#ffffff'
+  },
+  textEmptyDeck:{
+    flex: 1,
+    marginTop: '50%',
+    textAlign: 'center',
+    fontSize: 30,
+    color: 'white',
   },
 }
 const mapStateToProps = (state) => {
