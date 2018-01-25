@@ -19,7 +19,7 @@ export const Nav = () => {
       </Body>
     </Header>
   )
-}
+};
 
 const deviceY = Dimensions.get('window').height
 const deviceX = Dimensions.get('window').width
@@ -32,6 +32,6 @@ const styles = {
   header: {
     backgroundColor: '#ffffff'
   }
-}
+};
 
 export default Nav;

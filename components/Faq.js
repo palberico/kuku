@@ -81,9 +81,9 @@ class Faq extends Component {
           </FooterTab>
         </Footer>
       </Container>
-    );
+    )
   }
-}
+};
 
 const styles = {
   title: {
@@ -98,6 +98,6 @@ const styles = {
     marginRight: 15,
     marginLeft: 15,
   },
-}
+};
 
 export default Faq;

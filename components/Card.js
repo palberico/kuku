@@ -24,7 +24,6 @@ class CardComp extends Component {
     return (
       <View>
         <TouchableHighlight onPress={() => this.showDescription(this.props.item['Title'], this.props.item['Handle'])}>
-          {/* TODO: history.push description.js */}
           <Card>
             <CardItem>
               <Left>
@@ -69,6 +68,6 @@ const styles = {
   thumb:{
     resizeMode: 'contain',
   },
-}
+};
 
 export default connect()(CardComp);

@@ -5,8 +5,7 @@ import Nav from './Nav';
 import { Col, Row, Grid } from 'react-native-easy-grid';
 import { connect } from 'react-redux';
 import { addToCart } from '../actions/products';
-import { Link } from 'react-router-native';
-import axios from 'axios'
+import axios from 'axios';
 import {
   Container,
   Content,
@@ -38,7 +37,6 @@ class Description extends Component {
     } else {
       this.props.history.push(`/custom/${this.props.match.params.category}`)
     }
-
   }
 
   goToCart = () => {
@@ -63,32 +61,32 @@ class Description extends Component {
         <Nav />
         <Content>
           <View style={styles.container}>
-              <ImageSlider
-                  images={[
-                    this.props.product['Image Src'],
-                    this.props.product['Alt1']]}
-                  height={deviceY/ 1.5}
-                  position={this.state.position}
-                  onPositionChanged={position => this.setState({position})
-                }
-              />
+            <ImageSlider
+              images={[
+                product['Image Src'],
+                product['Alt1']
+              ]}
+              height={deviceY/ 1.5}
+              position={this.state.position}
+              onPositionChanged={position => this.setState({position})}
+            />
           </View>
           <Card style={styles.card}>
             <Grid>
               <Row>
-              <Col>
-                <Button block dark style={styles.btnOne} onPress={this.websiteLink}>
-                  <Text style={styles.textBtn1}>Buy from Retailer</Text>
-                </Button>
-              </Col>
-              <Col>
-                <Button iconLeft block dark style={styles.btnTwo} onPress={this.changeLike}>
-                  <Icon style={styles.iconBtn}
-                        name={this.state.liked ? 'ios-heart' : 'heart'}
-                  />
-                  <Text style={styles.textBtn2}>Love It</Text>
-                </Button>
-              </Col>
+                <Col>
+                  <Button block dark style={styles.btnOne} onPress={this.websiteLink}>
+                    <Text style={styles.textBtn1}>Buy from Retailer</Text>
+                  </Button>
+                </Col>
+                <Col>
+                  <Button iconLeft block dark style={styles.btnTwo} onPress={this.changeLike}>
+                    <Icon style={styles.iconBtn}
+                          name={this.state.liked ? 'ios-heart' : 'heart'}
+                    />
+                    <Text style={styles.textBtn2}>Love It</Text>
+                  </Button>
+                </Col>
               </Row>
             </Grid>
             <CardItem header>
@@ -103,42 +101,6 @@ class Description extends Component {
             <CardItem>
               <Body>
                 <Text style={styles.desc}>{product['Body']}</Text>
-                {/* NOTE ** this has to be cleaned up in the CSV or JSON file */}
-                {/* <Text style={styles.desc}>
-                Made from repurposed skateboard decks, the Lone Peak were made for people on the go! With an updated wayfarer design and polarized lenses, these skateboard sunglasses have no shortage of style.
-                </Text>
-                <View style={{height: 15}} />
-                <Text style={styles.desc}>
-                  Lone Peak Elevation: 11,253′
-                </Text>
-                <View style={{height: 15}} />
-                <Text style={styles.desc}>
-                — Wood frames
-                </Text>
-                <View style={{height: 5}} />
-                <Text style={styles.desc}>
-                — Stainless steel spring-loaded hinges.
-                </Text>
-                <View style={{height: 5}} />
-                <Text style={styles.desc}>
-                — CR-39 polarized lenses.
-                </Text>
-                <View style={{height: 5}} />
-                <Text style={styles.desc}>
-                — See our Size Guide for measurements
-                </Text>
-                <View style={{height: 5}} />
-                <Text style={styles.desc}>
-                — Lightweight frames
-                </Text>
-                <View style={{height: 5}} />
-                <Text style={styles.desc}>
-                — Not Rx compatible.
-                </Text>
-                <View style={{height: 5}} />
-                <Text style={styles.desc}>
-                — Includes a microfiber pouch
-                </Text> */}
               </Body>
             </CardItem>
             <CardItem footer>
@@ -162,16 +124,10 @@ class Description extends Component {
       </Container>
     );
   }
-}
+};
 
-{/* <Button badge vertical onPress={this.openCart}>
-  <Badge><Text style={{color: 'white'}}>{this.props.cart}</Text></Badge>
-  <Icon name='md-heart-outline' />
-  <Text>Loved</Text>
-</Button> */}
-
-const deviceY = Dimensions.get('window').height
-const deviceX = Dimensions.get('window').width
+const deviceY = Dimensions.get('window').height;
+const deviceX = Dimensions.get('window').width;
 
 const styles = {
   imageStyle:{
@@ -232,13 +188,13 @@ const styles = {
   card: {
     marginTop: 5,
   },
-}
+};
 
 const mapStateToProps = (state, props) => {
   return {
     product: state.products.products.find( p => p['Title'] === props.match.params.title),
     cart: state.cart
   }
-}
+};
 
 export default connect(mapStateToProps)(Description);

@@ -3,8 +3,7 @@ import { Text, View, Image, TouchableHighlight, Dimensions } from 'react-native'
 import Nav from './Nav';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import { setSelected, subtractToCart } from '../actions/products';
-import { Link } from 'react-router-native';
+import { subtractToCart } from '../actions/products';
 import {
   Container,
   Content,
@@ -17,17 +16,11 @@ import {
   Body,
   Left,
   Right,
-  Thumbnail,
 } from 'native-base';
 
 class Cart extends Component {
-
   state = { loaded: false, items: [], obj: {} }
-
-  showDescription = (title) => {
-    this.props.history.push(`/description/${title}`)
-  }
-
+  
   componentDidMount(){
     axios.get('https://kukudb-ff7f7.firebaseio.com/cart.json')
       .then( res => {
@@ -35,9 +28,13 @@ class Cart extends Component {
         for ( let each in res.data){
           array.push([res.data[each], each])
         }
-        this.setState({ items: array, loaded: true, obj: res.data})
-      })
-    }
+      this.setState({ items: array, loaded: true, obj: res.data})
+    })
+  }
+
+  showDescription = (title) => {
+    this.props.history.push(`/description/${title}`)
+  }
 
   openShop = () => {
     if(this.props.match.params.category !== "shop"){
@@ -67,8 +64,8 @@ class Cart extends Component {
   displayItems = () => {
     return this.state.items.map( item => {
       return (
-
-        <TouchableHighlight onPress={() => this.showDescription(item[0]['Title'])} key={item[0]['Title']}>
+        // TODO need to fix this, doesn't work
+        <TouchableHighlight onPress={() => this.showDescription(item['Title'], item['Handle'])}>
           <Card>
             <CardItem cardBody>
               <Image source={{uri:item[0]['Image Src']}} style={styles.cardImage} />
@@ -90,7 +87,6 @@ class Cart extends Component {
             </CardItem>
           </Card>
         </TouchableHighlight>
-
       )
     })
   }
@@ -106,7 +102,7 @@ class Cart extends Component {
               Go find something to love!</Text> :
               <Text></Text> }
             <View>
-              {this.displayItems()}
+              { this.displayItems() }
             </View>
           </Content>
           <Footer>
@@ -123,20 +119,20 @@ class Cart extends Component {
           </Footer>
         </Container>
       )
-    }else{
-      return(
+    } else {
+      return (
         <Card>
           <Text>Loading...</Text>
         </Card>
       )
     }
   }
-}
+};
 
-const deviceHeight = Dimensions.get('window').height
-const deviceWidth = Dimensions.get('window').height
-const deviceY = Dimensions.get('window').height
-const deviceX = Dimensions.get('window').width
+const deviceHeight = Dimensions.get('window').height;
+const deviceWidth = Dimensions.get('window').height;
+const deviceY = Dimensions.get('window').height;
+const deviceX = Dimensions.get('window').width;
 
 
 const styles = {
@@ -166,8 +162,6 @@ const styles = {
     fontSize: 35,
     color: 'black',
   },
-}
-
-
+};
 
 export default connect()(Cart);
