@@ -39,7 +39,20 @@ import axios from 'axios';
 
 
 class Description extends Component {
-  state = { position: 1, interval: null, liked: false, allowLike: true };
+  state = { position: 1, interval: null, liked: false, allowLike: true, items: [] };
+
+  componentDidMount(){
+    axios.get('https://kukudb-ff7f7.firebaseio.com/cart.json')
+      .then( res => {
+        // Convert returned cart object into an array
+        let array = []
+        for ( let each in res.data){
+          // each item = [item, unique ID]
+          array.push([res.data[each], each])
+        }
+      this.setState({ items: array })
+    })
+  }
 
   changeLike = async () => {
     // Only allows item to be added once
@@ -59,12 +72,17 @@ class Description extends Component {
   }
 
   return = () => {
-    // Return to Kuku Shop if navigating to description from there
-    if (this.props.match.params.category === "kuku"){
-      this.props.history.push('/shop')
-    } else {
-      // Return to Custom Shop if navigating to description from there
-      this.props.history.push(`/custom/${this.props.match.params.category}`)
+    if (this.props.match.params.fromComponent === "cart"){
+      this.props.history.push("/search")
+    }
+    else {
+      // Return to Kuku Shop if navigating to description from there
+      if (this.props.match.params.category === "kuku"){
+        this.props.history.push('/shop')
+      } else {
+        // Return to Custom Shop if navigating to description from there
+        this.props.history.push(`/custom/${this.props.match.params.category}`)
+      }
     }
   }
 

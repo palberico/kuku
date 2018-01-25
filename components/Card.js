@@ -26,9 +26,9 @@ class CardComp extends Component {
   // Open Description Component onPress of Card
   showDescription = (title, category) => {
     if (this.props.category){
-      this.props.history.push(`/description/${title}/${category}`)
+      this.props.history.push(`/description/${title}/${category}/shop`)
     } else {
-      this.props.history.push(`/description/${title}/kuku`)
+      this.props.history.push(`/description/${title}/kuku/shop`)
     }
   }
 

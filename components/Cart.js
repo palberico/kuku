@@ -36,8 +36,8 @@ import axios from 'axios';
 class Cart extends Component {
   state = { loaded: false, items: [] }
 
-  componentDidMount(){
-    axios.get('https://kukudb-ff7f7.firebaseio.com/cart.json')
+  componentDidMount = async () => {
+    await axios.get('https://kukudb-ff7f7.firebaseio.com/cart.json')
       .then( res => {
         // Convert returned cart object into an array
         let array = []
@@ -45,12 +45,13 @@ class Cart extends Component {
           // each item = [item, unique ID]
           array.push([res.data[each], each])
         }
-      this.setState({ items: array, loaded: true })
+       this.setState({ items: array, loaded: true })
     })
+
   }
 
-  showDescription = (title, handle) => {
-    this.props.history.push(`/description/${title}/${handle}`)
+  showDescription = (title, handle, component) => {
+    this.props.history.push(`/description/${title}/${handle}/${component}`)
   }
 
   openShop = () => {
@@ -87,7 +88,7 @@ class Cart extends Component {
     return this.state.items.map( item => {
       return (
         <TouchableHighlight
-          onPress={() => this.showDescription(item[0]['Title'], item[0]['Handle'])}
+          onPress={() => this.showDescription(item[0]['Title'], item[0]['Handle'], "cart")}
           key={item[0]['Title']}
           >
           <Card>

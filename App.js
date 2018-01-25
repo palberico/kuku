@@ -46,7 +46,7 @@ class App extends Component {
                 <Route exact path="/privacy" component={Privacy} />
                 <Route exact path="/settings" component={Settings} />
                 <Route exact path="/register" component={Register} />
-                <Route exact path="/description/:title/:category" component={Description} />
+                <Route exact path="/description/:title/:category/:fromComponent" component={Description} />
               </Switch>
             </NativeRouter>
 
