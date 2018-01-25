@@ -48,11 +48,35 @@ class Description extends Component {
         let array = []
         for ( let each in res.data){
           // each item = [item, unique ID]
-          array.push([res.data[each], each])
+          array.push(res.data[each])
         }
-      this.setState({ items: array })
-    })
+        this.setState({ items: array })
+      })
+    }
+
+  inCartCheck = () => {
+    if(this.props.match.params.fromComponent === "cart"){
+      return(
+        <Button iconLeft block dark style={styles.btnTwo}>
+          <Icon style={styles.iconBtn}
+                name={'ios-heart'}
+          />
+          <Text style={styles.textBtn2}>Loved</Text>
+        </Button>
+      )
+    }
+    else {
+      return(
+        <Button iconLeft block dark style={styles.btnTwo} onPress={this.changeLike}>
+          <Icon style={styles.iconBtn}
+                name={this.state.liked ? 'ios-heart' : 'heart'}
+          />
+          <Text style={styles.textBtn2}>Love It</Text>
+        </Button>
+      )
+    }
   }
+
 
   changeLike = async () => {
     // Only allows item to be added once
@@ -100,6 +124,7 @@ class Description extends Component {
     }).catch(err => console.error('An error occurred', err));
   }
 
+
   render() {
     const { product } = this.props;
 
@@ -127,12 +152,13 @@ class Description extends Component {
                   </Button>
                 </Col>
                 <Col>
-                  <Button iconLeft block dark style={styles.btnTwo} onPress={this.changeLike}>
+                  {/* <Button iconLeft block dark style={styles.btnTwo} onPress={this.changeLike}>
                     <Icon style={styles.iconBtn}
                           name={this.state.liked ? 'ios-heart' : 'heart'}
                     />
                     <Text style={styles.textBtn2}>Love It</Text>
-                  </Button>
+                  </Button> */}
+                  {this.inCartCheck()}
                 </Col>
               </Row>
             </Grid>
