@@ -33,93 +33,53 @@ class Search extends Component {
     return (
       <Container>
         <Header style={styles.content} />
-        <Content style={styles.content}>
-          <View>
-            <Link to="/shop">
-              <Card>
-                <CardItem cardBody>
-                  <Image 
-                    source={require('../images/home/tshirt3.jpg')}
-                    style={{height: 200, width: null, flex: 1}}
-                  />
-                </CardItem>
-                <CardItem>
-                  <Body>
-                    <Button dark full onPress={this.openShop} >
-                      <Text style={styles.textBtn1}>Go Kuku</Text>
-                    </Button>
-                  </Body>
-                </CardItem>
+      <Content style={styles.content}>
+        <View>
+          <Link to="/shop">
+            <Card>
+              <CardItem cardBody>
+                <Image source={require('../images/home/tshirt3.jpg')}
+                  style={{height: 200, width: null, flex: 1}}/>
+                <Text style={styles.kuku}>  Go Kuku                </Text>
+              </CardItem>
               </Card>
             </Link>
             <Link to="/custom/Womens">
               <Card>
                 <CardItem cardBody>
-                  <Image 
-                    source={require('../images/search/womens.jpg')} 
-                    style={{height: 200, width: null, flex: 1}}
-                  />
-                </CardItem>
-                <CardItem>
-                  <Body>
-                    <Button full dark onPress={ () => this.openCustom('Womens')} >
-                      <Text style={styles.textBtn1}>Women's Kart</Text>
-                    </Button>
-                  </Body>
+                  <Image source={require('../images/search/womens.jpg')} 
+                    style={{height: 200, width: null, flex: 1}}/>
+                  <Text style={styles.kuku}>  Women's Kart               </Text>
                 </CardItem>
               </Card>
             </Link>
             <Link to="/custom/Baby">
               <Card>
                 <CardItem cardBody>
-                  <Image 
-                    source={require('../images/search/baby.jpg')} 
-                    style={{height: 200, width: null, flex: 1}}
-                  />
-                </CardItem>
-                <CardItem>
-                  <Body>
-                    <Button full dark onPress={ () => this.openCustom('Baby')} >
-                      <Text style={styles.textBtn1}>Baby Kart</Text>
-                    </Button>
-                  </Body>
+                  <Image source={require('../images/search/baby.jpg')} 
+                    style={{height: 200, width: null, flex: 1}}/>
+                  <Text style={styles.kuku}>  Baby Kart                </Text>
                 </CardItem>
               </Card>
             </Link>
             <Link to="custom/Mens">
               <Card>
                 <CardItem cardBody>
-                  <Image 
-                    source={require('../images/search/mens.jpg')} 
-                    style={{height: 200, width: null, flex: 1}}
-                  />
-                </CardItem>
-                <CardItem>
-                  <Body>
-                    <Button full dark onPress={() => this.openCustom('Mens')} >
-                      <Text style={styles.textBtn1}>Men's Kart</Text>
-                    </Button>
-                  </Body>
+                  <Image source={require('../images/search/mens.jpg')} 
+                    style={{height: 200, width: null, flex: 1}}/>
+                  <Text style={styles.kuku}>  Men's Kart               </Text>
                 </CardItem>
               </Card>
             </Link>
             <Link to="/custom/Accessories">
               <Card>
                 <CardItem cardBody>
-                  <Image 
-                    source={require('../images/search/accessories.jpg')} 
-                    style={{height: 200, width: null, flex: 1}}
-                  />
+                  <Image source={require('../images/search/accessories.jpg')} 
+                    style={{height: 200, width: null, flex: 1}}/>
+                    <Text style={styles.kuku}>  Accessory Kart               </Text>
                 </CardItem>
-                <CardItem>
-                  <Body>
-                    <Button full dark onPress={ () => this.openCustom('Accessories')} >
-                      <Text style={styles.textBtn1}>Accessory Kart</Text>
-                    </Button>
-                  </Body>
-                </CardItem>
-              </Card>
-            </Link>
+            </Card>
+          </Link>
           </View>
         </Content>
         <Footer style={styles.content} />
@@ -144,6 +104,15 @@ const styles = {
     marginLeft: 'auto',
     color: 'white',
   },
-};
+  icon:{
+    color: 'white',
+  },
+  kuku: {
+    position: 'absolute',
+    fontSize: 25,
+    backgroundColor: 'rgba(52, 52, 52, 0.8)',
+    color: 'white'
+  },
+}
 
 export default Search;
