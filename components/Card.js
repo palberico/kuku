@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { Col, Row, Grid } from 'react-native-easy-grid';
 import { Text, View, Image, TouchableHighlight, Dimensions } from 'react-native';
-import Nav from './Nav';
 import {
   Body,
   Left,
@@ -11,50 +9,49 @@ import {
   Footer,
 } from 'native-base';
 import { connect } from 'react-redux';
-import { setSelected } from '../actions/products';
 
 class CardComp extends Component {
 
   showDescription = (title, category) => {
     if (this.props.category){
       this.props.history.push(`/description/${title}/${category}`)
-    } else{
+    } else {
       this.props.history.push(`/description/${title}/kuku`)
     }
   }
 
-  render(){
-    return(
-        <View>
-          <TouchableHighlight onPress={() => this.showDescription(this.props.item['Title'], this.props.item['Handle'])}>
-            {/* TODO: history.push description.js */}
-            <Card>
-              <CardItem>
-                <Left>
-                  <Thumbnail
-                  style={styles.thumb}
-                  source={{uri:this.props.item['logo']}} />
-                  <Body>
-                    <Text>{this.props.item['Title']}</Text>
-                    <Text note>{this.props.item['Variant Price']}</Text>
-                  </Body>
-                </Left>
-              </CardItem>
-              <CardItem cardBody>
+  render() {
+    return (
+      <View>
+        <TouchableHighlight onPress={() => this.showDescription(this.props.item['Title'], this.props.item['Handle'])}>
+          {/* TODO: history.push description.js */}
+          <Card>
+            <CardItem>
+              <Left>
+                <Thumbnail
+                style={styles.thumb}
+                source={{uri:this.props.item['logo']}} />
                 <Body>
-                  <Image
-                    style={styles.cardImage}
-                    source={{uri:this.props.item['Image Src']}}
-                  />
+                  <Text>{this.props.item['Title']}</Text>
+                  <Text note>{this.props.item['Variant Price']}</Text>
                 </Body>
-              </CardItem>
-              <Footer style={styles.cardFooter} />
-            </Card>
-          </TouchableHighlight>
-        </View>
-      )
-    }
+              </Left>
+            </CardItem>
+            <CardItem cardBody>
+              <Body>
+                <Image
+                  style={styles.cardImage}
+                  source={{uri:this.props.item['Image Src']}}
+                />
+              </Body>
+            </CardItem>
+            <Footer style={styles.cardFooter} />
+          </Card>
+        </TouchableHighlight>
+      </View>
+    )
   }
+};
 
 const deviceY = Dimensions.get('window').height
 const deviceX = Dimensions.get('window').width

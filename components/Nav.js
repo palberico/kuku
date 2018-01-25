@@ -5,14 +5,17 @@ import {
   Body,
   Title,
 } from 'native-base';
+import { Link } from 'react-router-native';
 
 export const Nav = () => {
   return(
     <Header style={styles.header}>
       <Body>
-        <Title>
-          <Image style={styles.navLogo} source={require('../images/header-logo.png')} />
-        </Title>
+        <Link to="/search">
+          <Title>
+            <Image style={styles.navLogo} source={require('../images/header-logo.png')} />
+          </Title>
+        </Link>
       </Body>
     </Header>
   )
