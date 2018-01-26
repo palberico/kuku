@@ -26,6 +26,22 @@ class Register extends Component {
     this.props.history.push('/search')
   }
 
+  facebookLogIn = async () => {
+    const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync('534726780240095', {
+        permissions: ['public_profile'],
+      })
+    if (type === 'success') {
+      // Gets the user's name using Facebook's Graph API
+      const response = await fetch(
+        `https://graph.facebook.com/me?access_token=${token}`);
+      this.props.history.push('/search')
+      Alert.alert(
+        'Logged in!',
+        `Hi ${(await response.json()).name}!`,
+      )
+    }
+  }
+
   render() {
     return (
       <Container>
@@ -57,6 +73,10 @@ class Register extends Component {
                 <Input secureTextEntry={true} />
               </Item>
             </Form>
+            <Text style={styles.text}>-or-</Text>
+            <Button block style={styles.btn} onPress={this.facebookLogIn}>
+              <Text style={styles.textBtn1}>Login With Facebook</Text>
+            </Button>
             {/* ---Future--- preferences/categproes drop down (Men's, Women's, Accessories) on login landing shop */}
           <View>
             <Text style={styles.text}>By signing up and using Kuku, you are agreeing to its</Text>
@@ -68,11 +88,23 @@ class Register extends Component {
   }
 };
 
+const deviceY = Dimensions.get('window').height;
+
 const styles = {
   text:{
     textAlign: 'center',
     marginTop: 10,
     fontSize: 15,
+  },
+  btn: {
+    marginTop: 20,
+    width: deviceY/ 2.5,
+    marginRight: 'auto',
+    marginLeft: 'auto',
+  },
+  textBtn1:{
+    fontSize: 18,
+    color: 'white'
   },
   head:{
     marginTop: 10,

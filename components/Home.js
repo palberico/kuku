@@ -109,6 +109,7 @@ class Home extends Component {
 };
 
 const deviceY = Dimensions.get('window').height;
+
 const styles = {
   hero: {
     height: deviceY/ 2,
