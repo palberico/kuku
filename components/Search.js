@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Image, Dimensions } from 'react-native';
 import { Link } from 'react-router-native';
+import { connect } from 'react-redux';
 import Nav from './Nav';
 import {
   Container,
@@ -15,12 +16,18 @@ import {
   Left,
   Icon,
   Footer,
+  FooterTab,
+  Badge,
 } from 'native-base';
 
 class Search extends Component {
 
   openShop = () => {
     this.props.history.push('/shop')
+  }
+
+  openCart = () => {
+    this.props.history.push('/cart/shop')
   }
 
   openCustom = (category) => {
@@ -102,7 +109,19 @@ class Search extends Component {
           </Link>
           </View>
         </Content>
-        <Footer style={styles.content} />
+        <Footer>
+          <FooterTab style={styles.footer}>
+            <Button vertical onPress={this.openSettings}>
+              <Icon style={styles.icon} name='ios-settings-outline' />
+              <Text style={styles.iconText}>Settings</Text>
+            </Button>
+            <Button badge vertical onPress={this.openCart}>
+              <Badge><Text style={{color: 'white'}}>{this.props.cart}</Text></Badge>
+              <Icon style={styles.icon} name='md-heart-outline' />
+              <Text style={styles.iconText}>Loved</Text>
+            </Button>
+          </FooterTab>
+        </Footer>
       </Container>
     )
   }
@@ -125,19 +144,30 @@ const styles = {
     color: 'white',
   },
   icon:{
-    paddingLeft: 5,
-    color: 'white',
+    color: 'white'
+  },
+  iconText: {
+    color: 'white'
   },
   kukuWrap: {
     position: 'absolute',
     backgroundColor: 'rgba(52, 52, 52, 0.8)',
     width: '65%'
   },
+  footer:{
+    backgroundColor: '#000'
+  },
   kukuText: {
     paddingLeft: 10,
     fontSize: 25,
     color: 'white',
   },
-}
+};
 
-export default Search;
+const mapStateToProps = (state) => {
+  return {
+    cart: state.cart
+  }
+};
+
+export default connect(mapStateToProps)(Search);
