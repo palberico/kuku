@@ -28,7 +28,10 @@ import Register from './components/Register';
 import Description from './components/Description';
 
 class App extends Component {
+
+  
   render() {
+    console.disableYellowBox = true;
     return (
       <Provider store={store}>
 
