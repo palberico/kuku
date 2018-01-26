@@ -152,12 +152,6 @@ class Description extends Component {
                   </Button>
                 </Col>
                 <Col>
-                  {/* <Button iconLeft block dark style={styles.btnTwo} onPress={this.changeLike}>
-                    <Icon style={styles.iconBtn}
-                          name={this.state.liked ? 'ios-heart' : 'heart'}
-                    />
-                    <Text style={styles.textBtn2}>Love It</Text>
-                  </Button> */}
                   {this.inCartCheck()}
                 </Col>
               </Row>

@@ -70,8 +70,10 @@ const deviceX = Dimensions.get('window').width
 
 const styles = {
   cardImage:{
-    width: deviceX,
+    width: deviceX/ 1.05,
     height: deviceY/ 2,
+    marginRight: 'auto',
+    marginLeft: 'auto',
     resizeMode: 'contain',
   },
   cardFooter:{
