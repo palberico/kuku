@@ -1,7 +1,19 @@
+// React
 import React, { Component } from 'react';
+
+// Styles
 import { View, Text, Platform } from 'react-native';
-import { Container, Content, Footer, FooterTab, Button, Icon } from 'native-base';
-import Nav from './Nav'
+import {
+  Container,
+  Content,
+  Footer,
+  FooterTab,
+  Button,
+  Icon,
+} from 'native-base';
+
+// Components
+import Nav from './Nav';
 
 class Privacy extends Component {
 
@@ -123,9 +135,9 @@ class Privacy extends Component {
           </FooterTab>
         </Footer>
       </Container>
-    );
+    )
   }
-}
+};
 
 const styles = {
   title: {
@@ -136,6 +148,6 @@ const styles = {
     marginRight: 15,
     marginLeft: 15,
   },
-}
+};
 
 export default Privacy;

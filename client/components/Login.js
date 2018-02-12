@@ -1,4 +1,7 @@
+// React
 import React, { Component } from 'react';
+
+// Styles
 import { Text, Dimensions } from 'react-native';
 import {
   Container,
@@ -12,7 +15,6 @@ import {
   Button,
   Left,
   Right,
-  Card,
 } from 'native-base';
 
 class Login extends Component {
@@ -22,7 +24,23 @@ class Login extends Component {
   }
 
   doneButton = () => {
-    this.props.history.push('/shop')
+    this.props.history.push('/search')
+  }
+
+  facebookLogIn = async () => {
+    const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync('534726780240095', {
+        permissions: ['public_profile'],
+      })
+    if (type === 'success') {
+      // Gets the user's name using Facebook's Graph API
+      const response = await fetch(
+        `https://graph.facebook.com/me?access_token=${token}`);
+      this.props.history.push('/search')
+      Alert.alert(
+        'Logged in!',
+        `Hi ${(await response.json()).name}!`,
+      )
+    }
   }
 
   render() {
@@ -49,23 +67,20 @@ class Login extends Component {
             </Item>
             <Item floatingLabel last>
               <Label>Password</Label>
-              <Input />
+              <Input secureTextEntry={true} />
             </Item>
           </Form>
           <Text style={styles.text}>-or-</Text>
-          <Button block style={styles.btn}>
+          <Button block style={styles.btn} onPress={this.facebookLogIn}>
             <Text style={styles.textBtn1}>Login With Facebook</Text>
           </Button>
         </Content>
       </Container>
-    );
+    )
   }
-}
+};
 
-const deviceHeight = Dimensions.get('window').height
-const deviceWidth = Dimensions.get('window').height
-const deviceY = Dimensions.get('window').height
-const deviceX = Dimensions.get('window').width
+const deviceWidth = Dimensions.get('window').height;
 
 const styles = {
   btn: {
@@ -83,9 +98,6 @@ const styles = {
     marginTop: 25,
     fontSize: 15
   },
-  card:{
-    marginTop: 40,
-  },
   head:{
     marginTop: 10,
     fontSize: 24,
@@ -94,6 +106,6 @@ const styles = {
     marginTop: 25,
     backgroundColor: '#ffffff',
   },
-}
+};
 
 export default Login;

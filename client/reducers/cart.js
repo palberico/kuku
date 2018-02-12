@@ -1,13 +1,14 @@
-const cart = ( state = { cart: [] }, action ) => {
-  switch(action.type){
-    case 'ADD_TO_CART':{
-      return {
-        cart: [...state.cart, action.cartItem]
-      }
-    }
+const cart = ( state = 0, action ) => {
+  switch(action.type) {
+    case 'ADD_COUNT':
+      return state + action.count;
+    case 'SUB_COUNT':
+      return state - action.count;
+    case 'RESET_COUNT':
+      return action.count
     default:
       return state;
   }
 }
 
-export default cart
+export default cart;

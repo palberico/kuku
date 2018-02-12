@@ -1,8 +1,8 @@
 // React
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 // Styles
-import { Text, View, Image, Dimensions } from 'react-native';
+import { View, Text, Image, Dimensions } from 'react-native'
 import {
   Container,
   Content,
@@ -14,42 +14,49 @@ import {
   Badge,
 } from 'native-base';
 
-// React Router
+// Router
 import { Link } from 'react-router-native';
 
 // Redux
 import { connect } from 'react-redux';
 import { addToCart } from '../actions/products';
 
-// API Calls
-import axios from 'axios';
+// Components
+import Loader from './Loader';
+import Nav from './Nav';
 import CardComp from './Card';
 
-// Components
-import Nav from './Nav';
-import Loader from './Loader';
+// API calls
+import axios from 'axios'
 
-class Shop extends Component {
-  state = { loaded: false, products: []  }
+
+
+
+class Custom extends Component {
+  state = { loaded: false, products: [] }
 
   componentDidMount = async () => {
     axios.get('https://kukudb-ff7f7.firebaseio.com/unseen_items.json')
       .then( res => {
+        // return all items that have not been swiped through (!==null)
         let filtered = res.data.filter( item => {
            return item !== null
         })
-        this.setState({ loaded: true, products: filtered })
+        // return all filtered items that match category params
+        let categoryArray = filtered.filter( item => {
+          return item['Handle'] === this.props.match.params.category
+        })
+        this.setState({ loaded: true, products: categoryArray })
       }
     )
   }
-
 
   openSettings = () => {
     this.props.history.push('/settings')
   }
 
   openCart = () => {
-    this.props.history.push('/cart/shop')
+    this.props.history.push(`/cart/${this.props.match.params.category}`)
   }
 
   openSearch = () => {
@@ -64,20 +71,21 @@ class Shop extends Component {
   sendToCart = async (cardObject) => {
     await axios.post( 'https://kukudb-ff7f7.firebaseio.com/cart.json', cardObject )
     await axios.delete(`https://kukudb-ff7f7.firebaseio.com/unseen_items/${cardObject['Id']}.json`)
+    // increase cart count by 1 in Redux
     this.props.dispatch(addToCart())
   }
 
-  emptyShop = () => {
-    return(
-      <View>
-        <Link to="/search">
+    emptyShop = () => {
+      return(
+        <View>
+          <Link to="/search">
             <Text style={styles.textEmptyDeck}>
               "I'm all out of love, I'm so lost without you."
             </Text>
           </Link>
-      </View>
-    )
-  }
+        </View>
+      )
+    }
 
   render() {
     if (this.state.loaded) {
@@ -94,7 +102,11 @@ class Shop extends Component {
                 renderEmpty={this.emptyShop}
                 looping={false}
                 renderItem={item =>
-                  <CardComp item={item} history={this.props.history} />
+                  <CardComp
+                    item={item}
+                    history={this.props.history}
+                    category={this.props.match.params.category}
+                  />
                 }
               />
             </View>
@@ -140,6 +152,7 @@ let styles = {
     paddingTop: '8.5%',
     width: deviceX,
     height: deviceY,
+
   },
   content:{
     flexDirection: 'column',
@@ -163,4 +176,4 @@ const mapStateToProps = (state) => {
   }
 };
 
-export default connect(mapStateToProps)(Shop);
+export default connect(mapStateToProps)(Custom);

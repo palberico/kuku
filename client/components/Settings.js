@@ -1,28 +1,26 @@
+// React
 import React, { Component } from 'react';
-import { 
-  Container, 
-  Header, 
-  Content, 
-  List, 
-  ListItem, 
-  Text, 
-  Icon, 
-  Left, 
-  Body, 
-  Right, 
-  ActionSheet, 
+
+// Styles
+import {
+  Container,
+  Header,
+  Content,
+  List,
+  ListItem,
+  Text,
+  Icon,
+  Left,
+  Body,
+  Right,
+  Button,
+  ActionSheet,
 } from 'native-base';
 
-// Search List Pop-up Code
-var BUTTONS = ["Men's", "Women's", "Baby", "Accessories"];
+var BUTTONS = ["Womens", "Baby", "Mens", "Accessories"];
 
 class ListIcon extends Component {
-
-  // Search List Pop-up Code
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+  state = {}
 
   return = () => {
     this.props.history.push('/shop')
@@ -39,14 +37,35 @@ class ListIcon extends Component {
   terms = () => {
     this.props.history.push('/terms')
   }
-  
+
+  faq = () => {
+    this.props.history.push('/faq')
+  }
+
+  facebookLogIn = async () => {
+    const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync('534726780240095', {
+        permissions: ['public_profile'],
+      })
+    if (type === 'success') {
+      // Get the user's name using Facebook's Graph API
+      const response = await fetch(
+        `https://graph.facebook.com/me?access_token=${token}`);
+      Alert.alert(
+        'Logged in!',
+        `Hi ${(await response.json()).name}!`,
+      )
+    }
+  }
+
   render() {
     return (
       <Container>
         <Header>
-          <Left>
-            <Icon name='ios-arrow-back' onPress={this.return} />
-          </Left>
+            <Left>
+              <Button transparent onPress={this.return}>
+                <Icon style={styles.icon} name='ios-arrow-back' onPress={this.return} />
+              </Button> 
+            </Left>
           <Text style={styles.head}>Settings</Text>
           <Right />
         </Header>
@@ -64,9 +83,7 @@ class ListIcon extends Component {
                 <Icon name="arrow-forward"/>
               </Right>
             </ListItem>
-
-             {/* Search List Pop-up Code */}
-            <ListItem 
+            <ListItem
               icon
               onPress={() =>
                 ActionSheet.show({
@@ -74,7 +91,7 @@ class ListIcon extends Component {
                   title: "I'm looking for:"
                 },
                 buttonIndex => {
-                this.setState({ clicked: BUTTONS[buttonIndex] });
+                this.props.history.push(`/custom/${BUTTONS[buttonIndex]}`);
                 }
               )}
             >
@@ -85,13 +102,12 @@ class ListIcon extends Component {
                 <Text>{this.state.clicked}</Text>
                 <Icon name="arrow-forward"  />
               </Right>
-              {/* End Search List Pop-up Code */}
             </ListItem>
             <ListItem itemDivider />
             <ListItem itemDivider>
               <Text>Get Social</Text>
             </ListItem>
-            <ListItem icon onPress={this.logout}>
+            <ListItem icon onPress={this.facebookLogIn}>
               <Left>
                 <Icon name="logo-facebook"/>
               </Left>
@@ -113,17 +129,6 @@ class ListIcon extends Component {
                 <Icon name="arrow-forward"/>
               </Right>
             </ListItem>
-            {/* <ListItem icon onPress={this.logout}>
-              <Left>
-                <Icon name="ios-share-outline"/>
-              </Left>
-              <Body>
-                <Text>Share the App</Text>
-              </Body>
-              <Right>
-                <Icon name="arrow-forward"/>
-              </Right>
-            </ListItem> */}
             <ListItem itemDivider />
             <ListItem itemDivider>
               <Text>About Us</Text>
@@ -148,7 +153,7 @@ class ListIcon extends Component {
             <ListItem itemDivider>
               <Text>Support</Text>
             </ListItem>
-            <ListItem icon onPress={this.logout}>
+            <ListItem icon onPress={this.faq}>
               <Body>
                 <Text>FAQs</Text>
               </Body>
@@ -167,15 +172,19 @@ class ListIcon extends Component {
           </List>
         </Content>
       </Container>
-    );
+    )
   }
-}
+};
 
 const styles = {
-    head:{
-      marginTop: 10,
-      fontSize: 24,
+  head:{
+    marginTop: 10,
+    fontSize: 24,
   },
-}
+  icon:{
+    paddingLeft: 5,
+    color: 'black',
+  },
+};
 
 export default ListIcon;
