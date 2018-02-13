@@ -1,12 +1,13 @@
 import axios from 'axios';
+import { API_URL } from '../utils/urls';
 
 export const fetchProducts = () => dispatch => {
-  return axios.get('https://kukudb-ff7f7.firebaseio.com/products.json')
+  return axios.get(`${API_URL}/products`)
     .then( res => {
       let unseenItems = res.data.slice(0);
-      axios.put('https://kukudb-ff7f7.firebaseio.com/unseen_items.json', unseenItems)
-      axios.delete('https://kukudb-ff7f7.firebaseio.com/cart.json')
-      axios.delete('https://kukudb-ff7f7.firebaseio.com/dislike.json')
+      axios.put('/api/products', unseenItems)
+      // axios.delete('https://kukudb-ff7f7.firebaseio.com/cart.json')
+      // axios.delete('https://kukudb-ff7f7.firebaseio.com/dislike.json')
       dispatch({ type: 'FETCH_PRODUCTS', products: res.data })
     })
 };
@@ -28,4 +29,4 @@ export const subtractToCart = () => dispatch => {
 
 export const resetCart = () => dispatch => {
   dispatch({ type: 'RESET_COUNT', count : 0 })
-}
+};
