@@ -33,7 +33,7 @@ class Shop extends Component {
   state = { loaded: false, products: []  }
 
   componentDidMount = async () => {
-    axios.get('/products')
+    axios.get('https://kukudb-ff7f7.firebaseio.com/unseen_items.json')
       .then( res => {
         let filtered = res.data.filter( item => {
            return item !== null
@@ -42,6 +42,7 @@ class Shop extends Component {
       }
     )
   }
+
 
   openSettings = () => {
     this.props.history.push('/settings')
